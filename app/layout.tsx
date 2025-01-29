@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,3 +33,47 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+
+
+
+
+{/* <div className="min-h-screen flex">
+    <div className="hidden lg:block w-64 bg-gray-800 text-white p-6">
+      <div className="text-2xl font-bold mb-8">MyApp</div>
+      <nav>
+      <ul className="space-y-4">
+        <li>
+        <Link href="/dashboard" className="hover:text-purple-400 transition duration-300">
+          Dashboard
+        </Link>
+        </li>
+        <li>
+        <Link href="/dashboard/referral" className="hover:text-purple-400 transition duration-300">
+          Referral
+        </Link>
+        </li>
+        <li>
+        <Link href="/dashboard/quest" className="hover:text-purple-400 transition duration-300">
+          Quest
+        </Link>
+        </li>
+        <li>
+        <Link href="/dashboard/transaction-history" className="hover:text-purple-400 transition duration-300">
+          Transaction History
+        </Link>
+        </li>
+        <li>
+        <Link href="/dashboard/earnings" className="hover:text-purple-400 transition duration-300">
+          Earnings
+        </Link>
+        </li>
+      </ul>
+      </nav>
+    </div>
+
+    <div className="flex-1 bg-gray-100 p-8">
+      {children}
+    </div>
+    </div> */}
