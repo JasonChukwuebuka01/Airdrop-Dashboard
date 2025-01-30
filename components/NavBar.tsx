@@ -42,9 +42,9 @@ const NavBar = () => {
 
 
     return (
-        <section className="hidden lg:block w-[13%] bg-gray-800 text-white p-6  relative">
-            <h1 className="text-2xl font-bold mb-8 fixed top-0">DeSpeed</h1>
-            <nav className="h-[100vh] w-full flex flex-col justify-start ">
+        <section className="hidden lg:block w-[13%] bg-gray-800 text-white relative h-full  overflow-hidden  border-r border-b-gray-700/30">
+            <h1 className="text-2xl font-bold text-center sticky top-0 p-6">DeSpeed</h1>
+            <nav className="h-full w-full flex flex-col justify-start ">
                 {
                     menuItems.map((item, index) => (
                         <Link

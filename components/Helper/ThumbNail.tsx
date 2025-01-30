@@ -4,14 +4,11 @@ import {
     Sheet,
     SheetClose,
     SheetContent,
-    SheetDescription,
-    SheetFooter,
     SheetHeader,
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
 import { Button } from "../ui/button"
-import NavBar from "../NavBar";
 import Link from "next/link";
 import { MenuItem } from "@/Typing/types";
 
