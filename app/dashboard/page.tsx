@@ -21,7 +21,7 @@ export default function DashboardPage() {
                 <figure className="bg-gray-100 p-4 rounded">Child 1</figure>
                 <figure className="bg-gray-100 p-4 rounded">Child 2</figure>
               </aside>
-              <aside className="bg-gray-100 p-4 rounded border-2 border-red-500 rounded-lg">Second Column</aside>
+              <aside className="bg-gray-100 p-4  border-2 border-red-500 rounded-lg">Second Column</aside>
             </section>
           </article>
 
