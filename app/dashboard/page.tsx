@@ -1,18 +1,22 @@
 'use client';
 
-import HeaderNav from '@/components/Helper/HeaderNav';
+
 import CustomSpeedometer from '@/components/Helper/Meter';
-import StreakCounter from '@/components/Helper/Streak';
-import { Calendar1Icon, TicketPercent, TicketPercentIcon, TrafficConeIcon } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Calendar1Icon, Copy, CopyIcon, LucideTwitter, Share2Icon, TicketPercent, TrafficConeIcon } from 'lucide-react';
 import React from 'react';
 
 
 
 
 export default function DashboardPage() {
+
+
   return (
+
     <>
-      <main className='h-[85vh] p-6'>
+      <main className='h-[85vh] p-4'>
+        {/**Kilo Cycle section */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
 
           <article className="bg-white p-3 pb-10 rounded-lg border-[1px] border-gray-300 flex flex-col  justify-center lg:h-[25vh]">
@@ -37,7 +41,7 @@ export default function DashboardPage() {
                 </article>
 
               </aside>
-                <aside className="flex rounded-lg justify-center p-1 h-[15vh] border-[1px] border-gray-300">
+              <aside className="flex rounded-lg justify-center p-1 h-[15vh] border-[1px] border-gray-300">
                 <article className='w-full h-full rounded-lg flex justify-between gap-4 '>
 
                   <div className='flex gap-2 w-[80%] h-full items-center'>
@@ -54,13 +58,12 @@ export default function DashboardPage() {
                     <div><TrafficConeIcon size={40} /></div>
                   </div>
                 </article>
-
               </aside>
             </section>
           </article>
 
           <article className="bg-white pl-2 pr-2 pt-0 rounded-lg border-[1px] border-gray-300 lg:h-[25vh]">
-            <aside className="grid grid-cols-1 lg:grid-cols-6 w-full h-full">
+            <aside className="grid grid-cols-1 md:grid-cols-6 w-full h-full">
 
               <div className="h-full col-span-3">
                 <h2 className='text-center font-bold pt-2'>Speedtest Quality</h2>
@@ -80,6 +83,34 @@ export default function DashboardPage() {
             </aside>
           </article>
         </section>
+
+        {/**referral section */}
+        <section className="flex flex-col lg:flex-row  justify-center items-center lg:justify-between gap-6 p-4 mt-6 border-[1px] border-gray-300 rounded-lg">
+
+          <article className="flex items-center gap-3">
+            <div className="text-sm font-bold border-[1px] border-gray-300 p-2 rounded-lg">
+              <Share2Icon size={30} />
+            </div>
+            <div className="text-lg font-bold">Refer Your Friends</div>
+          </article>
+
+          <article className="grid grid-cols-1 lg:grid-cols-2  ">
+            <div className=" text-sm font-bold">
+              <Button className='flex gap-3 p-6 rounded-lg '>
+                <CopyIcon size={20} />
+                <span>Copy</span>
+              </Button>
+            </div>
+            <div className="text-2xl font-bold border-2">
+              <Button className='flex gap-3 p-6 rounded-lg w-full' onMouseDown={(e) => e.preventDefault()}>
+                <LucideTwitter size={20} />
+                <span>Tweet Referral</span>
+              </Button>
+            </div>
+          </article>
+
+        </section>
+
 
       </main>
     </>
