@@ -94,14 +94,14 @@ export default function DashboardPage() {
             <div className="text-lg font-bold">Refer Your Friends</div>
           </article>
 
-          <article className="grid grid-cols-1 lg:grid-cols-2  ">
+          <article className="grid grid-cols-1 lg:grid-cols-2  border-2 border-red-500 w-full lg:w-[30%] rounded-lg gap-2">
             <div className=" text-sm font-bold">
-              <Button className='flex gap-3 p-6 rounded-lg '>
+              <Button className='flex gap-3 p-6 rounded-lg w-full'>
                 <CopyIcon size={20} />
                 <span>Copy</span>
               </Button>
             </div>
-            <div className="text-2xl font-bold border-2">
+            <div className="text-2xl font-bold">
               <Button className='flex gap-3 p-6 rounded-lg w-full' onMouseDown={(e) => e.preventDefault()}>
                 <LucideTwitter size={20} />
                 <span>Tweet Referral</span>
