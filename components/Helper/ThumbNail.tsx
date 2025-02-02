@@ -22,22 +22,22 @@ const menuItems: MenuItem[] = [
     },
     {
         name: "Referral",
-        href: "/dashboard/referral",
+        href: "/referral",
         icon: "👥"
     },
     {
-        name: "Quest",
-        href: "/dashboard/quest",
+        name: "Quests",
+        href: "/quests",
         icon: "🎯"
     },
     {
         name: "Transaction History",
-        href: "/dashboard/transaction-history",
+        href: "/transaction-history",
         icon: "📝"
     },
     {
         name: "Earnings",
-        href: "/dashboard/earnings",
+        href: "/earnings",
         icon: "💰"
     }
 ];

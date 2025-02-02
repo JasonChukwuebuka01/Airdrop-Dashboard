@@ -16,8 +16,8 @@ const menuItems: MenuItem[] = [
         icon: "👥"
     },
     {
-        name: "Quest",
-        href: "/quest",
+        name: "Quests",
+        href: "/quests",
         icon: "🎯"
     },
     {

@@ -1,9 +1,11 @@
 'use client';
 
 
+import EarningsChart from '@/components/EarningsChart';
 import CustomSpeedometer from '@/components/Helper/Meter';
 import { Button } from '@/components/ui/button';
-import { Calendar1Icon, Copy, CopyIcon, LockIcon, LucideTwitter, Share2Icon, TicketCheckIcon, TicketPercent, TrafficConeIcon } from 'lucide-react';
+import { Calendar1Icon, Copy, CopyIcon, LockIcon, LucideTwitter, Share2Icon, TicketCheckIcon, TicketPercent, TimerIcon, TrafficConeIcon } from 'lucide-react';
+import Link from 'next/link';
 import React from 'react';
 
 
@@ -124,37 +126,53 @@ export default function DashboardPage() {
 
         {/** Quest and Earning Statistics section */}
         <section className="grid grid-cols-1 lg:grid-cols-6 gap-4 mt-6 border-2 border-black">
-          <article className="w-full lg:col-span-2 bg-white p-2 rounded-lg border-2 border-red-500">
-            <h2 className='text-xl font-bold text-gray-800 mb-2 pt-4'>Quests</h2>
+          <article className="w-full lg:col-span-2 bg-white p-2 rounded-xl border-[1px] border-gray-300  pb-4">
+            <h2 className='text-xl font-bold text-gray-800 mb-2 '>Quests</h2>
 
             <section className='grid grid-cols-1 gap-4'>
-              <div className="flex flex-col gap-2 border-2 border-green-500 p-2">
-                <div className="flex gap-3 bg-gray-100 rounded-lg p-2 border-2 border-red-500 ">
-                  <section className='h-[70%] p-4 bg-gray-200 rounded-2xl flex justify-center items-center border-2 border-blue-500 '>
+              <div className="flex flex-col gap-2 border-[1px] border-gray-300 p-2 rounded-xl pb-4">
+                <div className="flex gap-3 bg-gray-100 rounded-lg p-2 ">
+                  <section className='h-[90%] p-4 bg-gray-200 rounded-2xl flex justify-center items-center border-[1px] border-gray-300 '>
                     <TicketCheckIcon />
                   </section>
-                  <section className='border-2 border-blue-500 flex flex-col justify-center items-start '>
+                  <section className='flex flex-col justify-center items-start '>
                     <h2 className='text-base font-bold text-center'>Daily Claim</h2>
                     <h3 className='text-sm text-center'>Claim your daily reward.</h3>
                   </section>
                 </div>
 
-                <div className='border-2 border-red-500'>
-                  <Button className='w-full'> <LockIcon /> Claim 100</Button>
+                <div className=''>
+                  <Button className='w-full font-bold text-[15px] flex justify-center items-center rounded-xl p-6'> <LockIcon /> Claim 100</Button>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2 border-2 border-green-500">
-                <div className="h-1/2 bg-gray-100 rounded-lg p-2"></div>
-                <div className="h-1/2 bg-gray-100 rounded-lg p-2"></div>
+              <div className="flex flex-col gap-2 border-[1px] border-gray-300 p-2 rounded-xl pb-4">
+                <div className="flex gap-3 bg-gray-100 rounded-lg p-2 ">
+                  <section className='h-[90%] p-4 bg-gray-200 rounded-2xl flex justify-center items-center border-[1px] border-gray-300 '>
+                    <TimerIcon />
+                  </section>
+                  <section className='flex flex-col justify-center items-start '>
+                    <h2 className='text-base font-bold text-center'>Quests Completed</h2>
+                    <h3 className='text-sm text-center'>7/19</h3>
+                  </section>
+                </div>
+
+                <div className=''>
+                  <Link href="/quests">
+                    <Button className='w-full font-bold text-[15px] flex justify-center items-center rounded-xl p-6'> View all Quests</Button>
+                  </Link>
+                </div>
               </div>
+
             </section>
 
           </article>
 
 
 
-          <article className="lg:col-span-4 bg-white p-4 rounded-lg h-[20vh] border-2 border-red-500 ">
+          <article className="lg:col-span-4 bg-white p-4 rounded-lg border-2 border-red-500 ">
+  
+            <EarningsChart/>
           </article>
         </section>
         {/**End Quest and Earning Statistics section section */}
