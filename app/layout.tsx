@@ -35,7 +35,7 @@ export default function RootLayout({
           <NavBar />
 
           {/* Main Content Area */}
-          <main className="flex-1 bg-gray-100 w-[87%] h-full ">
+          <main className="flex-1 bg-gray-100 w-[87%] h-full overflow-auto ">
             <HeaderNav />
             {children}
           </main>

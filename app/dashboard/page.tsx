@@ -3,7 +3,7 @@
 
 import CustomSpeedometer from '@/components/Helper/Meter';
 import { Button } from '@/components/ui/button';
-import { Calendar1Icon, Copy, CopyIcon, LucideTwitter, Share2Icon, TicketPercent, TrafficConeIcon } from 'lucide-react';
+import { Calendar1Icon, Copy, CopyIcon, LockIcon, LucideTwitter, Share2Icon, TicketCheckIcon, TicketPercent, TrafficConeIcon } from 'lucide-react';
 import React from 'react';
 
 
@@ -15,9 +15,11 @@ export default function DashboardPage() {
   return (
 
     <>
-      <main className='h-[85vh] p-4'>
+      <article className='h-[90%] p-4'>
+
         {/**Kilo Cycle section */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
+
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
 
           <article className="bg-white p-3 pb-10 rounded-lg border-[1px] border-gray-300 flex flex-col  justify-center lg:h-[25vh]">
             <h2 className="text-xl font-bold text-gray-800 mb-2 pt-4">Current Stage: Kilo Cycle</h2>
@@ -62,47 +64,52 @@ export default function DashboardPage() {
             </section>
           </article>
 
-          <article className="bg-white pl-2 pr-2 pt-0 rounded-lg border-[1px] border-gray-300 lg:h-[25vh]">
-            <aside className="grid grid-cols-1 md:grid-cols-6 w-full h-full">
+          <article className="bg-white pl-2 pr-2 pt-0  pb-3 flex rounded-lg border-[1px] border-gray-300 h-[50vh] sm:h-[30vh]  lg:pb-0 lg:h-[25vh]">
+            <aside className="grid grid-cols-1 sm:grid-cols-6 w-full h-full lg:overflow-hidden  ">
 
               <div className="h-full col-span-3">
                 <h2 className='text-center font-bold pt-2'>Speedtest Quality</h2>
                 <CustomSpeedometer />
               </div>
 
-              <div className="col-span-3 flex border-l-[1px] border-gray-300 h-full">
-                <div className="w-1/2 flex flex-col justify-center items-center h-full">
+              <div className="col-span-3 flex  sm:border-l-[1px] lg:border-gray-300 h-full mt-2 sm:mt-0 lg:mt-0 gap-3 ">
+                <div className="w-1/2 flex flex-col justify-center items-end h-full">
                   <div className="text-sm font-bold mb-2">Download Speed</div>
-                  <h2 className="text-3xl  p-4 rounded-xl text-center font-bold border-2 border-gray-300">0.77 <span className="text-sm -mt-2 block" >MB/s</span></h2>
+                  <h2 className="text-3xl p-4 rounded-xl text-center font-bold border-2 border-gray-300">0.77 <span className="text-sm -mt-2 block" >MB/s</span></h2>
                 </div>
-                <div className="w-1/2 flex flex-col justify-center items-center h-full">
+                <div className="w-1/2 flex flex-col justify-center items-start lg:items-center h-full">
                   <div className="text-sm font-bold mb-2">Upload Speed</div>
                   <h2 className="text-3xl  p-4 rounded-xl text-center font-bold border-2 border-gray-300 ">2.44<span className="text-sm -mt-2 block" >MB/s</span></h2>
                 </div>
               </div>
+
             </aside>
           </article>
         </section>
+        {/** End Kilo Cycle section */}
+
+
 
         {/**referral section */}
-        <section className="flex flex-col lg:flex-row  justify-center items-center lg:justify-between gap-6 p-4 mt-6 border-[1px] border-gray-300 rounded-lg">
+        <section className="flex flex-col sm:flex-row  justify-center items-center sm:justify-between gap-6 p-4 mt-6 border-[1px] border-gray-300 rounded-2xl">
 
           <article className="flex items-center gap-3">
-            <div className="text-sm font-bold border-[1px] border-gray-300 p-2 rounded-lg">
+            <div className="text-sm font-bold border-[1px] border-gray-300 p-2 rounded-xl">
               <Share2Icon size={30} />
             </div>
             <div className="text-lg font-bold">Refer Your Friends</div>
           </article>
 
-          <article className="grid grid-cols-1 lg:grid-cols-2  border-2 border-red-500 w-full lg:w-[30%] rounded-lg gap-2">
-            <div className=" text-sm font-bold">
-              <Button className='flex gap-3 p-6 rounded-lg w-full'>
+          <article className="grid grid-cols-1 sm:grid-cols-2 w-full sm:w-[50%] lg:w-[30%] rounded-lg gap-2">
+            <div className=" text-sm font-bold flex justify-end">
+              <Button className='flex gap-2  pr-2 pl-2 pt-6 pb-6 rounded-lg  w-full sm:w-[80%] '>
                 <CopyIcon size={20} />
-                <span>Copy</span>
+                <span>Copy Link</span>
               </Button>
             </div>
             <div className="text-2xl font-bold">
-              <Button className='flex gap-3 p-6 rounded-lg w-full' onMouseDown={(e) => e.preventDefault()}>
+              <Button className='flex gap-3 p-6 rounded-lg w-full '
+                onMouseDown={(e) => e.preventDefault()}>
                 <LucideTwitter size={20} />
                 <span>Tweet Referral</span>
               </Button>
@@ -110,9 +117,50 @@ export default function DashboardPage() {
           </article>
 
         </section>
+        {/**End referral section */}
 
 
-      </main>
+
+
+        {/** Quest and Earning Statistics section */}
+        <section className="grid grid-cols-1 lg:grid-cols-6 gap-4 mt-6 border-2 border-black">
+          <article className="w-full lg:col-span-2 bg-white p-2 rounded-lg border-2 border-red-500">
+            <h2 className='text-xl font-bold text-gray-800 mb-2 pt-4'>Quests</h2>
+
+            <section className='grid grid-cols-1 gap-4'>
+              <div className="flex flex-col gap-2 border-2 border-green-500 p-2">
+                <div className="flex gap-3 bg-gray-100 rounded-lg p-2 border-2 border-red-500 ">
+                  <section className='h-[70%] p-4 bg-gray-200 rounded-2xl flex justify-center items-center border-2 border-blue-500 '>
+                    <TicketCheckIcon />
+                  </section>
+                  <section className='border-2 border-blue-500 flex flex-col justify-center items-start '>
+                    <h2 className='text-base font-bold text-center'>Daily Claim</h2>
+                    <h3 className='text-sm text-center'>Claim your daily reward.</h3>
+                  </section>
+                </div>
+
+                <div className='border-2 border-red-500'>
+                  <Button className='w-full'> <LockIcon /> Claim 100</Button>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2 border-2 border-green-500">
+                <div className="h-1/2 bg-gray-100 rounded-lg p-2"></div>
+                <div className="h-1/2 bg-gray-100 rounded-lg p-2"></div>
+              </div>
+            </section>
+
+          </article>
+
+
+
+          <article className="lg:col-span-4 bg-white p-4 rounded-lg h-[20vh] border-2 border-red-500 ">
+          </article>
+        </section>
+        {/**End Quest and Earning Statistics section section */}
+
+
+      </article>
     </>
   );
 }
