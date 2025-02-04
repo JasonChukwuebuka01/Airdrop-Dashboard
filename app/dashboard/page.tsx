@@ -1,23 +1,45 @@
 'use client';
 
 
+import React, { useState } from 'react';
 import EarningsChart from '@/components/EarningsChart';
 import CustomSpeedometer from '@/components/Helper/Meter';
 import { Button } from '@/components/ui/button';
-import { Calendar1Icon, Copy, CopyIcon, LockIcon, LucideTwitter, Share2Icon, TicketCheckIcon, TicketPercent, TimerIcon, TrafficConeIcon } from 'lucide-react';
+import { Calendar1Icon, CopyIcon, LockIcon, LucideTwitter, Share2Icon, TicketCheckIcon, TicketPercent, TimerIcon, TrafficConeIcon } from 'lucide-react';
 import Link from 'next/link';
-import React from 'react';
+import DemoEarningsChart from '@/components/DemoEarningChart';
+import DataTable from '@/components/Helper/Table';
+
+
+
 
 
 
 
 export default function DashboardPage() {
 
+  const [ShowDemo, setShowDemo] = useState<boolean>(true);
+
+
+
+
+
+  const handleShowDemo = () => {
+
+    setTimeout(() => {
+
+      setShowDemo(!ShowDemo);
+
+    }, 1000);
+
+  };
+
+
 
   return (
 
     <>
-      <article className='h-[90%] p-4'>
+      <article className='h-[100%] p-4 '>
 
         {/**Kilo Cycle section */}
 
@@ -122,10 +144,8 @@ export default function DashboardPage() {
         {/**End referral section */}
 
 
-
-
         {/** Quest and Earning Statistics section */}
-        <section className="grid grid-cols-1 lg:grid-cols-6 gap-4 mt-6 border-2 border-black">
+        <section className="grid grid-cols-1 lg:grid-cols-6 gap-4 mt-6 pb-8">
           <article className="w-full lg:col-span-2 bg-white p-2 rounded-xl border-[1px] border-gray-300  pb-4">
             <h2 className='text-xl font-bold text-gray-800 mb-2 '>Quests</h2>
 
@@ -169,13 +189,31 @@ export default function DashboardPage() {
           </article>
 
 
+          <article className="lg:col-span-4 bg-white p-4 rounded-xl border-[1px] border-gray-300 w-full ">
 
-          <article className="lg:col-span-4 bg-white p-4 rounded-lg border-2 border-red-500 ">
-  
-            <EarningsChart/>
+            {
+              ShowDemo ?
+                (
+                  <DemoEarningsChart
+                    handleShowDemo={handleShowDemo}
+                  />
+                ) :
+                (
+                  <EarningsChart />
+                )
+            }
+
           </article>
         </section>
         {/**End Quest and Earning Statistics section section */}
+
+
+        {/**Table Data section */}
+
+        <section className='border-2 border-red-500'>
+          <DataTable />
+        </section>
+        {/** End of Table Data section */}
 
 
       </article>

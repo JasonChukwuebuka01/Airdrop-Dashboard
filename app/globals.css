@@ -6,6 +6,22 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
+/* styles/globals.css or equivalent */
+.tooltip-animation {
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  opacity: 0;
+  transform: translate(-50%, 10px);
+  /* Position it just a bit off its final position initially */
+}
+
+.tooltip-animation:hover,
+.tooltip-animation:focus {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  /* Move it to its final position smoothly */
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -34,6 +50,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -66,6 +83,7 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }

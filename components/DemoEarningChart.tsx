@@ -1,10 +1,9 @@
 "use client";
-// components/EarningsChart.tsx
 
 // components/EarningsChart.tsx
 import React, { useEffect, useRef, useState } from 'react';
-import chartData from '@/data/chartData';
-
+import DemochartData from '@/data/demoChatData';
+import { RepeatIcon } from 'lucide-react';
 
 interface DataPoint {
     date: string;
@@ -16,9 +15,14 @@ interface DataPoint {
 
 type ChartData = DataPoint[];
 
-const EarningsChart: React.FC = () => {
 
-    const data = chartData as ChartData;
+interface DemoEarningsChartProps {
+    handleShowDemo: () => void;
+}
+
+const DemoEarningsChart: React.FC<DemoEarningsChartProps> = ({ handleShowDemo }) => {
+
+    const data = DemochartData as ChartData;
 
     const maxValue = Math.max(
         ...data.map((item) => item.questsEarning + item.speedtestEarning + item.referralBonus + item.referralEarning)
@@ -29,6 +33,9 @@ const EarningsChart: React.FC = () => {
     const barSpacing = 15;
     const chartWidth = data.length * (barWidth + barSpacing);
     const yAxisValues = ['0', '500', '1,000', '1,500', '2,000', '2,500', '3,000', '3,500', '4,000'];
+
+
+
     const [hoveredTooltip, setHoveredTooltip] = useState<{
         type: 'quests' | 'speedtest' | 'referral';
         x: number;
@@ -37,23 +44,11 @@ const EarningsChart: React.FC = () => {
         date: string;
     } | null>(null);
 
+    const [ShowDemoIcon, setShowDemoIcon] = useState<boolean>(true);
+
     const chartRef = useRef<HTMLDivElement>(null)
 
-    // Add auto-scroll effect
     useEffect(() => {
-        if (chartRef.current) {
-            const scrollWidth = chartRef.current.scrollWidth;
-            const clientWidth = chartRef.current.clientWidth;
-        
-            
-            // Scroll to end of content
-            chartRef.current.scrollLeft = scrollWidth - clientWidth;
-        }
-    }, [data]); // Re-run when data changes
-
-    // Existing useEffect for scroll handler
-    useEffect(() => {
-        
         const handleScroll = () => {
             setHoveredTooltip(null);
         };
@@ -69,10 +64,35 @@ const EarningsChart: React.FC = () => {
     }, []);
 
 
+
+
+    const executeAndShowRalChartData = () => {
+
+        setShowDemoIcon(false);
+        handleShowDemo();
+    }
+
+
     return (
-        <div className="p-4 pt-0 pb-0 flex-1">
-            <h2 className="text-2xl font-bold ">Earnings Statistics</h2>
-            <div ref={chartRef} className="relative overflow-x-auto -mt-7 h-[48vh] scroll-smooth">
+        <div className="p-4 pt-0 pb-0 flex-1 relative">
+            {/* Glass overlay */}
+            <div className="absolute inset-0 bg-white/30 backdrop-blur-sm z-10 rounded-lg flex items-center justify-center">
+                <div className="bg-white/80 p-4 rounded-full shadow-lg">
+                    {ShowDemoIcon ? (
+                        <RepeatIcon
+                            className="w-8 h-8 text-gray-600"
+                            onClick={() => executeAndShowRalChartData()}
+                        />
+                    ) : (
+                        <RepeatIcon
+                            className="w-8 h-8 text-gray-600 animate-spin"
+                        />
+                    )}
+                </div>
+            </div>
+
+            <h2 className="text-2xl font-bold relative z-20">Earnings Statistics</h2>
+            <div ref={chartRef} className="relative overflow-x-auto -mt-7 h-[48vh]">
                 <div style={{ width: chartWidth + 40, height: chartHeight + 45 }} className="relative">
                     {/* Vertical Axis Labels */}
                     {yAxisValues.map((value) => (
@@ -172,7 +192,7 @@ const EarningsChart: React.FC = () => {
                             {item.referralEarning > 0 && (
                                 <div
                                     style={{
-                                        height: `${(item.questsEarning / maxValue) * chartHeight}px`,
+                                        height: `${(item.referralEarning / maxValue) * chartHeight}px`,
                                         bottom: 0,
                                         width: barWidth,
                                         backgroundColor: 'pink',
@@ -180,7 +200,7 @@ const EarningsChart: React.FC = () => {
                                     className="absolute rounded-sm "
                                     onMouseEnter={(e) => {
                                         const rect = (e.target as Element).getBoundingClientRect();
-                                        setHoveredTooltip({ type: 'quests', x: rect.left, y: rect.top, value: item.questsEarning, date: item.date });
+                                        setHoveredTooltip({ type: 'quests', x: rect.left, y: rect.top, value: item.referralEarning, date: item.date });
                                     }}
                                     onMouseLeave={() => setHoveredTooltip(null)}
                                 >
@@ -197,6 +217,40 @@ const EarningsChart: React.FC = () => {
                                             <p className="font-medium mb-1">{hoveredTooltip.date}</p>
                                             <div className='flex items-center'>
                                                 <div className='w-[10px] h-[10px] bg-pink-500 border-[1.5px] border-gray-200 mr-[2px]'></div> <span className="font-medium">Quests:</span>{hoveredTooltip.value}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                            {/* Referral bOnus Bar */}
+                            {item.referralBonus > 0 && (
+                                <div
+                                    style={{
+                                        height: `${(item.referralBonus / maxValue) * chartHeight}px`,
+                                        bottom: 0,
+                                        width: barWidth,
+                                        backgroundColor: 'blue',
+                                    }}
+                                    className="absolute rounded-sm "
+                                    onMouseEnter={(e) => {
+                                        const rect = (e.target as Element).getBoundingClientRect();
+                                        setHoveredTooltip({ type: 'quests', x: rect.left, y: rect.top, value: item.referralBonus, date: item.date });
+                                    }}
+                                    onMouseLeave={() => setHoveredTooltip(null)}
+                                >
+                                    {/* Tooltip */}
+                                    {hoveredTooltip?.type === 'quests' && hoveredTooltip.date === item.date && (
+                                        <div
+                                            style={{
+                                                left: '50%',
+                                                bottom: '50%',
+                                                transform: 'translateX(-50%)',
+                                            }}
+                                            className="absolute z-10 bg-black border rounded-md p-2 text-sm w-[140px] text-white"
+                                        >
+                                            <p className="font-medium mb-1">{hoveredTooltip.date}</p>
+                                            <div className='flex items-center'>
+                                                <div className='w-[10px] h-[10px] bg-blue-500 border-[1.5px] border-gray-200 mr-[2px]'></div> <span className="font-medium">Quests:</span>{hoveredTooltip.value}
                                             </div>
                                         </div>
                                     )}
@@ -228,4 +282,4 @@ const EarningsChart: React.FC = () => {
     );
 };
 
-export default EarningsChart;
+export default DemoEarningsChart;
