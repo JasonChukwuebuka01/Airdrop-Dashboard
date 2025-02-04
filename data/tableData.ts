@@ -42,11 +42,5 @@ export const tableData: NetworkData[] = [
         IPAddress: "192.168.1.122",
         Bytes: 2789456
     },
-    {
-        Time: "2025-02-04 16:20",
-        DownloadSpeed: 115.34,
-        UploadSpeed: 43.21,
-        IPAddress: "192.168.1.126",
-        Bytes: 1893567
-    }
+    
 ];

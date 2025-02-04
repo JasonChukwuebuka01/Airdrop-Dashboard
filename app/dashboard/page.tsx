@@ -8,7 +8,11 @@ import { Button } from '@/components/ui/button';
 import { Calendar1Icon, CopyIcon, LockIcon, LucideTwitter, Share2Icon, TicketCheckIcon, TicketPercent, TimerIcon, TrafficConeIcon } from 'lucide-react';
 import Link from 'next/link';
 import DemoEarningsChart from '@/components/DemoEarningChart';
-import DataTable from '@/components/Helper/Table';
+import ShowTable from '@/components/ShowTable';
+
+
+
+
 
 
 
@@ -25,7 +29,6 @@ export default function DashboardPage() {
 
 
   const handleShowDemo = () => {
-
     setTimeout(() => {
 
       setShowDemo(!ShowDemo);
@@ -208,11 +211,9 @@ export default function DashboardPage() {
         {/**End Quest and Earning Statistics section section */}
 
 
-        {/**Table Data section */}
 
-        <section className='border-2 border-red-500'>
-          <DataTable />
-        </section>
+        {/**Table Data section */}
+        <ShowTable />
         {/** End of Table Data section */}
 
 
