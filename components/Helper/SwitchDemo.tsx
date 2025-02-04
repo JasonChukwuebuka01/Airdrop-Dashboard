@@ -1,10 +1,19 @@
 
 import { Switch } from "@/components/ui/switch"
 
-export default function SwitchDemo() {
+
+interface prop {
+  setHideIpAddress: (value: boolean) => void,
+  HideIpAddress: boolean
+}
+
+export default function SwitchDemo({ setHideIpAddress, HideIpAddress }: prop) {
+
   return (
     <div className="flex items-center space-x-2 ">
-      <Switch id="airplane-mode"  />
+      <Switch
+        id="airplane-mode"
+        onClick={() => setHideIpAddress(!HideIpAddress)} />
     </div>
   )
 }
