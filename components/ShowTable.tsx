@@ -5,8 +5,8 @@ import SwitchDemo from './Helper/SwitchDemo'
 const ShowTable = () => {
 
     return (
-        <section className='border-2 border-red-500 p-2 rounded-lg'>
-            <header className='flex justify-between items-center border-2 border-red-500'>
+        <section className=' border border-gray-300 p-2 rounded-lg pb-8 '>
+            <header className='flex justify-between items-center '>
                 <h2 className='text-base lg:text-xl font-bold text-gray-800 mb-2 '>Speedtest Statistics</h2>
 
                 <article className='flex gap-2 justify-center items-center'>
@@ -17,7 +17,9 @@ const ShowTable = () => {
                 </article>
             </header>
 
-            <DataTable />
+            <section className='border border-gray-300 rounded-xl'>
+                <DataTable />
+            </section>
         </section>
     )
 }
