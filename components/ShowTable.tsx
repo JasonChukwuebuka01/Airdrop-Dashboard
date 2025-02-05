@@ -1,12 +1,55 @@
 "use client";
 
-import React, { useState } from 'react'
+
+import React, { useEffect, useState } from 'react'
 import DataTable from './Helper/dataTable'
 import SwitchDemo from './Helper/SwitchDemo'
+import { tableData } from '@/data/tableData';
+
+
+
+
 
 const ShowTable = () => {
 
+
+
     const [HideIpAddress, setHideIpAddress] = useState<boolean>(true);
+
+    // Example usage
+    const [isLoading, setIsLoading] = useState(true)
+    const [tableDatas, setTableData] = useState<any[]>([])
+
+    // Fetch data
+    useEffect(() => {
+
+        const fetchData = async () => {
+
+            setIsLoading(true)
+            try {
+
+                await new Promise(resolve => {
+                    setTimeout(() => {
+                        setTableData(tableData);
+                        resolve(true)
+                    }, 2000)
+                });
+
+            } catch (error) {
+                console.error(error)
+            } finally {
+                setIsLoading(false)
+            }
+        };
+
+        fetchData();
+    }, [])
+
+    
+
+
+
+
 
     return (
         <section className=' border border-gray-300 p-2 rounded-lg pb-8 '>
@@ -24,13 +67,11 @@ const ShowTable = () => {
                 </article>
             </header>
 
-            <section className='border border-gray-300 rounded-xl'>
-                <DataTable
-                    HideIpAddress={HideIpAddress}
-                />
+            <section>
+                <DataTable tableData={tableDatas} HideIpAddress={HideIpAddress} isLoading={isLoading} />
             </section>
         </section>
     )
 }
 
-export default ShowTable
+export default ShowTable;

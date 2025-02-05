@@ -42,5 +42,46 @@ export const tableData: NetworkData[] = [
         IPAddress: "192.168.1.122",
         Bytes: 2789456
     },
-    
+    {
+        Time: "2025-02-04 16:30",
+        DownloadSpeed: 133.89,
+        UploadSpeed: 46.75,
+        IPAddress: "192.168.1.125",
+        Bytes: 1956734
+    },
+    {
+        Time: "2025-02-04 17:15",
+        DownloadSpeed: 115.34,
+        UploadSpeed: 43.21,
+        IPAddress: "192.168.1.128",
+        Bytes: 3245678
+    },
+    {
+        Time: "2025-02-04 18:00",
+        DownloadSpeed: 128.56,
+        UploadSpeed: 49.90,
+        IPAddress: "192.168.1.130",
+        Bytes: 1876543
+    },
+    {
+        Time: "2025-02-04 19:20",
+        DownloadSpeed: 138.90,
+        UploadSpeed: 51.23,
+        IPAddress: "192.168.1.133",
+        Bytes: 2654321
+    },
+    {
+        Time: "2025-02-04 20:10",
+        DownloadSpeed: 145.67,
+        UploadSpeed: 47.88,
+        IPAddress: "192.168.1.135",
+        Bytes: 1987654
+    },
+    {
+        Time: "2025-02-04 21:00",
+        DownloadSpeed: 120.45,
+        UploadSpeed: 44.67,
+        IPAddress: "192.168.1.138",
+        Bytes: 2345678
+    }
 ];

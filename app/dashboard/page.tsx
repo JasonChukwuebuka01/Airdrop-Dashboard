@@ -42,7 +42,7 @@ export default function DashboardPage() {
   return (
 
     <>
-      <article className='h-[100%] p-4 '>
+      <article className='h-[100%] p-4 mb-4'>
 
         {/**Kilo Cycle section */}
 
