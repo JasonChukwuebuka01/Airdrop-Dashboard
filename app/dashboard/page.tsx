@@ -42,7 +42,7 @@ export default function DashboardPage() {
   return (
 
     <>
-      <article className='h-screen p-4 pb-8 border-2 border-blue-500'>
+      <article className='h-[85%] p-4 overflow-auto'>
 
         {/**Kilo Cycle section */}
 
