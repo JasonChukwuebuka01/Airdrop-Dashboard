@@ -52,8 +52,8 @@ const ShowTable = () => {
 
 
     return (
-        <section className=' border border-gray-300 p-2 rounded-lg pb-8 '>
-            <header className='flex justify-between items-center '>
+        <section className=' border border-gray-300 p-2 rounded-lg '>
+            <header className='flex justify-between items-center mb-3'>
                 <h2 className='text-base lg:text-xl font-bold text-gray-800 mb-2 '>Speedtest Statistics</h2>
 
                 <article className='flex gap-2 justify-center items-center'>

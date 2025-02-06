@@ -10,7 +10,9 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { Loader2, LoaderPinwheelIcon } from "lucide-react" // Import loader icon
+import { LoaderPinwheelIcon } from "lucide-react" // Import loader icon
+
+
 
 interface DataTableProps {
     tableData: any[]
@@ -18,10 +20,13 @@ interface DataTableProps {
     isLoading?: boolean
 }
 
+
+
+
 export default function DataTable({ tableData, HideIpAddress, isLoading }: DataTableProps) {
     // Pagination states
-    const [currentPage, setCurrentPage] = useState(1)
-    const itemsPerPage = 5
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5;
 
     // Calculate total pages
     const totalPages = Math.ceil(tableData.length / itemsPerPage)
@@ -39,10 +44,10 @@ export default function DataTable({ tableData, HideIpAddress, isLoading }: DataT
 
     return (
 
-        <section className="w-full relatve">
-            <Table className=' overflow-scroll border border-blue-300 rounded-kg'>
-                <TableHeader className='rounded-lg'>
-                    <TableRow className='border-b border-gray-300 text-base rounded-lg '>
+        <section className="w-full relatve ">
+            <Table className=' overflow-scroll border border-gray-300 rounded-lg'>
+                <TableHeader className='rounded-lg mb-4'>
+                    <TableRow className='border-b border-gray-300 text-base rounded-lg'>
                         <TableHead className="font-bold p-4">Time</TableHead>
                         <TableHead className='font-bold p-4'>Download Speed</TableHead>
                         <TableHead className='font-bold p-4'>Upload Speed</TableHead>
@@ -51,7 +56,6 @@ export default function DataTable({ tableData, HideIpAddress, isLoading }: DataT
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-
                     {
                         getCurrentPageData().length > 0 ?
                             (
@@ -81,9 +85,7 @@ export default function DataTable({ tableData, HideIpAddress, isLoading }: DataT
 
                                 ) :
                                 (
-                                    <TableRow>
-
-                                    </TableRow>
+                                    <TableRow></TableRow>
                                 )
                     }
                 </TableBody>
@@ -92,8 +94,8 @@ export default function DataTable({ tableData, HideIpAddress, isLoading }: DataT
             {
                 isLoading &&
                 (
-                    <section className='w-full border-2 border-black-500 flex items-center justify-center'>
-                        <div className="w-[500px] h-[300px] flex items-center justify-center border-2 border-blue-500">
+                    <section className='w-full flex items-center justify-center'>
+                        <div className="w-[500px] h-[300px] flex items-center justify-center">
                             <LoaderPinwheelIcon className="w-8 h-8 animate-spin" />
                         </div>
                     </section>
@@ -102,7 +104,7 @@ export default function DataTable({ tableData, HideIpAddress, isLoading }: DataT
 
             {
                 tableData.length > itemsPerPage && (
-                    <div className="flex items-center justify-end space-x-2 py-4">
+                    <div className="flex items-center justify-center space-x-2 py-4">
                         <Button
                             variant="outline"
                             size="sm"
