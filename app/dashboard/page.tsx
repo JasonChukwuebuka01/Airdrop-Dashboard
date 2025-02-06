@@ -42,7 +42,7 @@ export default function DashboardPage() {
   return (
 
     <>
-      <article className='h-[100%] p-4 mb-4'>
+      <article className='h-screen p-4 pb-8 border-2 border-blue-500'>
 
         {/**Kilo Cycle section */}
 
@@ -215,6 +215,10 @@ export default function DashboardPage() {
         {/**Table Data section */}
         <ShowTable />
         {/** End of Table Data section */}
+
+        <section className='p-5'>
+
+        </section>
 
 
       </article>

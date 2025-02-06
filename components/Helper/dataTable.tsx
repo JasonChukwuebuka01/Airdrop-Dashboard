@@ -65,11 +65,11 @@ export default function DataTable({ tableData, HideIpAddress, isLoading }: DataT
                                         key={index}
                                         className='border border-gray-300 text-base rounded-lg p-4 transition-all duration-300 ease-in-out hover:bg-gray-300 hover:shadow-md'
                                     >
-                                        <TableCell className="p-4 w-[150px]">{data.Time}</TableCell>
-                                        <TableCell className="p-4 w-[150px]">{data.DownloadSpeed}<span className='ml-1'>MB/s</span></TableCell>
-                                        <TableCell className="p-4 w-[150px]">{data.UploadSpeed} <span className='ml-1'>MB/s</span></TableCell>
-                                        <TableCell className="p-4 w-[150px]">
-                                            {HideIpAddress ? data.IPAddress : '********'}
+                                        <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-pre-wrap">{data.Time}</TableCell>
+                                        <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis">{data.DownloadSpeed}<span className='ml-1'>MB/s</span></TableCell>
+                                        <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis">{data.UploadSpeed} <span className='ml-1'>MB/s</span></TableCell>
+                                        <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis">
+                                            { HideIpAddress ? data.IPAddress : '********'}
                                         </TableCell>
                                         <TableCell className="p-4 w-[150px]">
 

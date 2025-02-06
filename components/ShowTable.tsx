@@ -15,17 +15,16 @@ const ShowTable = () => {
 
 
     const [HideIpAddress, setHideIpAddress] = useState<boolean>(true);
-
-    // Example usage
-    const [isLoading, setIsLoading] = useState(true)
-    const [tableDatas, setTableData] = useState<any[]>([])
+    const [isLoading, setIsLoading] = useState(true);
+    const [tableDatas, setTableData] = useState<any[]>([]);
 
     // Fetch data
     useEffect(() => {
 
         const fetchData = async () => {
 
-            setIsLoading(true)
+            setIsLoading(true);
+
             try {
 
                 await new Promise(resolve => {
@@ -52,7 +51,7 @@ const ShowTable = () => {
 
 
     return (
-        <section className=' border border-gray-300 p-2 rounded-lg '>
+        <section className=' border border-gray-300 p-4 rounded-lg '>
             <header className='flex justify-between items-center mb-3'>
                 <h2 className='text-base lg:text-xl font-bold text-gray-800 mb-2 '>Speedtest Statistics</h2>
 
