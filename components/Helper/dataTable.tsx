@@ -10,7 +10,8 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { LoaderPinwheelIcon } from "lucide-react" // Import loader icon
+import { LoaderPinwheelIcon, TrafficConeIcon } from "lucide-react" // Import loader icon
+import ToolTipProvider from './ToolTipProvider';
 
 
 
@@ -70,7 +71,25 @@ export default function DataTable({ tableData, HideIpAddress, isLoading }: DataT
                                         <TableCell className="p-4 w-[150px]">
                                             {HideIpAddress ? data.IPAddress : '********'}
                                         </TableCell>
-                                        <TableCell className="p-4 w-[150px]">{data.Bytes}</TableCell>
+                                        <TableCell className="p-4 w-[150px]">
+
+                                            {
+                                                data.Bytes > 50 ?
+                                                    (
+                                                        <ToolTipProvider
+                                                            BytesValue={data.Bytes}
+                                                        />
+                                                    ) :
+                                                    (
+
+                                                        <div className='border-2 border-black lg:w-[40%] flex items-center justify-center gap-3 p-1 pl-2 pr-2 rounded-lg'>
+                                                            <span className='font-bold '>{data.Bytes}</span>
+                                                            <div><TrafficConeIcon /></div>
+                                                        </div>
+                                                    )
+                                            }
+
+                                        </TableCell>
                                     </TableRow>
                                 ))
 
