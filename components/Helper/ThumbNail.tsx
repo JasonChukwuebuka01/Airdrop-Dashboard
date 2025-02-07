@@ -64,11 +64,11 @@ export default function ThumbNail() {
 
             <SheetContent
                 side={"left"}
-                className=" w-[35%] bg-gray-800 text-white p-0"
+                className=" w-[30%] sm:w-[23%] md:w-[20%] lg:w-[15%] bg-gray-800 text-white p-0 border-none"
             >
                 <section className="w-full h-full">
 
-                    <SheetHeader className="p-0 sticky top-0">
+                    <SheetHeader className="p-0 sticky top-0 -z-20">
                         <SheetTitle className="p-2 text-center mt-8">
                             <span className="text-2xl font-bold">DeSpeed</span>
                         </SheetTitle>

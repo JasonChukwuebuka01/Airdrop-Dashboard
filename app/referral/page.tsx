@@ -1,8 +1,10 @@
 "use client";
 
+import Info from "@/components/Helper/Info";
+import SpeedtestMeter from "@/components/Helper/speedTestMeter";
 import { CopyIcon, Gift, TimerIcon, TwitterIcon, UserPlus } from "lucide-react";
 import Link from "next/link";
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 
 interface StatItem {
   name: string;
@@ -70,35 +72,41 @@ export default function ReferralPage() {
 
 
       {/**Copy Link / Tweet referral Section */}
-      <article className="border-2 border-red-500 mt-6 flex flex-col md:flex-row gap-4">
-        <div className="w-[250px] h-[10vh] truncate flex items-center p-3 rounded-xl border-2 border-gray-300"><span className="w-[90%] overflow-hidden text-center">https://app.despeed.net/register?ref=mm6FQ0AmwxiX</span></div>
+      <article className="border border-gray-300 mt-6 flex flex-col lg:flex-row gap-4 items-center p-4 rounded-xl">
+        <div className="w-full h-[7vh]  lg:w-[280px] xl:w-[250px] lg:h-[7vh] truncate flex  justify-center items-center p-3 rounded-xl border-2 border-gray-300"><span className="overflow-hidden text-center ">https://app.despeed.net/register?ref=mm6FQ0AmwxiX</span></div>
 
-        <div className="  w-[120px] flex justify-center items-center gap-2 p-3  border-2 border-blue-500">
+        <div className="w-full lg:w-[200px] xl:w-[150px] h-[7vh] flex justify-center items-center gap-2  rounded-xl border-2 border-gray-300 cursor-pointer"
+          onClick={() => copyText()}
+        >
           <div><CopyIcon /></div>
-          <button
-            onClick={() => { copyText() }}
-          >
+          <button>
             Copy Link
           </button>
         </div>
-
         <Link
           href="https://twitter.com/intent/tweet?text=Join%20Despeed%20and%20get%20free%20data%20when%20you%20sign%20up%20using%20my%20link%20https://app.despeed.net/register?ref=mm6FQ0AmwxiX"
-          className="md:col-span-1 w-[120px]"
+          className="w-full lg:w-[280px] xl:w-[200px] h-[7vh] block"
         >
-          <div className="flex justify-center items-center gap-3 border-2 border-blue-500">
+          <div className="w-full flex h-full justify-center items-center gap-3 border-2 border-gray-300 rounded-xl p-1">
             <div><TwitterIcon /></div>
             <span>Tweet Referral</span>
           </div>
         </Link>
 
-        <div className="md:col-span-5 flex justify-center items-center gap-3 border-2 border-blue-500">
-          <span>Unlock additional 200 Bytes as a reward for every successful referral you make!</span>
-          <div><TwitterIcon /></div>
+        <div className="w-full lg:w-[400px] xl:w-[550px] h-[7vh] flex items-center justify-center gap-1 border border-gray-300 rounded-xl">
+          <span className="text-sm pl-2 truncate">Unlock additional 200 Bytes as a reward for every successful referral you make!</span>
+          <div className=""><Info /></div>
         </div>
       </article>
 
       {/** End of Copy Link / Tweet referral Section */}
+
+
+      <article
+        className="border border-gray-300 mt-6 flex flex-col lg:flex-row gap-4 items-center p-4 rounded-xl"
+      >
+
+      </article>
     </section>
   );
 }

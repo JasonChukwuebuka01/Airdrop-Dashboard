@@ -7,7 +7,7 @@ const HeaderNav = () => {
 
     return (
         <section className=" bg-gray-800 flex justify-between items-center h-[15vh] border-b border-b-gray-700/30 sticky top-0 z-10 p-4">
-            <div className="lg:hidden">
+            <div className="xl:hidden">
                 <ThumbNail />
             </div>
             <div className='hidden lg:block'></div>
