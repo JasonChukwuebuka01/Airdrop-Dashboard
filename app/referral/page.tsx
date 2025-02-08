@@ -1,10 +1,13 @@
 "use client";
 
+import DataTable from "@/components/Helper/dataTable";
+import { DatePickerDemo } from "@/components/Helper/DatePicker";
 import Info from "@/components/Helper/Info";
+import ReferralTable from "@/components/Helper/ReferralTable";
 import SpeedtestMeter from "@/components/Helper/speedTestMeter";
 import { CopyIcon, Gift, TimerIcon, TwitterIcon, UserPlus } from "lucide-react";
 import Link from "next/link";
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 interface StatItem {
   name: string;
@@ -13,6 +16,42 @@ interface StatItem {
 }
 
 export default function ReferralPage() {
+
+
+  const [HideIpAddress, setHideIpAddress] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(true);
+  
+
+  // Fetch data
+  useEffect(() => {
+
+    const fetchData = async () => {
+
+      setIsLoading(true);
+
+      try {
+
+        await new Promise(resolve => {
+          setTimeout(() => {
+            setIsLoading(false);
+            resolve(true)
+          }, 1000)
+        });
+
+      } catch (error) {
+        console.error(error)
+      } finally {
+        setIsLoading(false)
+      }
+    };
+
+    fetchData();
+  }, [])
+
+
+
+
+
 
 
   const stats: StatItem[] = [
@@ -102,9 +141,26 @@ export default function ReferralPage() {
       {/** End of Copy Link / Tweet referral Section */}
 
 
+
+
       <article
-        className="border border-gray-300 mt-6 flex flex-col lg:flex-row gap-4 items-center p-4 rounded-xl"
+        className="border border-red-500 mt-6  lg:flex-row gap-4 items-center  p-4 rounded-xl "
       >
+        <header className='w-full h-full flex justify-between items-center mb-3 border-2 border-blue-500'>
+          <h2 className='text-base lg:text-xl font-bold text-gray-800 mb-2  border-2 border-green-500 text-center h-full'>Referral Status</h2>
+
+          <div className="border-2 border-green-500">
+            <DatePickerDemo />
+          </div>
+        </header>
+
+        <section>
+          <ReferralTable
+            tableData={[]}
+            isLoading={isLoading}
+            HideIpAddress={HideIpAddress}
+          />
+        </section>
 
       </article>
     </section>
