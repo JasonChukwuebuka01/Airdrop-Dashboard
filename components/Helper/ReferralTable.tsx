@@ -146,7 +146,7 @@ export default function ReferralTable({ tableData, HideIpAddress, isLoading }: D
                                 />
                             </div>
 
-                            <h2>Looks like yyou haven't referred anyone yet!</h2>
+                            <h2>Looks like yyyou haven't referred anyone yet!</h2>
                             <p className="text-gray-500">Invite your friends now and start earning rewards!</p>
 
                             <div className="w-full lg:w-[200px] xl:w-[200px] h-[7vh] flex justify-center items-center gap-2  rounded-xl border-2 border-gray-300 cursor-pointer"
