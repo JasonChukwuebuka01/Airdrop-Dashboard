@@ -117,6 +117,8 @@ export default function DashboardPage() {
 
 
 
+
+
         {/**referral section */}
         <section className="flex flex-col sm:flex-row  justify-center items-center sm:justify-between gap-6 p-4 mt-6 border-[1px] border-gray-300 rounded-2xl">
 
@@ -145,6 +147,8 @@ export default function DashboardPage() {
 
         </section>
         {/**End referral section */}
+
+
 
 
         {/** Quest and Earning Statistics section */}
@@ -212,15 +216,12 @@ export default function DashboardPage() {
 
 
 
+
         {/**Table Data section */}
         <ShowTable />
         {/** End of Table Data section */}
 
-        <section className='p-5'>
-
-        </section>
-
-
+      
       </article>
     </>
   );
