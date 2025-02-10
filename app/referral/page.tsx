@@ -160,7 +160,7 @@ export default function ReferralPage() {
           </div>
         </header>
 
-        <section>
+        <section >
           <ReferralTable
             tableData={[]}
             isLoading={isLoading}
