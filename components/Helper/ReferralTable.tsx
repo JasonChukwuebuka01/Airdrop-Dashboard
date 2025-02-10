@@ -10,7 +10,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { CopyIcon, LoaderPinwheelIcon, TrafficConeIcon } from "lucide-react" // Import loader icon
+import { CopyIcon, LoaderPinwheelIcon, TrafficConeIcon } from "lucide-react" 
 import ToolTipProvider from './ToolTipProvider';
 import Image from 'next/image';
 
@@ -28,12 +28,6 @@ interface DataTableProps {
 export default function ReferralTable({ tableData, HideIpAddress, isLoading }: DataTableProps) {
     // Pagination states
     const [currentPage, setCurrentPage] = useState(1);
-
-
-
-
-
-
     
     const itemsPerPage = 5;
 
@@ -132,24 +126,24 @@ export default function ReferralTable({ tableData, HideIpAddress, isLoading }: D
             }
             {
                 tableData.length <= 0 && !isLoading &&(
-                    <section className='border-2 border-red-500 w-full'>
-                        <article className="w-full h-[400px] flex flex-col gap-3 items-center justify-center border-2 border-blue-500">
+                    <section className='w-full'>
+                        <article className="w-full h-[400px] flex flex-col items-center justify-center pb-4 border border-gray-300">
 
-                            <div className="w-full max-w-[300px] h-auto">
+                            <div className="w-full max-w-[200px] h-auto">
                                 <Image
                                     src="https://app.despeed.net/media/campaign/no-data.png"
                                     alt="No referral data"
-                                    width={300}
-                                    height={200}
+                                    width={100}
+                                    height={100}
                                     priority
                                     className="w-full h-auto object-contain"
                                 />
                             </div>
 
-                            <h2>Looks like you haven't referred anyone yet!</h2>
-                            <p className="text-gray-500">Invite your friends now and start earning rewards!</p>
+                            <h2 className='text-base md:text-xl font-bold text-center'>Looks like you haven't referred anyone yet!</h2>
+                            <p className="text-sm md:text-base pl-8 pr-8">Invite your friends now and start earning rewards!</p>
 
-                            <div className="w-full lg:w-[200px] xl:w-[200px] h-[7vh] flex justify-center items-center gap-2  rounded-xl border-2 border-gray-300 cursor-pointer"
+                            <div className="w-[220px] xl:w-[220px] flex justify-center items-center gap-2  rounded-xl border-2 border-gray-300 cursor-pointer mt-4 p-4 h-[10vh] font-bold"
                                 onClick={() => copyText()}
                             >
                                 <div><CopyIcon /></div>

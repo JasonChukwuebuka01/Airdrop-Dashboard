@@ -1,10 +1,9 @@
 "use client";
 
-import DataTable from "@/components/Helper/dataTable";
+
 import { DatePickerDemo } from "@/components/Helper/DatePicker";
 import Info from "@/components/Helper/Info";
 import ReferralTable from "@/components/Helper/ReferralTable";
-import SpeedtestMeter from "@/components/Helper/speedTestMeter";
 import { CopyIcon, Gift, TimerIcon, TwitterIcon, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { ReactNode, useEffect, useState } from 'react';
@@ -18,9 +17,9 @@ interface StatItem {
 export default function ReferralPage() {
 
 
-  const [HideIpAddress, setHideIpAddress] = useState<boolean>(true);
+  const [HideIpAddress] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState(true);
-  
+
 
   // Fetch data
   useEffect(() => {
@@ -35,7 +34,7 @@ export default function ReferralPage() {
           setTimeout(() => {
             setIsLoading(false);
             resolve(true)
-          }, 1000)
+          }, 100)
         });
 
       } catch (error) {
@@ -78,6 +77,10 @@ export default function ReferralPage() {
       .then(() => alert("Link copied to clipboard!"))
       .catch((err) => console.error("Failed to copy text: ", err));
   }
+
+
+
+
 
   return (
     <section className='h-[85%] p-4 overflow-auto'>
@@ -143,13 +146,16 @@ export default function ReferralPage() {
 
 
 
-      <article
-        className="border border-red-500 mt-6  lg:flex-row gap-4 items-center  p-4 rounded-xl "
-      >
-        <header className='w-full h-full flex justify-between items-center mb-3 border-2 border-blue-500'>
-          <h2 className='text-base lg:text-xl font-bold text-gray-800 mb-2  border-2 border-green-500 text-center h-full'>Referral Status</h2>
 
-          <div className="border-2 border-green-500">
+      {/**  referral Table Section */}
+
+      <article
+        className="border border-gray-300 mt-6  gap-4 items-center  p-4 rounded-xl "
+      >
+        <header className='w-full h-full flex  flex-col lg:flex-row lg:justify-between lg:items-center mb-3 '>
+          <h2 className='text-base lg:text-xl font-bold text-gray-800  h-full'>Referral Status</h2>
+
+          <div className="border border-gray-500 rounded-xl overflow-hidden">
             <DatePickerDemo />
           </div>
         </header>
@@ -163,6 +169,13 @@ export default function ReferralPage() {
         </section>
 
       </article>
+
+      {/** End of referral Table Section */}
+
+
+
+
+
     </section>
   );
 }
