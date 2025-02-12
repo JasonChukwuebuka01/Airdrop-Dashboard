@@ -71,6 +71,9 @@ export default function ReferralPage() {
     }
   ];
 
+
+
+  
   function copyText() {
 
     navigator.clipboard.writeText("https://app.despeed.net/register?ref=mm6FQ0AmwxiX")

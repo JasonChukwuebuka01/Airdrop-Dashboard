@@ -1,11 +1,18 @@
+"use client ";
+
+import QuestsRewards from "@/components/Helper/QuestReward";
 
 
-// app/dashboard/quest/page.tsx
+
+
+
 export default function QuestPage() {
+
+
+
     return (
-      <section>
-        <h1 className="text-3xl font-bold text-gray-800 mb-6">Quests</h1>
-        <p className="text-gray-600">Complete quests to earn rewards.</p>
+      <section className="border-2 border-red-500 h-[85%] p-4 overflow-auto">
+        <QuestsRewards/>
       </section>
     );
   }
