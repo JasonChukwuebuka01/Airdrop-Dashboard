@@ -25,7 +25,7 @@ const QuestsRewards = () => {
 
 
 
-    
+
     useEffect(() => {
         // Load countdown from localStorage on component mount
         const storedCountdown = localStorage.getItem(localStorageKey);
@@ -127,7 +127,7 @@ const QuestsRewards = () => {
                                 <button
                                     onClick={handleClaim}
                                     disabled={!isClaimable || claimed}
-                                    aria-label={claimed ? "Already claimed" : "Claim daily reward"}
+                                    aria-label={claimed ? "Already claimedd" : "Claim daily reward"}
                                     className={`bg-purple-700 text-white py-2 px-4 rounded-md disabled:bg-gray-700 
                 ${isClaimable && 'hover:bg-purple-600'} w-full font-bold text-[15px] flex justify-center items-center rounded-xl p-6 gap-2  border border-gray-300`}
                                 >
