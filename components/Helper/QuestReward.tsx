@@ -4,12 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Check, Lock, Globe, DollarSign, Clock, Calendar, LockIcon, TrafficConeIcon } from 'lucide-react';
 
 
-
-
 const QuestsRewards = () => {
-
-
-
 
 
     const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
@@ -22,22 +17,20 @@ const QuestsRewards = () => {
     const [questsCompleted, setQuestsCompleted] = useState<number>(9);
 
 
-
-
-
-
     useEffect(() => {
         // Load countdown from localStorage on component mount
-        const storedCountdown = localStorage.getItem(localStorageKey);
-        if (storedCountdown) {
-            setCountdown(parseInt(storedCountdown, 10));
-        } else {
-            setCountdown(initialCountdown); // Initialize if no value in localStorage
+        try {
+            const storedCountdown = localStorage.getItem(localStorageKey);
+            if (storedCountdown) {
+                setCountdown(parseInt(storedCountdown, 10));
+            } else {
+                setCountdown(initialCountdown); // Initialize if no value in localStorage
+            }
+        } catch (error) {
+            console.error('Failed to load countdown from localStorage:', error);
+            setCountdown(initialCountdown); // Fallback to initial countdown
         }
     }, []);
-    
-
-
 
 
     useEffect(() => {
@@ -68,7 +61,6 @@ const QuestsRewards = () => {
             if (interval) clearInterval(interval);
         };
     }, [countdown]);
-
 
 
     const handleClaim = async () => {
@@ -102,7 +94,6 @@ const QuestsRewards = () => {
     const progressWidth = Math.min((streak / 28) * 100, 100); // Calculate progress width
 
 
-
     return (
 
         <section className="bg-gray-900 text-white p-5 rounded-lg w-full h-[300vh]">
@@ -120,7 +111,18 @@ const QuestsRewards = () => {
                                 </div>
                                 <div>
                                     <h2 className="text-lg font-medium">Daily Claim</h2>
-                                    <time className="text-gray-400 text-sm">Unlock in {formatTime(countdown)}</time>
+                                    <time className="text-gray-400 text-sm">
+                                        {
+                                            isClaimable ?
+                                                (
+                                                    <span>Unlocked</span>
+
+                                                ) :
+                                                (
+                                                    <span>  Unlock in {formatTime(countdown)}</span>
+                                                )
+                                        }
+                                    </time>
                                 </div>
                             </header>
                             <nav>
@@ -131,7 +133,7 @@ const QuestsRewards = () => {
                                     className={`bg-purple-700 text-white py-2 px-4 rounded-md disabled:bg-gray-700 
                 ${isClaimable && 'hover:bg-purple-600'} w-full font-bold text-[15px] flex justify-center items-center rounded-xl p-6 gap-2  border border-gray-300`}
                                 >
-                                    <LockIcon size={18}/>
+                                    <LockIcon size={18} />
                                     {
                                         claimed ?
                                             "Claimed"
@@ -144,9 +146,6 @@ const QuestsRewards = () => {
 
                                             )}
                                 </button>
-
-
-
                             </nav>
                         </div>
                     </article>
