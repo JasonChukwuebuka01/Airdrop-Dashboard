@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Check, Lock, Globe, DollarSign, Clock, Calendar, LockIcon, TrafficConeIcon } from 'lucide-react';
+import DialogeBox from './DialogeBox';
 
 
 
@@ -15,8 +16,8 @@ const QuestsRewards = () => {
     const [isClaimable, setIsClaimable] = useState<boolean>(false);
     const [streak, setStreak] = useState<number>(3);
     const [claimed, setClaimed] = useState<boolean>(false);
-    const [totalEarned, setTotalEarned] = useState<number>(21200);
-    const [questsCompleted, setQuestsCompleted] = useState<number>(9);
+    const [totalEarned, setTotalEarned] = useState<number>(11100);
+    const [questsCompleted, setQuestsCompleted] = useState<number>(0);
 
 
     useEffect(() => {
@@ -74,7 +75,6 @@ const QuestsRewards = () => {
                 setIsClaimable(false);
                 await Promise.all([
                     setTotalEarned(prevTotal => prevTotal + 100),
-                    setQuestsCompleted(prevQuests => prevQuests + 1),
                     setStreak(prevStreak => Math.min(prevStreak + 1, 28))
                 ]);
                 localStorage.removeItem(localStorageKey);
@@ -87,6 +87,12 @@ const QuestsRewards = () => {
             }
         }
     };
+
+
+    const handleWeeklyClaim = ()=>{
+
+        alert("weekly Claim")
+    }
 
 
 
@@ -161,8 +167,8 @@ const QuestsRewards = () => {
                         </div>
                     </article>
 
-                    <article className="bg-gray-800 rounded-lg mb-5 ">
-                        <section className="bg-gray-800 rounded-2xl p-5 mb-5 flex items-center border border-gray-700">
+                    <article className="bg-gray-800 rounded-2xl mb-5 pb-2">
+                        <section className="bg-gray-800 rounded-2xl p-5  flex items-center border border-gray-700">
                             <div className="bg-purple-700 rounded-2xl w-12 h-12  flex items-center justify-center mr-3">
                                 <Calendar size={20} aria-hidden="true" />
                             </div>
@@ -194,29 +200,34 @@ const QuestsRewards = () => {
                             </div>
                             {/* End Progress Bar */}
                         </section>
+
+                        <article className="bg-gray-800 rounded-lg mb-5 mt-5 w-[97%] mx-auto border border-gray-700">
+                            <div className="flex justify-between items-center  border-b border-b-gray-700 p-2">
+                                <div className=''>
+                                    <h3 className="text-lg font-medium flex items-center">
+                                        <div className="w-8 h-8 flex items-center justify-center">🎁</div>
+                                        Weekly check-in Bytes bonus
+                                    </h3>
+                                </div>
+                                <button
+                                    onClick={handleWeeklyClaim}
+                                    disabled={false}
+                                    aria-label={claimed ? "Already claimed" : "Claim daily reward"}
+                                    className={`bg-purple-700 text-white py-2 px-4 rounded-md disabled:bg-gray-700 
+         ${isClaimable && 'hover:bg-purple-600'} font-bold text-[15px] flex justify-center items-center rounded-xl p-3 gap-2  border border-gray-300`}
+                                >
+                                    <Lock size={16} className="mr-1" />
+                                    1000
+                                    <Globe size={16} className="ml-1" />
+                                </button>
+                            </div>
+                            <div className="flex justify-between items-center mt-3 p-2 pl-4 pr-4">
+                                <p className="text-gray-400 text-base">Bytes bonus for next milestones</p>
+                                <DialogeBox/>
+                            </div>
+                        </article>
                     </article>
 
-                    <article className="bg-gray-800 rounded-lg p-5 mb-5">
-                        <div className="flex justify-between items-center">
-                            <div>
-                                <h3 className="text-lg font-medium flex items-center">
-                                    <div className="w-8 h-8 flex items-center justify-center mr-3">
-                                        🎁
-                                    </div>
-                                    Weekly check-in Bytes bonus
-                                </h3>
-                            </div>
-                            <div className="flex items-center text-gray-400">
-                                <Lock size={16} className="mr-1" />
-                                1000
-                                <Globe size={16} className="ml-1" />
-                            </div>
-                        </div>
-                        <div className="flex justify-between items-center mt-3">
-                            <p className="text-gray-400 text-sm">Bytes bonus for next milestones</p>
-                            <Check />
-                        </div>
-                    </article>
                 </section>
 
                 <aside className=" col-span-2 grid grid-cols-1 gap-5 h-[5vh] w-full ">
