@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { Check, Lock, Globe, DollarSign, Clock, Calendar, LockIcon, TrafficConeIcon } from 'lucide-react';
 
 
+
+
 const QuestsRewards = () => {
 
 
@@ -63,6 +65,8 @@ const QuestsRewards = () => {
     }, [countdown]);
 
 
+
+
     const handleClaim = async () => {
         if (isClaimable) {
             try {
@@ -84,6 +88,9 @@ const QuestsRewards = () => {
         }
     };
 
+
+
+
     const formatTime = (seconds: number): string => {
         const hours = Math.floor(seconds / 3600);
         const minutes = Math.floor((seconds % 3600) / 60);
@@ -91,7 +98,11 @@ const QuestsRewards = () => {
         return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
     };
 
+
+
     const progressWidth = Math.min((streak / 28) * 100, 100); // Calculate progress width
+
+
 
 
     return (
@@ -119,7 +130,7 @@ const QuestsRewards = () => {
 
                                                 ) :
                                                 (
-                                                    <span>  Unlock in {formatTime(countdown)}</span>
+                                                    <span>Unlock in {formatTime(countdown)}</span>
                                                 )
                                         }
                                     </time>
@@ -161,30 +172,26 @@ const QuestsRewards = () => {
                             <p className="text-gray-400 text-sm">Complete each streak milestone to unlock bonus rewards</p>
                         </header>
 
-                        <div>
+                        <section>
                             <h4 className="text-md font-medium">Current Streak: {streak} days</h4>
-                            <p className="text-gray-400 text-sm">Check in daily to keep your streak alive and avoid it resetting</p>
+                            <p className="text-gray-400 text-sm mb-5">Check in daily to keep your streak alive and avoid it resetting</p>
 
                             {/* Progress Bar */}
-                            <div className="bg-gray-700 rounded-full h-2 mt-2 relative">
+                            <div className="bg-gray-700 rounded-full h-2 mt-2 relative ">
                                 <div
                                     className="bg-purple-500 rounded-full h-2"
                                     style={{ width: `${progressWidth}%` }}
-                                ></div>
-                                <div className="absolute top-1/2 left-0 transform -translate-y-1/2 w-full flex justify-between">
-                                    <span className="text-gray-500 text-xs relative -top-4"></span>
-                                    <span className="text-gray-500 text-xs relative -top-4"></span>
-                                    <span className="text-gray-500 text-xs relative -top-4"></span>
-                                    <span className="text-gray-500 text-xs relative -top-4"></span>
+                                >
                                 </div>
-                                <div className="absolute top-1/2 left-0 transform -translate-y-1/2 w-full flex justify-between">
-                                    <span className="text-white text-xs relative -top-6 left-[6%] bg-gray-800 rounded-md p-1">7 <Calendar size={12} className="inline-block ml-1" /></span>
-                                    <span className="text-white text-xs relative -top-6 left-[30%] bg-gray-800 rounded-md p-1">14 <Calendar size={12} className="inline-block ml-1" /></span>
-                                    <span className="text-white text-xs relative -top-6 left-[55%] bg-gray-800 rounded-md p-1">21 <Calendar size={12} className="inline-block ml-1" /></span>
-                                    <span className="text-white text-xs relative -top-6 left-[80%] bg-gray-800 rounded-md p-1">28 <Calendar size={12} className="inline-block ml-1" /></span>
+                              
+                                <div className="absolute top-[300%] left-0 transform -translate-y-1/2 w-full flex justify-between">
+                                    <span className="text-white text-xs relative -top-6 left-[25%] bg-gray-800 rounded-md p-1 flex  justify-center items-center">7<Calendar size={20}  className="inline-block ml-1" /></span>
+                                    <span className="text-white text-xs relative -top-6 left-[15%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">14<Calendar size={18} className="inline-block ml-1" /></span>
+                                    <span className="text-white text-xs relative -top-6 left-[5%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">21<Calendar size={18} className="inline-block ml-1" /></span>
+                                    <span className="text-white text-xs relative -top-6 left-[0%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">28<Calendar size={18} className="inline-block ml-1" /></span>
                                 </div>
                             </div>
-                        </div>
+                        </section>
                     </article>
 
                     <article className="bg-gray-800 rounded-lg p-5 mb-5">
