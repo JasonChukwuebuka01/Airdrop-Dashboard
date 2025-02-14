@@ -113,11 +113,11 @@ const QuestsRewards = () => {
             </header>
 
             <article className='grid grid-cols-1 lg:grid-cols-7 gap-4'>
-                <div className=' lg:col-span-5'>
-                    <article className="bg-gray-800 rounded-lg p-5 mb-5">
-                        <div className="flex justify-between items-center md:flex-row flex-col">
-                            <header className="flex items-center mb-3 md:mb-0">
-                                <div className="bg-purple-700 rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                <section className=' lg:col-span-5'>
+                    <article className="bg-gray-800 rounded-lg p-5 mb-5 border border-gray-700">
+                        <div className="flex justify-between items-center md:flex-row flex-col ">
+                            <header className="flex items-center mb-3 md:mb-0 ">
+                                <div className="bg-purple-700 rounded-2xl w-12 h-12  flex items-center justify-center mr-3">
                                     <Check size={20} aria-hidden="true" />
                                 </div>
                                 <div>
@@ -161,36 +161,38 @@ const QuestsRewards = () => {
                         </div>
                     </article>
 
-                    <article className="bg-gray-800 rounded-lg p-5 mb-5">
-                        <header className="mb-4">
-                            <h2 className="text-lg font-medium flex items-center">
-                                <div className="bg-purple-700 rounded-full w-8 h-8 flex items-center justify-center mr-3">
-                                    <Calendar size={20} aria-hidden="true" />
-                                </div>
-                                Daily Streak
-                            </h2>
-                            <p className="text-gray-400 text-sm">Complete each streak milestone to unlock bonus rewards</p>
-                        </header>
+                    <article className="bg-gray-800 rounded-lg mb-5 ">
+                        <section className="bg-gray-800 rounded-2xl p-5 mb-5 flex items-center border border-gray-700">
+                            <div className="bg-purple-700 rounded-2xl w-12 h-12  flex items-center justify-center mr-3">
+                                <Calendar size={20} aria-hidden="true" />
+                            </div>
 
-                        <section>
-                            <h4 className="text-md font-medium">Current Streak: {streak} days</h4>
+                            <div>
+                                <h2 className="text-lg font-medium flex items-center">Daily Streak</h2>
+                                <p className="text-gray-400 text-sm">Complete each streak milestone to unlock bonus rewards</p>
+                            </div>
+                        </section>
+
+                        <section className='p-4 '>
+                            <h4 className="text-md font-bold">Current Streak: {streak} {streak === 1 ? "day" : "days"}</h4>
                             <p className="text-gray-400 text-sm mb-5">Check in daily to keep your streak alive and avoid it resetting</p>
 
                             {/* Progress Bar */}
-                            <div className="bg-gray-700 rounded-full h-2 mt-2 relative ">
+                            <div className="bg-gray-700 rounded-full h-4 mt-2 relative ">
                                 <div
-                                    className="bg-purple-500 rounded-full h-2"
+                                    className="bg-purple-500 rounded-full h-4"
                                     style={{ width: `${progressWidth}%` }}
                                 >
                                 </div>
-                              
-                                <div className="absolute top-[300%] left-0 transform -translate-y-1/2 w-full flex justify-between">
-                                    <span className="text-white text-xs relative -top-6 left-[25%] bg-gray-800 rounded-md p-1 flex  justify-center items-center">7<Calendar size={20}  className="inline-block ml-1" /></span>
+
+                                <div className="absolute top-[200%] left-0 transform -translate-y-1/2 w-full flex justify-between">
+                                    <span className="text-white text-xs relative -top-6 left-[25%] bg-gray-800 rounded-md p-1 flex  justify-center items-center">7<Calendar size={20} className="inline-block ml-1" /></span>
                                     <span className="text-white text-xs relative -top-6 left-[15%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">14<Calendar size={18} className="inline-block ml-1" /></span>
                                     <span className="text-white text-xs relative -top-6 left-[5%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">21<Calendar size={18} className="inline-block ml-1" /></span>
                                     <span className="text-white text-xs relative -top-6 left-[0%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">28<Calendar size={18} className="inline-block ml-1" /></span>
                                 </div>
                             </div>
+                            {/* End Progress Bar */}
                         </section>
                     </article>
 
@@ -215,9 +217,7 @@ const QuestsRewards = () => {
                             <Check />
                         </div>
                     </article>
-
-                </div>
-
+                </section>
 
                 <aside className=" col-span-2 grid grid-cols-1 gap-5 h-[5vh] w-full ">
                     <article className="bg-gradient-to-r from-pink-400 to-purple-700  p-4 pt-5 pb-5 w-full rounded-2xl mx-auto flex  items-center gap-4">
