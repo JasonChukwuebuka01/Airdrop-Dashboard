@@ -212,7 +212,7 @@ const QuestsRewards = () => {
                                 </div>
                                 <button
                                     onClick={handleWeeklyClaim}
-                                    disabled={false}
+                                    disabled={streak % 7 !== 0}
                                     aria-label={claimed ? "Already claimed" : "Claim daily reward"}
                                     className={`bg-purple-700 text-white py-2 px-4 rounded-md disabled:bg-gray-700 
          ${isClaimable && 'hover:bg-purple-600'} font-bold text-[15px] flex justify-center items-center rounded-xl p-3 gap-2  border border-gray-300`}
