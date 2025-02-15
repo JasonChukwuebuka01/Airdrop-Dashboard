@@ -89,9 +89,10 @@ const QuestsRewards = () => {
     };
 
 
-    const handleWeeklyClaim = ()=>{
+    const handleWeeklyClaim = () => {
 
-        alert("weekly Claim")
+        if (streak % 7 === 0)
+            alert("weekly Claim")
     }
 
 
@@ -192,9 +193,9 @@ const QuestsRewards = () => {
                                 </div>
 
                                 <div className="absolute top-[200%] left-0 transform -translate-y-1/2 w-full flex justify-between">
-                                    <span className="text-white text-xs relative -top-6 left-[25%] bg-gray-800 rounded-md p-1 flex  justify-center items-center">7<Calendar size={20} className="inline-block ml-1" /></span>
+                                    <span className="text-white text-xs relative -top-6 left-[23%] bg-gray-800 rounded-md p-1 flex  justify-center items-center">7<Calendar size={20} className="inline-block ml-1" /></span>
                                     <span className="text-white text-xs relative -top-6 left-[15%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">14<Calendar size={18} className="inline-block ml-1" /></span>
-                                    <span className="text-white text-xs relative -top-6 left-[5%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">21<Calendar size={18} className="inline-block ml-1" /></span>
+                                    <span className="text-white text-xs relative -top-6 left-[10%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">21<Calendar size={18} className="inline-block ml-1" /></span>
                                     <span className="text-white text-xs relative -top-6 left-[0%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">28<Calendar size={18} className="inline-block ml-1" /></span>
                                 </div>
                             </div>
@@ -223,7 +224,7 @@ const QuestsRewards = () => {
                             </div>
                             <div className="flex justify-between items-center mt-3 p-2 pl-4 pr-4">
                                 <p className="text-gray-400 text-base">Bytes bonus for next milestones</p>
-                                <DialogeBox/>
+                                <DialogeBox />
                             </div>
                         </article>
                     </article>
