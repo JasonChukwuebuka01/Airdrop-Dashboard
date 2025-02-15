@@ -115,7 +115,7 @@ const QuestsRewards = () => {
 
         <section className="bg-gray-900 text-white p-5 rounded-lg w-full h-[300vh]">
             <header>
-                <h1 className="text-2xl font-semibold mb-5">Quests & Rewards</h1>
+                <h1 className="text-2xl font-semibold mb-1">Quests & Rewards</h1>
             </header>
 
             <article className='grid grid-cols-1 lg:grid-cols-7 gap-4'>
@@ -153,7 +153,7 @@ const QuestsRewards = () => {
                                     <LockIcon size={18} />
                                     {
                                         claimed ?
-                                            "Claimed"
+                                            "Claimedd"
                                             :
                                             (
                                                 <span className='flex gap-2 justify-center items-center'>
