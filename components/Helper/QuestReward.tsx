@@ -153,7 +153,7 @@ const QuestsRewards = () => {
                                     <LockIcon size={18} />
                                     {
                                         claimed ?
-                                            "Claimedd"
+                                            "Claimed"
                                             :
                                             (
                                                 <span className='flex gap-2 justify-center items-center'>
