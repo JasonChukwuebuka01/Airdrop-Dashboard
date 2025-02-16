@@ -14,7 +14,7 @@ const QuestsRewards = () => {
     const initialCountdown = 16 * 60 * 60; // 16 hours in seconds
     const [countdown, setCountdown] = useState<number>(initialCountdown);
     const [isClaimable, setIsClaimable] = useState<boolean>(false);
-    const [streak, setStreak] = useState<number>(3);
+    const [streak, setStreak] = useState<number>(31);
     const [claimed, setClaimed] = useState<boolean>(false);
     const [totalEarned, setTotalEarned] = useState<number>(11100);
     const [questsCompleted, setQuestsCompleted] = useState<number>(0);
