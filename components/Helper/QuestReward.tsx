@@ -14,10 +14,21 @@ const QuestsRewards = () => {
     const initialCountdown = 16 * 60 * 60; // 16 hours in seconds
     const [countdown, setCountdown] = useState<number>(initialCountdown);
     const [isClaimable, setIsClaimable] = useState<boolean>(false);
-    const [streak, setStreak] = useState<number>(31);
+    const [isWeeklyClaimable, setIsWeeklyClaimable] = useState<boolean>(true);
+    const [isWeeklyClaimableButton, setIsWeeklyClaimableButton] = useState<boolean>(false);
+    const [streak, setStreak] = useState<number>(7);
     const [claimed, setClaimed] = useState<boolean>(false);
     const [totalEarned, setTotalEarned] = useState<number>(11100);
     const [questsCompleted, setQuestsCompleted] = useState<number>(0);
+
+
+
+
+    const [streakSevenClicked, setStreakSevenClicked] = useState<boolean>(true);
+    const [streakFourteenClicked, setStreakFourTeenClicked] = useState<boolean>(true);
+    const [streakTwentyOneClicked, setStreakTwentyOneClicked] = useState<boolean>(true);
+    const [streakTwentyEightClicked, setStreakTwentyEightClicked] = useState<boolean>(true);
+
 
 
     useEffect(() => {
@@ -34,6 +45,8 @@ const QuestsRewards = () => {
             setCountdown(initialCountdown); // Fallback to initial countdown
         }
     }, []);
+
+
 
 
     useEffect(() => {
@@ -58,6 +71,10 @@ const QuestsRewards = () => {
             } catch (error) {
                 console.error('Failed to clear localStorage:', error);
             }
+        }
+
+        if (isClaimable) {
+            setIsWeeklyClaimableButton(true)
         }
 
         return () => {
@@ -91,9 +108,49 @@ const QuestsRewards = () => {
 
     const handleWeeklyClaim = () => {
 
-        if (streak % 7 === 0)
-            alert("weekly Claim")
-    }
+        if (streak % 7 === 0) {
+
+            if (streak === 7) {
+
+                if (streakSevenClicked) {
+                    setTotalEarned(prev => prev + 1000);
+                };
+                setTimeout(() => {
+                    setStreakSevenClicked(false);
+                }, 1000);
+
+
+            } else if (streak === 14) {
+
+                if (streakFourteenClicked)
+                    setTotalEarned(prev => prev + 1500);
+
+                setTimeout(() => {
+                    setStreakFourTeenClicked(false);
+                }, 1000);
+
+            } else if (streak === 21) {
+
+                if (streakTwentyOneClicked)
+                    setTotalEarned(prev => prev + 3000);
+
+                setTimeout(() => {
+                    setStreakTwentyOneClicked(false);
+                }, 1000);
+
+            } else if (streak === 28) {
+
+                if (streakTwentyEightClicked)
+                    setTotalEarned(prev => prev + 5000);
+
+
+                setTimeout(() => {
+                    setStreakTwentyEightClicked(false);
+                }, 1000);
+            };
+        };
+
+    };
 
 
 
@@ -212,10 +269,9 @@ const QuestsRewards = () => {
                                 </div>
                                 <button
                                     onClick={handleWeeklyClaim}
-                                    disabled={streak % 7 !== 0}
                                     aria-label={claimed ? "Already claimed" : "Claim daily reward"}
-                                    className={`bg-purple-700 text-white py-2 px-4 rounded-md disabled:bg-gray-700 
-         ${isClaimable && 'hover:bg-purple-600'} font-bold text-[15px] flex justify-center items-center rounded-xl p-3 gap-2  border border-gray-300`}
+                                    className={` text-white py-2 px-4 rounded-md 
+         ${isWeeklyClaimableButton && 'bg-purple-600'} font-bold text-[15px] flex justify-center items-center rounded-xl p-3 gap-2  border border-gray-300`}
                                 >
                                     <Lock size={16} className="mr-1" />
                                     1000
