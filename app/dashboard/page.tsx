@@ -1,7 +1,7 @@
 'use client';
 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import EarningsChart from '@/components/EarningsChart';
 import CustomSpeedometer from '@/components/Helper/Meter';
 import { Button } from '@/components/ui/button';
@@ -24,6 +24,8 @@ export default function DashboardPage() {
 
   const [ShowDemo, setShowDemo] = useState<boolean>(true);
 
+  const [totalEarned, setTotalEarned] = useState<number>(0);
+
 
 
 
@@ -36,6 +38,32 @@ export default function DashboardPage() {
     }, 1000);
 
   };
+
+
+
+  useEffect(() => {
+
+    try {
+
+      const totalEarned = localStorage.getItem("TotalEarned");
+
+      if (totalEarned) {
+        setTotalEarned(parseInt(totalEarned));
+
+      } else {
+
+        setTotalEarned(0)
+      }
+
+
+    } catch (error) {
+      console.log(error)
+
+    }
+
+  }, [])
+
+
 
 
 
@@ -79,7 +107,7 @@ export default function DashboardPage() {
                     </div>
                     <div className=' w-[70%] flex flex-col'>
                       <div className='text-sm w-full  font-bold'>Cycle Earnings</div>
-                      <div className='text-3xl font-bold'>11100</div>
+                        <div className='text-3xl font-bold min-w-[100px] max-w-[200px] w-[100px] '>{totalEarned}</div>
                     </div>
                   </div>
 
@@ -221,7 +249,7 @@ export default function DashboardPage() {
         <ShowTable />
         {/** End of Table Data section */}
 
-      
+
       </article>
     </>
   );

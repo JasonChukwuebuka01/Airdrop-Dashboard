@@ -10,24 +10,21 @@ import DialogeBox from './DialogeBox';
 const QuestsRewards = () => {
 
 
+
     const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
     const initialCountdown = 16 * 60 * 60; // 16 hours in seconds
     const [countdown, setCountdown] = useState<number>(initialCountdown);
     const [isClaimable, setIsClaimable] = useState<boolean>(false);
-    const [isWeeklyClaimable, setIsWeeklyClaimable] = useState<boolean>(true);
     const [isWeeklyClaimableButton, setIsWeeklyClaimableButton] = useState<boolean>(false);
-    const [streak, setStreak] = useState<number>(7);
+    const [streak, setStreak] = useState<number>(21);
     const [claimed, setClaimed] = useState<boolean>(false);
-    const [totalEarned, setTotalEarned] = useState<number>(11100);
+    const [totalEarned, setTotalEarned] = useState<number>(0);
     const [questsCompleted, setQuestsCompleted] = useState<number>(0);
 
-
-
-
-    const [streakSevenClicked, setStreakSevenClicked] = useState<boolean>(true);
-    const [streakFourteenClicked, setStreakFourTeenClicked] = useState<boolean>(true);
-    const [streakTwentyOneClicked, setStreakTwentyOneClicked] = useState<boolean>(true);
-    const [streakTwentyEightClicked, setStreakTwentyEightClicked] = useState<boolean>(true);
+    const [streakSevenClicked, setStreakSevenClicked] = useState<string>(localStorage.getItem("seven") || "true");
+    const [streakFourteenClicked, setStreakFourTeenClicked] = useState<string>(localStorage.getItem("fourteen") || "true");
+    const [streakTwentyOneClicked, setStreakTwentyOneClicked] = useState<string>(localStorage.getItem("twentyOne") || "true");
+    const [streakTwentyEightClicked, setStreakTwentyEightClicked] = useState<string>(localStorage.getItem("twentyEight") || "true");
 
 
 
@@ -45,6 +42,45 @@ const QuestsRewards = () => {
             setCountdown(initialCountdown); // Fallback to initial countdown
         }
     }, []);
+
+
+
+
+    useEffect(() => {
+
+        if (streak % 7 === 0) {
+            setIsWeeklyClaimableButton(true);
+        } else {
+            setIsWeeklyClaimableButton(false);
+        }
+
+    }, [streak])
+
+
+
+    useEffect(() => {
+
+        try {
+
+            const totalEarned = localStorage.getItem("TotalEarned");
+
+            if (totalEarned) {
+                setTotalEarned(parseInt(totalEarned));
+
+            } else {
+
+                setTotalEarned(0)
+            }
+
+
+        } catch (error) {
+
+            console.log(error)
+
+        }
+
+    }, [totalEarned])
+
 
 
 
@@ -106,47 +142,87 @@ const QuestsRewards = () => {
     };
 
 
+
     const handleWeeklyClaim = () => {
 
         if (streak % 7 === 0) {
 
             if (streak === 7) {
+                if (streakSevenClicked === "true") {
+                    setTotalEarned(prev => {
 
-                if (streakSevenClicked) {
-                    setTotalEarned(prev => prev + 1000);
+                        const totalEarned = prev + 1000
+
+                        localStorage.setItem("TotalEarned", totalEarned.toString());
+
+                        return totalEarned;
+                    });
+
+                    setStreakSevenClicked("false")
+                    localStorage.setItem("seven", "false")
+
+
+
                 };
-                setTimeout(() => {
-                    setStreakSevenClicked(false);
-                }, 1000);
 
 
             } else if (streak === 14) {
 
-                if (streakFourteenClicked)
-                    setTotalEarned(prev => prev + 1500);
+                if (streakFourteenClicked === "true") {
+                    setTotalEarned(prev => {
 
-                setTimeout(() => {
-                    setStreakFourTeenClicked(false);
-                }, 1000);
+                        const totalEarned = prev + 1500
+
+                        localStorage.setItem("TotalEarned", totalEarned.toString());
+
+                        return totalEarned;
+
+                    });
+
+                    setStreakFourTeenClicked("false");
+                    localStorage.setItem("fourteen","false")
+
+                }
+
+
 
             } else if (streak === 21) {
 
-                if (streakTwentyOneClicked)
-                    setTotalEarned(prev => prev + 3000);
+                if (streakTwentyOneClicked === "true") {
+                    setTotalEarned(prev => {
 
-                setTimeout(() => {
-                    setStreakTwentyOneClicked(false);
-                }, 1000);
+                        const totalEarned = prev + 3000
+
+                        localStorage.setItem("TotalEarned", totalEarned.toString());
+
+                        return totalEarned;
+
+                    });
+
+                    setStreakTwentyOneClicked("false");
+
+                    localStorage.setItem("twentyOne","false")
+
+                };
+
 
             } else if (streak === 28) {
 
-                if (streakTwentyEightClicked)
-                    setTotalEarned(prev => prev + 5000);
+                if (streakTwentyEightClicked === "true") {
+                    setTotalEarned(prev => {
+                        const totalEarned = prev + 5000
 
+                        localStorage.setItem("TotalEarned", totalEarned.toString());
 
-                setTimeout(() => {
-                    setStreakTwentyEightClicked(false);
-                }, 1000);
+                        return totalEarned;
+
+                    });
+                    setStreakTwentyEightClicked("false");
+
+                    localStorage.setItem("twentyEight","false")
+
+                };
+
             };
         };
 
@@ -165,6 +241,8 @@ const QuestsRewards = () => {
 
 
     const progressWidth = Math.min((streak / 28) * 100, 100); // Calculate progress width
+
+
 
 
 
@@ -269,6 +347,7 @@ const QuestsRewards = () => {
                                 </div>
                                 <button
                                     onClick={handleWeeklyClaim}
+                                    disabled={!isWeeklyClaimableButton}
                                     aria-label={claimed ? "Already claimed" : "Claim daily reward"}
                                     className={` text-white py-2 px-4 rounded-md 
          ${isWeeklyClaimableButton && 'bg-purple-600'} font-bold text-[15px] flex justify-center items-center rounded-xl p-3 gap-2  border border-gray-300`}
