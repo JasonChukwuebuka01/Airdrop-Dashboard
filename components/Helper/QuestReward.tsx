@@ -54,7 +54,7 @@ const QuestsRewards = () => {
                 setCountdown(initialCountdown); // Initialize if no value in localStorage
             }
         } catch (error) {
-            console.error('Failed to load countdown from localStoragee:', error);
+            console.error('Failed to load countdown from localStorage:', error);
             setCountdown(initialCountdown); // Fallback to initial countdown
         }
     }, []);
