@@ -48,6 +48,7 @@ export default function DashboardPage() {
       const totalEarned = localStorage.getItem("TotalEarned");
 
       if (totalEarned) {
+        
         setTotalEarned(parseInt(totalEarned));
 
       } else {

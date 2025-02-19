@@ -54,7 +54,7 @@ const QuestsRewards = () => {
                 setCountdown(initialCountdown); // Initialize if no value in localStorage
             }
         } catch (error) {
-            console.error('Failed to load countdown from localStorage:', error);
+            console.error('Failed to load countdown from localStoragee:', error);
             setCountdown(initialCountdown); // Fallback to initial countdown
         }
     }, []);
@@ -65,11 +65,11 @@ const QuestsRewards = () => {
     useEffect(() => {
 
         if (streak % 7 === 0) {
-            setIsWeeklyClaimableButton("true");
-            localStorage.setItem("claimableButton", "true");
+           // setIsWeeklyClaimableButton("true");
+           // localStorage.setItem("claimableButton", "true");
         } else {
-            setIsWeeklyClaimableButton("false");
-            localStorage.setItem("claimableButton", "false");
+           // setIsWeeklyClaimableButton("false");
+           // localStorage.setItem("claimableButton", "false");
         }
 
     }, [streak])
@@ -200,7 +200,7 @@ const QuestsRewards = () => {
 
                         localStorage.setItem("TotalEarned", totalEarned.toString());
 
-                        return totalEarned;
+                        return  totalEarned;
 
                     });
 
