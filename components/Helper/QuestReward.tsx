@@ -104,33 +104,43 @@ const QuestsRewards = () => {
 
 
     useEffect(() => {
+
         let interval: NodeJS.Timeout;
 
         if (countdown > 0) {
             interval = setInterval(() => {
+
                 setCountdown((prevCountdown) => {
+
                     const newCountdown = prevCountdown - 1;
+
                     try {
+
                         localStorage.setItem(localStorageKey, newCountdown.toString());
+
                     } catch (error) {
+
                         console.error('Failed to update localStorage:', error);
                     }
                     return newCountdown;
                 });
             }, 1000);
+
         } else {
+
             setIsClaimable(true);
+
             try {
+
                 localStorage.removeItem(localStorageKey);
+
             } catch (error) {
+
                 console.error('Failed to clear localStorage:', error);
             }
         }
 
-        // if (isClaimable) {
-        //     setIsWeeklyClaimableButton("true")
-        // }
-
+       
         return () => {
             if (interval) clearInterval(interval);
         };
