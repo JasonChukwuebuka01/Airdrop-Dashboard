@@ -34,12 +34,12 @@ const QuestsRewards = () => {
 
         if (streak >= 28) {
 
-            localStorage.removeItem("seven")
-            localStorage.removeItem("fourteen")
-            localStorage.removeItem("twentyOne")
+            localStorage.removeItem("seven");
+            localStorage.removeItem("fourteen");
+            localStorage.removeItem("twentyOne");
 
             if(streak === 1)
-            localStorage.removeItem("twentyEight")
+            localStorage.removeItem("twentyEight");
 
         };
 
