@@ -17,7 +17,7 @@ const QuestsRewards = () => {
     const [isClaimable, setIsClaimable] = useState<boolean>(false);
     const [isWeeklyClaimableButton, setIsWeeklyClaimableButton] = useState<string>(localStorage.getItem("claimableButton") || "false");
     const [weeklyButtonValue, setWeeklyButtonValue] = useState<number>(1000);
-    const [streak, setStreak] = useState<number>(8);
+    const [streak, setStreak] = useState<number>(28);
     const [claimed, setClaimed] = useState<boolean>(false);
     const [totalEarned, setTotalEarned] = useState<number>(0);
     const [questsCompleted, setQuestsCompleted] = useState<number>(0);
