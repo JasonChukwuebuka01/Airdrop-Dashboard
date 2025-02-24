@@ -25,6 +25,7 @@ export default function DashboardPage() {
   const [ShowDemo, setShowDemo] = useState<boolean>(true);
 
   const [totalEarned, setTotalEarned] = useState<number>(0);
+  const [dailyEarned, setDailyEarned] = useState<number>(0);
 
 
 
@@ -48,7 +49,7 @@ export default function DashboardPage() {
       const totalEarned = localStorage.getItem("TotalEarned");
 
       if (totalEarned) {
-        
+
         setTotalEarned(parseInt(totalEarned));
 
       } else {
@@ -61,6 +62,29 @@ export default function DashboardPage() {
       console.log(error)
 
     }
+
+  }, [])
+
+
+  useEffect(() => {
+
+    const dailyPoint = localStorage.getItem("dailyPoint");
+
+    try {
+
+      if (dailyPoint) {
+        setDailyEarned(parseInt(dailyPoint));
+
+      } else {
+        setDailyEarned(0);
+      }
+
+    } catch (error) {
+      setDailyEarned(0)
+      console.log(error)
+
+    };
+
 
   }, [])
 
@@ -89,7 +113,7 @@ export default function DashboardPage() {
                     </div>
                     <div className=' w-[70%] flex flex-col '>
                       <div className='text-sm w-full  font-bold'>Today’s Earnings</div>
-                      <div className='text-3xl font-bold'>200</div>
+                      <div className='text-3xl font-bold'>{dailyEarned}</div>
                     </div>
                   </div>
 
@@ -108,7 +132,7 @@ export default function DashboardPage() {
                     </div>
                     <div className=' w-[70%] flex flex-col'>
                       <div className='text-sm w-full  font-bold'>Cycle Earnings</div>
-                        <div className='text-3xl font-bold min-w-[100px] max-w-[200px] w-[100px] '>{totalEarned}</div>
+                      <div className='text-3xl font-bold min-w-[100px] max-w-[200px] w-[100px] '>{totalEarned}</div>
                     </div>
                   </div>
 
