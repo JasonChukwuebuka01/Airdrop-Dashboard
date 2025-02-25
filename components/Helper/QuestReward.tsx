@@ -49,7 +49,7 @@ const QuestsRewards = () => {
             localStorage.removeItem("fourteen");
             localStorage.removeItem("twentyOne");
 
-            // if (streak === 1)
+        
             localStorage.removeItem("twentyEight");
             setStreakSevenClicked("true");
             setStreakFourTeenClicked("true");
