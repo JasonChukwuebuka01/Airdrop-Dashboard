@@ -2,8 +2,8 @@
 
 
 import React, { useEffect, useState } from 'react'
-import DataTable from './Helper/dataTable'
-import SwitchDemo from './Helper/SwitchDemo'
+import DataTable from '../Helper/dataTable'
+import SwitchDemo from '../Helper/SwitchDemo'
 import { tableData } from '@/data/tableData';
 
 

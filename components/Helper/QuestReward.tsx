@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Check, Lock, Globe, DollarSign, Clock, Calendar, LockIcon, TrafficConeIcon } from 'lucide-react';
 import DialogeBox from './DialogeBox';
+import ReferralQuest from '../Quests/ReferralQuest';
 
 
 
@@ -12,12 +13,22 @@ const QuestsRewards = () => {
 
 
     const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
-    const initialCountdown = 16 * 60 * 60; // 16 hours in seconds
-    const [countdown, setCountdown] = useState<number>(initialCountdown);
+
+
+
+    const initialCountdown = 1 * 10; // 3 minutes in seconds
+
+    const [countdown, setCountdown] = useState<number>(() => {
+        const stored = localStorage.getItem(localStorageKey);
+        return stored ? Number(stored) : 0;
+    });
     const [isClaimable, setIsClaimable] = useState<boolean>(false);
     const [isWeeklyClaimableButton, setIsWeeklyClaimableButton] = useState<string>(localStorage.getItem("claimableButton") || "false");
     const [weeklyButtonValue, setWeeklyButtonValue] = useState<number>(1000);
-    const [streak, setStreak] = useState<number>(28);
+    const [streak, setStreak] = useState<number>(() => {
+        const storedStreak = localStorage.getItem("streak");
+        return storedStreak ? Number(storedStreak) : 0;
+    });
     const [claimed, setClaimed] = useState<boolean>(false);
     const [totalEarned, setTotalEarned] = useState<number>(0);
     const [questsCompleted, setQuestsCompleted] = useState<number>(0);
@@ -32,7 +43,7 @@ const QuestsRewards = () => {
     //resetting local storage by removing to start all over.
     useEffect(() => {
 
-        if (streak >= 28) {
+        if (streak === 28) {
 
             localStorage.removeItem("seven");
             localStorage.removeItem("fourteen");
@@ -40,6 +51,10 @@ const QuestsRewards = () => {
 
             // if (streak === 1)
             localStorage.removeItem("twentyEight");
+            setStreakSevenClicked("true");
+            setStreakFourTeenClicked("true");
+            setStreakTwentyOneClicked("true");
+            setStreakTwentyEightClicked("true");
 
         };
 
@@ -47,27 +62,25 @@ const QuestsRewards = () => {
 
 
 
+    // useEffect(() => {
+    //     // Load countdown from localStorage on component mount
+    //     try {
+    //         const storedCountdown = localStorage.getItem(localStorageKey);
+    //         if (storedCountdown) {
+    //             setCountdown(parseInt(storedCountdown, 10));
+    //         } else {
+    //             setCountdown(initialCountdown); // Initialize if no value in localStorage
+    //         }
+    //     } catch (error) {
+    //         console.error('Failed to load countdown from localStorage:', error);
+    //         setCountdown(initialCountdown); // Fallback to initial countdown
+    //     }
+    // }, []);
+
+
+
 
     useEffect(() => {
-        // Load countdown from localStorage on component mount
-        try {
-            const storedCountdown = localStorage.getItem(localStorageKey);
-            if (storedCountdown) {
-                setCountdown(parseInt(storedCountdown, 10));
-            } else {
-                setCountdown(initialCountdown); // Initialize if no value in localStorage
-            }
-        } catch (error) {
-            console.error('Failed to load countdown from localStorage:', error);
-            setCountdown(initialCountdown); // Fallback to initial countdown
-        }
-    }, []);
-
-
-
-
-    useEffect(() => {
-
 
 
         if (streak <= 7) {
@@ -84,11 +97,11 @@ const QuestsRewards = () => {
 
         } else {
             setWeeklyButtonValue(5000);
-        }
+        };
 
 
 
-        /** if block code below triggers when streak is 7,14,21 0r 28 */
+        /** block code below triggers when streak is 7,14,21 0r 28 */
         if (streak % 7 === 0) {
 
             const SevenClicked = localStorage.getItem("seven") || streakSevenClicked;
@@ -142,6 +155,9 @@ const QuestsRewards = () => {
 
             /**For streak 28 */
             if (streak === 28) {
+
+
+
                 if (twentyEightClicked === "true") {
 
                     setIsWeeklyClaimableButton("true");
@@ -219,14 +235,7 @@ const QuestsRewards = () => {
 
             setIsClaimable(true);
 
-            try {
 
-                localStorage.removeItem(localStorageKey);
-
-            } catch (error) {
-
-                console.error('Failed to clear localStorage:', error);
-            }
         }
 
         return () => {
@@ -252,15 +261,16 @@ const QuestsRewards = () => {
                         localStorage.setItem("dailyPoint", totalEarned.toString());
 
                         localStorage.setItem("TotalEarned", totalEarned.toString());
-
-
                         return totalEarned;
                     }),
 
                     setStreak(prevStreak => {
 
-                        if (prevStreak === 28) {
-                            return prevStreak
+                        localStorage.setItem("streak", (prevStreak + 1).toString());
+
+                        if (prevStreak + 1 > 28) {
+                            localStorage.removeItem("streak");
+                            setStreak(1);
                         }
 
                         return Math.min(prevStreak + 1, 28)
@@ -429,7 +439,7 @@ const QuestsRewards = () => {
             <article className='grid grid-cols-1 lg:grid-cols-7 gap-4'>
                 <section className=' lg:col-span-5'>
                     <article className="bg-gray-800 rounded-lg p-5 mb-5 border border-gray-700">
-                        <div className="flex justify-between items-center md:flex-row flex-col ">
+                        <div className="flex justify-between md:items-center md:flex-row flex-col ">
                             <header className="flex items-center mb-3 md:mb-0 ">
                                 <div className="bg-purple-700 rounded-2xl w-12 h-12  flex items-center justify-center mr-3">
                                     <Check size={20} aria-hidden="true" />
@@ -560,6 +570,8 @@ const QuestsRewards = () => {
                     </article>
                 </aside>
             </article>
+
+            <ReferralQuest />
 
         </section>
     );

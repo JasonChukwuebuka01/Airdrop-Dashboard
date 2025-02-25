@@ -2,13 +2,13 @@
 
 
 import React, { useEffect, useState } from 'react';
-import EarningsChart from '@/components/EarningsChart';
+import EarningsChart from '@/components/Dashboard/EarningsChart';
 import CustomSpeedometer from '@/components/Helper/Meter';
 import { Button } from '@/components/ui/button';
 import { Calendar1Icon, CopyIcon, LockIcon, LucideTwitter, Share2Icon, TicketCheckIcon, TicketPercent, TimerIcon, TrafficConeIcon } from 'lucide-react';
 import Link from 'next/link';
-import DemoEarningsChart from '@/components/DemoEarningChart';
-import ShowTable from '@/components/ShowTable';
+import DemoEarningsChart from '@/components/Dashboard/DemoEarningChart';
+import ShowTable from '@/components/Dashboard/ShowTable';
 
 
 

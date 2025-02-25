@@ -1,4 +1,4 @@
-"use client ";
+
 
 import QuestsRewards from "@/components/Helper/QuestReward";
 
