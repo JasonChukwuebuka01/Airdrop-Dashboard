@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Check, Lock, Globe, DollarSign, Clock, Calendar, LockIcon, TrafficConeIcon } from 'lucide-react';
 import DialogeBox from './DialogeBox';
 import ReferralQuest from '../Quests/ReferralQuest';
+import SocialQuest from '../Quests/SocialQuest';
 
 
 
@@ -49,7 +50,7 @@ const QuestsRewards = () => {
             localStorage.removeItem("fourteen");
             localStorage.removeItem("twentyOne");
 
-        
+
             localStorage.removeItem("twentyEight");
             setStreakSevenClicked("true");
             setStreakFourTeenClicked("true");
@@ -60,22 +61,6 @@ const QuestsRewards = () => {
 
     }, [streak])
 
-
-
-    // useEffect(() => {
-    //     // Load countdown from localStorage on component mount
-    //     try {
-    //         const storedCountdown = localStorage.getItem(localStorageKey);
-    //         if (storedCountdown) {
-    //             setCountdown(parseInt(storedCountdown, 10));
-    //         } else {
-    //             setCountdown(initialCountdown); // Initialize if no value in localStorage
-    //         }
-    //     } catch (error) {
-    //         console.error('Failed to load countdown from localStorage:', error);
-    //         setCountdown(initialCountdown); // Fallback to initial countdown
-    //     }
-    // }, []);
 
 
 
@@ -431,7 +416,7 @@ const QuestsRewards = () => {
 
     return (
 
-        <section className="bg-gray-900 text-white p-5 rounded-lg w-full h-[300vh]">
+        <section className="bg-gray-900 text-white p-5 rounded-lg w-full ">
             <header>
                 <h1 className="text-2xl font-semibold mb-1">Quests & Rewards</h1>
             </header>
@@ -572,6 +557,8 @@ const QuestsRewards = () => {
             </article>
 
             <ReferralQuest />
+
+            <SocialQuest />
 
         </section>
     );
