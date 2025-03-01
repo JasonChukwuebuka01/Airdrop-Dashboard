@@ -30,7 +30,14 @@ const QuestsRewards = () => {
     });
     const [claimed, setClaimed] = useState<boolean>(false);
     const [totalEarned, setTotalEarned] = useState<number>(0);
-    const [dailyPoint, setDailyPoint] = useState<number>(0);
+
+   const [dailyEarned, setDailyEarned] = useState<number>(() => {
+   
+       const dailyPoint = localStorage.getItem("dailyPoint");
+   
+       return dailyPoint ? parseInt(dailyPoint) : 0;
+     });
+   
     const [questsCompleted, setQuestsCompleted] = useState<number>(0);
 
     const [streakSevenClicked, setStreakSevenClicked] = useState<string>(localStorage.getItem("seven") || "true");
@@ -263,14 +270,14 @@ const QuestsRewards = () => {
 
                         return Math.min(prevStreak + 1, 28)
                     }),
-                    setDailyPoint(prevDailyPoint=>{
+                    setDailyEarned(prevDailyPoint => {
 
                         const dailyPoint = prevDailyPoint + 100;
-
+            
                         localStorage.setItem("dailyPoint", dailyPoint.toString());
-                        
+            
                         return dailyPoint;
-                    })
+                      })
                 ]);
                 localStorage.removeItem(localStorageKey);
                 setCountdown(initialCountdown);

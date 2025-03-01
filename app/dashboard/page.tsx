@@ -25,7 +25,16 @@ export default function DashboardPage() {
   const [ShowDemo, setShowDemo] = useState<boolean>(true);
 
   const [totalEarned, setTotalEarned] = useState<number>(0);
-  const [dailyEarned, setDailyEarned] = useState<number>(0);
+
+
+
+  // const [streak, setStreak] = useState<number>(() => {
+
+  //   const streak = localStorage.getItem("streak");
+
+  //   return streak ? parseInt(streak) : 0;
+
+  // });
 
 
 
@@ -35,14 +44,31 @@ export default function DashboardPage() {
 
   const initialCountdown = 1 * 10; // 3 minutes in seconds
 
+  
   const [countdown, setCountdown] = useState<number>(() => {
     const stored = localStorage.getItem(localStorageKey);
     return stored ? Number(stored) : 0;
   });
 
+
+  const [streak, setStreak] = useState<number>(() => {
+    const streak = localStorage.getItem("streak");
+    return streak ? parseInt(streak) : 0;
+  });
+
+
+  const [dailyEarned, setDailyEarned] = useState<number>(() => {
+    const dailyPoint = localStorage.getItem("dailyPoint");
+    return dailyPoint ? parseInt(dailyPoint) : 0;
+  });
+
+
+
+
+
   const [isClaimable, setIsClaimable] = useState<boolean>(false);
   const [claimed, setClaimed] = useState<boolean>(false);
-  const [streak, setStreak] = useState<number>(0);
+
   const [dailyPoint, setDailyPoint] = useState<number>(0);
 
 
@@ -84,27 +110,27 @@ export default function DashboardPage() {
   }, [])
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const dailyPoint = localStorage.getItem("dailyPoint");
+  //   const dailyPoint = localStorage.getItem("dailyPoint");
 
-    try {
+  //   try {
 
-      if (dailyPoint) {
-        setDailyEarned(parseInt(dailyPoint));
+  //     if (dailyPoint) {
+  //       setDailyEarned(parseInt(dailyPoint));
 
-      } else {
-        setDailyEarned(0);
-      }
+  //     } else {
+  //       setDailyEarned(0);
+  //     }
 
-    } catch (error) {
-      setDailyEarned(0)
-      console.log(error)
+  //   } catch (error) {
+  //     setDailyEarned(0)
+  //     console.log(error)
 
-    };
+  //   };
 
 
-  }, [])
+  // }, [])
 
 
 
@@ -155,33 +181,18 @@ export default function DashboardPage() {
 
         await Promise.all([
           setTotalEarned((prevTotal) => {
-
             const totalEarned = prevTotal + 100;
-
             localStorage.setItem("TotalEarned", totalEarned.toString());
             return totalEarned;
           }),
 
-          setStreak(prevStreak => {
-
-            localStorage.setItem("streak", (prevStreak + 1).toString());
-
-            if (prevStreak + 1 > 28) {
-              localStorage.removeItem("streak");
-              setStreak(1);
-            }
-
-            return Math.min(prevStreak + 1, 28)
-          }),
-          setDailyPoint(prevDailyPoint => {
-
+          setDailyEarned(prevDailyPoint => {
             const dailyPoint = prevDailyPoint + 100;
-
             localStorage.setItem("dailyPoint", dailyPoint.toString());
-
             return dailyPoint;
           })
         ]);
+
         localStorage.removeItem(localStorageKey);
         setCountdown(initialCountdown);
         setTimeout(() => setClaimed(false), 1000);
