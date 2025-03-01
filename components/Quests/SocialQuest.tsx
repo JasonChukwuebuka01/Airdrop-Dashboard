@@ -3,6 +3,7 @@ import ConnectDiscord from './ConnectDiscord'
 import ConnectX from './ConnectX'
 import ConnectTelegram from './ConnectTelegram'
 import ConnectYoutubeXname from './ConnectYoutubeXname'
+import AddDiscordXTelegramName from './AddDiscordXTelegramName'
 
 
 
@@ -17,6 +18,7 @@ const SocialQuest = () => {
             <ConnectX />
             <ConnectTelegram />
             <ConnectYoutubeXname />
+            <AddDiscordXTelegramName />
 
 
 

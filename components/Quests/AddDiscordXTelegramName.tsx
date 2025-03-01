@@ -1,17 +1,14 @@
-import { CopyIcon, LockIcon, TrafficConeIcon, Twitter, YoutubeIcon } from 'lucide-react'
-import React from 'react'
+import { BotIcon, CopyIcon, LockIcon, TrafficConeIcon, Twitter } from "lucide-react";
+
+const AddDiscordXTelegramName = () => {
 
 
+    function handleCopy() {
 
-const ConnectYoutubeXname = () => {
- 
-
-     function handleCopy(){
-        
         window.navigator.clipboard.writeText('၊||၊ DeSpeed ၊||၊')
-        .then(()=> alert("copied"))
+            .then(() => alert("copied"))
 
-     }
+    }
 
 
     return (
@@ -23,13 +20,13 @@ const ConnectYoutubeXname = () => {
 
                 <div className='flex items-center gap-3 mb-2'>
                     <div className=' w-[15%] lg:w-[9%] p-3 bg-gray-200 rounded-2xl flex justify-center items-center text-black'>
-                        <YoutubeIcon />
+                        <BotIcon/>
                     </div>
 
                     <div className='w-[90%] flex flex-col justify-center items-start'>
-                        <h2 className='text-base mb-1'>Subscribe DeSpeed on Youtube</h2>
+                        <h2 className='w-full text-base mb-1 flex items-center'>Add <span className="border-2 border-dotted  rounded-sm text-sm flex items-center gap-1  mx-2"><span className='px-2'>၊||၊ DeSpeed ၊||၊ </span><span className='border-l border-dashed px-2'><CopyIcon onClick={handleCopy} size={18} /></span></span> to Discord Name</h2>
                         <div>
-                            <button className='border border-gray-700 p-2 text-sm text-center px-5 rounded-xl'>Subscribe</button>
+                            <button className='border border-gray-700 p-2 text-sm text-center px-5 rounded-xl'>Add</button>
                             <button className='border border-gray-700 p-2 text-sm text-center px-5 rounded-xl ml-2'>Verify</button>
                         </div>
 
@@ -58,7 +55,7 @@ const ConnectYoutubeXname = () => {
                     </div>
 
                     <div className='w-[90%] flex flex-col justify-center items-start'>
-                        <h2 className='w-full text-base mb-1 flex items-center'>Add <span className="border-2 border-dotted  rounded-sm text-sm flex items-center gap-1  mx-2"><span className='px-2'>၊||၊ DeSpeed ၊||၊ </span><span className='border-l border-dashed px-2'><CopyIcon onClick={handleCopy} size={18}/></span></span>to X Name</h2>
+                        <h2 className='w-full text-base mb-1 flex items-center'>Add <span className="border-2 border-dotted  rounded-sm text-sm flex items-center gap-1  mx-2"><span className='px-2'>၊||၊ DeSpeed ၊||၊ </span><span className='border-l border-dashed px-2'><CopyIcon onClick={handleCopy} size={18} /></span></span>to Telegram Name</h2>
                         <div>
                             <button className='border border-gray-700 p-2 text-sm text-center px-5 rounded-xl'>Add</button>
                             <button className='border border-gray-700 p-2 text-sm text-center px-5 rounded-xl ml-2'>Verify</button>
@@ -83,4 +80,4 @@ const ConnectYoutubeXname = () => {
     )
 }
 
-export default ConnectYoutubeXname
+export default AddDiscordXTelegramName;
