@@ -27,24 +27,11 @@ export default function DashboardPage() {
   const [totalEarned, setTotalEarned] = useState<number>(0);
 
 
-
-  // const [streak, setStreak] = useState<number>(() => {
-
-  //   const streak = localStorage.getItem("streak");
-
-  //   return streak ? parseInt(streak) : 0;
-
-  // });
-
-
-
-
-
   const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
 
   const initialCountdown = 1 * 10; // 3 minutes in seconds
 
-  
+
   const [countdown, setCountdown] = useState<number>(() => {
     const stored = localStorage.getItem(localStorageKey);
     return stored ? Number(stored) : 0;
@@ -64,12 +51,11 @@ export default function DashboardPage() {
 
 
 
-
-
   const [isClaimable, setIsClaimable] = useState<boolean>(false);
+
   const [claimed, setClaimed] = useState<boolean>(false);
 
-  const [dailyPoint, setDailyPoint] = useState<number>(0);
+
 
 
 
@@ -110,27 +96,6 @@ export default function DashboardPage() {
   }, [])
 
 
-  // useEffect(() => {
-
-  //   const dailyPoint = localStorage.getItem("dailyPoint");
-
-  //   try {
-
-  //     if (dailyPoint) {
-  //       setDailyEarned(parseInt(dailyPoint));
-
-  //     } else {
-  //       setDailyEarned(0);
-  //     }
-
-  //   } catch (error) {
-  //     setDailyEarned(0)
-  //     console.log(error)
-
-  //   };
-
-
-  // }, [])
 
 
 
@@ -196,12 +161,11 @@ export default function DashboardPage() {
         localStorage.removeItem(localStorageKey);
         setCountdown(initialCountdown);
         setTimeout(() => setClaimed(false), 1000);
+
+
       } catch (error) {
-
         console.error('Failed to process claim:', error);
-
         setClaimed(false);
-
         setIsClaimable(true);
       }
     }
