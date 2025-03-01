@@ -6,16 +6,10 @@ import DialogeBox from './DialogeBox';
 import ReferralQuest from '../Quests/ReferralQuest';
 import SocialQuest from '../Quests/SocialQuest';
 
-
-
-
 const QuestsRewards = () => {
-
-
-
     const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
 
-    const initialCountdown = 1 * 10; // 3 minutes in seconds
+    const initialCountdown = 6 * 50; // 3 minutes in seconds
 
     const [countdown, setCountdown] = useState<number>(() => {
         const stored = localStorage.getItem(localStorageKey);
@@ -30,209 +24,122 @@ const QuestsRewards = () => {
     });
     const [claimed, setClaimed] = useState<boolean>(false);
     const [totalEarned, setTotalEarned] = useState<number>(0);
-
-   const [dailyEarned, setDailyEarned] = useState<number>(() => {
-   
-       const dailyPoint = localStorage.getItem("dailyPoint");
-   
-       return dailyPoint ? parseInt(dailyPoint) : 0;
-     });
-   
+    const [dailyEarned, setDailyEarned] = useState<number>(() => {
+        const dailyPoint = localStorage.getItem("dailyPoint");
+        return dailyPoint ? parseInt(dailyPoint) : 0;
+    });
     const [questsCompleted, setQuestsCompleted] = useState<number>(0);
-
     const [streakSevenClicked, setStreakSevenClicked] = useState<string>(localStorage.getItem("seven") || "true");
     const [streakFourteenClicked, setStreakFourTeenClicked] = useState<string>(localStorage.getItem("fourteen") || "true");
     const [streakTwentyOneClicked, setStreakTwentyOneClicked] = useState<string>(localStorage.getItem("twentyOne") || "true");
     const [streakTwentyEightClicked, setStreakTwentyEightClicked] = useState<string>(localStorage.getItem("twentyEight") || "true");
-
-
-
-
+    const [lastClaimTime, setLastClaimTime] = useState<number>(() => {
+        const storedTime = localStorage.getItem("lastClaimTime");
+        return storedTime ? Number(storedTime) : Date.now();
+    });
 
     //resetting local storage by removing to start all over.
     useEffect(() => {
-
         if (streak === 28) {
-
             localStorage.removeItem("seven");
             localStorage.removeItem("fourteen");
             localStorage.removeItem("twentyOne");
-
-
             localStorage.removeItem("twentyEight");
             setStreakSevenClicked("true");
             setStreakFourTeenClicked("true");
             setStreakTwentyOneClicked("true");
             setStreakTwentyEightClicked("true");
-
         };
-
     }, [streak])
 
-
-
-
-
-
-
     useEffect(() => {
-
-
         if (streak <= 7) {
-
             setWeeklyButtonValue(1000);
-
         } else if (streak > 7 && streak <= 14) {
-
             setWeeklyButtonValue(1500);
-
         } else if (streak > 14 && streak <= 21) {
-
             setWeeklyButtonValue(3000);
-
         } else {
             setWeeklyButtonValue(5000);
         };
 
-
-
         /** block code below triggers when streak is 7,14,21 0r 28 */
         if (streak % 7 === 0) {
-
             const SevenClicked = localStorage.getItem("seven") || streakSevenClicked;
             const fourteenClicked = localStorage.getItem("fourteen") || streakFourteenClicked;
             const twentyOneClicked = localStorage.getItem("twentyOne") || streakTwentyOneClicked;
             const twentyEightClicked = localStorage.getItem("twentyEight") || streakTwentyEightClicked;
 
-
-
             /**For streak  7 */
             if (streak === 7) {
                 if (SevenClicked === "true") {
-
                     setIsWeeklyClaimableButton("true");
-
                 } else {
-
                     setIsWeeklyClaimableButton("false");
                 };
-
-            };
-
+            }
 
             /**For streak 14 */
             if (streak === 14) {
                 if (fourteenClicked === "true") {
-
                     setIsWeeklyClaimableButton("true");
-
                 } else {
-
                     setIsWeeklyClaimableButton("false");
                 };
-
-            };
-
+            }
 
             /**For streak 21 */
             if (streak === 21) {
                 if (twentyOneClicked === "true") {
-
                     setIsWeeklyClaimableButton("true");
-
                 } else {
-
                     setIsWeeklyClaimableButton("false");
                 };
-
-            };
-
+            }
 
             /**For streak 28 */
             if (streak === 28) {
-
-
-
                 if (twentyEightClicked === "true") {
-
                     setIsWeeklyClaimableButton("true");
-
                 } else {
-
                     setIsWeeklyClaimableButton("false");
                 };
-
             };
-
         } else {
             setIsWeeklyClaimableButton("false");
-
         }
-
     }, [streak])
 
-
-
-
-
-
     useEffect(() => {
-
         try {
-
             const totalEarned = localStorage.getItem("TotalEarned");
-
             if (totalEarned) {
                 setTotalEarned(parseInt(totalEarned));
-
             } else {
-
                 setTotalEarned(0)
             }
-
-
         } catch (error) {
-
             console.log(error)
-
         }
-
     }, [totalEarned])
 
-
-
-
-
     useEffect(() => {
-
         let interval: NodeJS.Timeout;
-
         if (countdown > 0) {
             interval = setInterval(() => {
-
                 setCountdown((prevCountdown) => {
-
                     const newCountdown = prevCountdown - 1;
-
                     try {
-
                         localStorage.setItem(localStorageKey, newCountdown.toString());
-
                     } catch (error) {
-
                         console.error('Failed to update localStorage:', error);
                     }
                     return newCountdown;
                 });
             }, 1000);
-
         } else {
-
             setIsClaimable(true);
-
-
         }
-
         return () => {
             if (interval) clearInterval(interval);
         };
@@ -241,44 +148,39 @@ const QuestsRewards = () => {
 
 
 
-
-
     const handleClaim = async () => {
-
         if (isClaimable) {
             try {
+                const now = Date.now();
+                const timeDiff = now - lastClaimTime;
+                const hoursDiff = timeDiff / (1000 * 60 * 60);
+
+                // Reset streak if more than 24 hours have passed
+                if (hoursDiff > 24) {
+                    setStreak(1);
+                    localStorage.setItem("streak", "1");
+                }
+
                 setClaimed(true);
                 setIsClaimable(false);
+                setLastClaimTime(now);
+                localStorage.setItem("lastClaimTime", now.toString());
 
                 await Promise.all([
                     setTotalEarned((prevTotal) => {
-
                         const totalEarned = prevTotal + 100;
-
                         localStorage.setItem("TotalEarned", totalEarned.toString());
                         return totalEarned;
                     }),
 
                     setStreak(prevStreak => {
-
-                        localStorage.setItem("streak", (prevStreak + 1).toString());
-
-                        if (prevStreak + 1 > 28) {
-                            localStorage.removeItem("streak");
-                            setStreak(1);
-                        }
-
-                        return Math.min(prevStreak + 1, 28)
+                        const newStreak = hoursDiff > 24 ? 1 : Math.min(prevStreak + 1, 28);
+                        localStorage.setItem("streak", newStreak.toString());
+                        return newStreak;
                     }),
-                    setDailyEarned(prevDailyPoint => {
-
-                        const dailyPoint = prevDailyPoint + 100;
-            
-                        localStorage.setItem("dailyPoint", dailyPoint.toString());
-            
-                        return dailyPoint;
-                      })
+                    // ...rest of your existing Promise.all code
                 ]);
+
                 localStorage.removeItem(localStorageKey);
                 setCountdown(initialCountdown);
                 setTimeout(() => setClaimed(false), 1000);
@@ -290,131 +192,67 @@ const QuestsRewards = () => {
         }
     };
 
-
-
     const handleWeeklyClaim = () => {
-
         if (streak % 7 === 0) {
-
             if (streak === 7) {
-
                 if (streakSevenClicked === "true") {
                     setTotalEarned(prev => {
-
                         const totalEarned = prev + 1000
-
                         localStorage.setItem("TotalEarned", totalEarned.toString());
-
                         return totalEarned;
                     });
-
                     setStreakSevenClicked("false");
-
                     localStorage.setItem("seven", "false");
-
-
                     setTimeout(() => {
-
                         setIsWeeklyClaimableButton("false");
-
                         localStorage.setItem("claimableButton", "false");
-
                     }, 1000);
-
                 };
-
-
             } else if (streak === 14) {
-
                 if (streakFourteenClicked === "true") {
                     setTotalEarned(prev => {
-
                         const totalEarned = prev + 1500
-
                         localStorage.setItem("TotalEarned", totalEarned.toString());
-
                         return totalEarned;
-
                     });
-
                     setStreakFourTeenClicked("false");
                     localStorage.setItem("fourteen", "false")
-
-
                     setTimeout(() => {
                         setIsWeeklyClaimableButton("false")
                         localStorage.setItem("claimableButton", "false")
-
                     }, 1000);
-
-
                 }
-
-
-
-
             } else if (streak === 21) {
-
                 if (streakTwentyOneClicked === "true") {
                     setTotalEarned(prev => {
-
                         const totalEarned = prev + 3000
-
                         localStorage.setItem("TotalEarned", totalEarned.toString());
-
                         return totalEarned;
-
                     });
-
                     setStreakTwentyOneClicked("false");
-
                     localStorage.setItem("twentyOne", "false")
-
-
-
                     setTimeout(() => {
-
                         setIsWeeklyClaimableButton("false");
-
                         localStorage.setItem("claimableButton", "false")
-
                     }, 1000);
-
                 };
-
-
             } else if (streak === 28) {
-
                 if (streakTwentyEightClicked === "true") {
                     setTotalEarned(prev => {
                         const totalEarned = prev + 5000
-
                         localStorage.setItem("TotalEarned", totalEarned.toString());
-
                         return totalEarned;
-
                     });
                     setStreakTwentyEightClicked("false");
-
                     localStorage.setItem("twentyEight", "false");
-
-
-
                     setTimeout(() => {
                         setIsWeeklyClaimableButton("false")
                         localStorage.setItem("claimableButton", "false")
-
                     }, 1000);
-
                 };
-
             };
         };
-
     };
-
-
-
 
     const formatTime = (seconds: number): string => {
         const hours = Math.floor(seconds / 3600);
@@ -423,19 +261,9 @@ const QuestsRewards = () => {
         return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
     };
 
-
-
     const progressWidth = Math.min((streak / 28) * 100, 100); // Calculate progress width
 
-
-
-
-
-
-
     return (
-
-
         <section className="bg-gray-900 text-white p-5 rounded-lg w-full ">
             <header>
                 <h1 className="text-2xl font-semibold mb-1">Quests & Rewards</h1>
@@ -456,7 +284,6 @@ const QuestsRewards = () => {
                                             isClaimable ?
                                                 (
                                                     <span>Unlocked</span>
-
                                                 ) :
                                                 (
                                                     <span>Unlock in {formatTime(countdown)}</span>
@@ -474,7 +301,7 @@ const QuestsRewards = () => {
                 ${isClaimable && 'hover:bg-purple-600'} w-full font-bold text-[15px] flex justify-center items-center rounded-xl p-6 gap-2  border border-gray-300`}
                                 >
                                     {
-                                        isClaimable ? <UnlockIcon size={18} /> : <LockIcon size={18} /> 
+                                        isClaimable ? <UnlockIcon size={18} /> : <LockIcon size={18} />
                                     }
                                     {
                                         claimed ?
@@ -485,7 +312,6 @@ const QuestsRewards = () => {
                                                     100
                                                     <TrafficConeIcon size={18} />
                                                 </span>
-
                                             )}
                                 </button>
                             </nav>
@@ -552,7 +378,6 @@ const QuestsRewards = () => {
                             </div>
                         </article>
                     </article>
-
                 </section>
 
                 <aside className=" col-span-2 grid grid-cols-1 gap-5 h-[5vh] w-full ">

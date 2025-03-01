@@ -14,11 +14,61 @@ interface StatItem {
   icon: ReactNode;
 }
 
+
+
+
 export default function ReferralPage() {
 
 
   const [HideIpAddress] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState(true);
+
+
+  const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
+
+
+  const [countdown, setCountdown] = useState<number>(() => {
+    const stored = localStorage.getItem(localStorageKey);
+    return stored ? Number(stored) : 0;
+  });
+
+
+
+  useEffect(() => {
+
+    let interval: NodeJS.Timeout;
+
+    if (countdown > 0) {
+      interval = setInterval(() => {
+
+        setCountdown((prevCountdown) => {
+
+          const newCountdown = prevCountdown - 1;
+
+          try {
+
+            localStorage.setItem(localStorageKey, newCountdown.toString());
+
+          } catch (error) {
+
+            console.error('Failed to update localStorage:', error);
+          }
+          return newCountdown;
+        });
+      }, 1000);
+
+    } else {
+
+      //setIsClaimable(true);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [countdown]);
+
+
+
 
 
   // Fetch data
@@ -73,7 +123,7 @@ export default function ReferralPage() {
 
 
 
-  
+
   function copyText() {
 
     navigator.clipboard.writeText("https://app.despeed.net/register?ref=mm6FQ0AmwxiX")

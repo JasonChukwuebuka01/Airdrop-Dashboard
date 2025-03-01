@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import EarningsChart from '@/components/Dashboard/EarningsChart';
 import CustomSpeedometer from '@/components/Helper/Meter';
 import { Button } from '@/components/ui/button';
-import { Calendar1Icon, CopyIcon, LockIcon, LucideTwitter, Share2Icon, TicketCheckIcon, TicketPercent, TimerIcon, TrafficConeIcon } from 'lucide-react';
+import { Calendar1Icon, CopyIcon, LockIcon, LucideTwitter, Share2Icon, TicketCheckIcon, TicketPercent, TimerIcon, TrafficConeIcon, UnlockIcon } from 'lucide-react';
 import Link from 'next/link';
 import DemoEarningsChart from '@/components/Dashboard/DemoEarningChart';
 import ShowTable from '@/components/Dashboard/ShowTable';
@@ -29,7 +29,7 @@ export default function DashboardPage() {
 
   const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
 
-  const initialCountdown = 1 * 10; // 3 minutes in seconds
+  const initialCountdown = 5 * 60; // 5 minutes in seconds
 
 
   const [countdown, setCountdown] = useState<number>(() => {
@@ -49,6 +49,10 @@ export default function DashboardPage() {
     return dailyPoint ? parseInt(dailyPoint) : 0;
   });
 
+  const [lastClaimTime, setLastClaimTime] = useState<number>(() => {
+    const storedTime = localStorage.getItem("lastClaimTime");
+    return storedTime ? Number(storedTime) : Date.now();
+  });
 
 
   const [isClaimable, setIsClaimable] = useState<boolean>(false);
@@ -75,7 +79,6 @@ export default function DashboardPage() {
   useEffect(() => {
 
     try {
-
       const totalEarned = localStorage.getItem("TotalEarned");
 
       if (totalEarned) {
@@ -138,11 +141,22 @@ export default function DashboardPage() {
 
 
   const handleClaim = async () => {
-
     if (isClaimable) {
       try {
+        const now = Date.now();
+        const timeDiff = now - lastClaimTime;
+        const hoursDiff = timeDiff / (1000 * 60 * 60);
+
+        // Reset streak if more than 24 hours have passed
+        if (hoursDiff > 24) {
+          setStreak(1);
+          localStorage.setItem("streak", "1");
+        }
+
         setClaimed(true);
         setIsClaimable(false);
+        setLastClaimTime(now);
+        localStorage.setItem("lastClaimTime", now.toString());
 
         await Promise.all([
           setTotalEarned((prevTotal) => {
@@ -151,26 +165,17 @@ export default function DashboardPage() {
             return totalEarned;
           }),
 
-          setDailyEarned(prevDailyPoint => {
-            const dailyPoint = prevDailyPoint + 100;
-            localStorage.setItem("dailyPoint", dailyPoint.toString());
-            return dailyPoint;
-          }),
           setStreak(prevStreak => {
-            localStorage.setItem("streak", (prevStreak + 1).toString());
-            if (prevStreak + 1 > 28) {
-              localStorage.removeItem("streak");
-              setStreak(1);
-            };
-            return Math.min(prevStreak + 1, 28)
-          })
+            const newStreak = hoursDiff > 24 ? 1 : Math.min(prevStreak + 1, 28);
+            localStorage.setItem("streak", newStreak.toString());
+            return newStreak;
+          }),
+          // ...rest of your existing Promise.all code
         ]);
 
         localStorage.removeItem(localStorageKey);
         setCountdown(initialCountdown);
         setTimeout(() => setClaimed(false), 1000);
-
-
       } catch (error) {
         console.error('Failed to process claim:', error);
         setClaimed(false);
@@ -178,6 +183,15 @@ export default function DashboardPage() {
       }
     }
   };
+
+
+
+  function copyText() {
+
+    navigator.clipboard.writeText("https://app.despeed.net/register?ref=mm6FQ0AmwxiX")
+      .then(() => alert("Link copied to clipboard!"))
+      .catch((err) => console.error("Failed to copy text: ", err));
+  }
 
 
 
@@ -274,7 +288,10 @@ export default function DashboardPage() {
 
           <article className="grid grid-cols-1 sm:grid-cols-2 w-full sm:w-[50%] lg:w-[30%] rounded-lg gap-2">
             <div className=" text-sm font-bold flex justify-end">
-              <Button className='flex gap-2  pr-2 pl-2 pt-6 pb-6 rounded-lg  w-full sm:w-[80%] '>
+              <Button
+                className='flex gap-2  pr-2 pl-2 pt-6 pb-6 rounded-lg  w-full sm:w-[80%] '
+                onClick={copyText}
+              >
                 <CopyIcon size={20} />
                 <span>Copy Link</span>
               </Button>
@@ -313,12 +330,14 @@ export default function DashboardPage() {
 
                 <div className=''>
                   <Button
-                    className={`w-full font-bold text-[15px] flex justify-center items-center rounded-xl p-6 *
-                      ${isClaimable ? 'bg-green-500' : 'bg-gray-300'}`}
+                    className={`w-full font-bold text-[15px] flex justify-center items-center rounded-xl p-6 
+                      ${isClaimable ? 'bg-purple-700 hover:bg-purple-600' : 'bg-gray-700  cursor-not-allowed '}`}
                     onClick={handleClaim}
-                    disabled={!isClaimable}
+                  //disabled={!isClaimable}
                   >
-                    <LockIcon />
+                    {
+                      isClaimable ? <UnlockIcon /> : <LockIcon />
+                    }
                     Claim 100
                   </Button>
                 </div>
@@ -331,7 +350,7 @@ export default function DashboardPage() {
                   </section>
                   <section className='flex flex-col justify-center items-start '>
                     <h2 className='text-base font-bold text-center'>Quests Completed</h2>
-                    <h3 className='text-sm text-center'>7/19</h3>
+                    <h3 className='text-sm text-center'>0/19</h3>
                   </section>
                 </div>
 
