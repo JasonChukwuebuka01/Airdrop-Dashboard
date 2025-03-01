@@ -155,6 +155,14 @@ export default function DashboardPage() {
             const dailyPoint = prevDailyPoint + 100;
             localStorage.setItem("dailyPoint", dailyPoint.toString());
             return dailyPoint;
+          }),
+          setStreak(prevStreak => {
+            localStorage.setItem("streak", (prevStreak + 1).toString());
+            if (prevStreak + 1 > 28) {
+              localStorage.removeItem("streak");
+              setStreak(1);
+            };
+            return Math.min(prevStreak + 1, 28)
           })
         ]);
 
