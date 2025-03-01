@@ -30,6 +30,7 @@ const QuestsRewards = () => {
     });
     const [claimed, setClaimed] = useState<boolean>(false);
     const [totalEarned, setTotalEarned] = useState<number>(0);
+    const [dailyPoint, setDailyPoint] = useState<number>(0);
     const [questsCompleted, setQuestsCompleted] = useState<number>(0);
 
     const [streakSevenClicked, setStreakSevenClicked] = useState<string>(localStorage.getItem("seven") || "true");
@@ -40,7 +41,7 @@ const QuestsRewards = () => {
 
 
 
-    
+
     //resetting local storage by removing to start all over.
     useEffect(() => {
 
@@ -247,8 +248,6 @@ const QuestsRewards = () => {
 
                         const totalEarned = prevTotal + 100;
 
-                        localStorage.setItem("dailyPoint", totalEarned.toString());
-
                         localStorage.setItem("TotalEarned", totalEarned.toString());
                         return totalEarned;
                     }),
@@ -263,6 +262,14 @@ const QuestsRewards = () => {
                         }
 
                         return Math.min(prevStreak + 1, 28)
+                    }),
+                    setDailyPoint(prevDailyPoint=>{
+
+                        const dailyPoint = prevDailyPoint + 100;
+
+                        localStorage.setItem("dailyPoint", dailyPoint.toString());
+                        
+                        return dailyPoint;
                     })
                 ]);
                 localStorage.removeItem(localStorageKey);

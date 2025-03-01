@@ -31,6 +31,24 @@ export default function DashboardPage() {
 
 
 
+  const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
+
+  const initialCountdown = 1 * 10; // 3 minutes in seconds
+
+  const [countdown, setCountdown] = useState<number>(() => {
+    const stored = localStorage.getItem(localStorageKey);
+    return stored ? Number(stored) : 0;
+  });
+
+  const [isClaimable, setIsClaimable] = useState<boolean>(false);
+  const [claimed, setClaimed] = useState<boolean>(false);
+  const [streak, setStreak] = useState<number>(0);
+  const [dailyPoint, setDailyPoint] = useState<number>(0);
+
+
+
+
+
   const handleShowDemo = () => {
     setTimeout(() => {
 
@@ -88,6 +106,95 @@ export default function DashboardPage() {
 
   }, [])
 
+
+
+  useEffect(() => {
+
+    let interval: NodeJS.Timeout;
+
+    if (countdown > 0) {
+      interval = setInterval(() => {
+
+        setCountdown((prevCountdown) => {
+
+          const newCountdown = prevCountdown - 1;
+
+          try {
+
+            localStorage.setItem(localStorageKey, newCountdown.toString());
+
+          } catch (error) {
+
+            console.error('Failed to update localStorage:', error);
+          }
+          return newCountdown;
+        });
+      }, 1000);
+
+    } else {
+
+      setIsClaimable(true);
+
+
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [countdown]);
+
+
+
+
+  const handleClaim = async () => {
+
+    if (isClaimable) {
+      try {
+        setClaimed(true);
+        setIsClaimable(false);
+
+        await Promise.all([
+          setTotalEarned((prevTotal) => {
+
+            const totalEarned = prevTotal + 100;
+
+            localStorage.setItem("TotalEarned", totalEarned.toString());
+            return totalEarned;
+          }),
+
+          setStreak(prevStreak => {
+
+            localStorage.setItem("streak", (prevStreak + 1).toString());
+
+            if (prevStreak + 1 > 28) {
+              localStorage.removeItem("streak");
+              setStreak(1);
+            }
+
+            return Math.min(prevStreak + 1, 28)
+          }),
+          setDailyPoint(prevDailyPoint => {
+
+            const dailyPoint = prevDailyPoint + 100;
+
+            localStorage.setItem("dailyPoint", dailyPoint.toString());
+
+            return dailyPoint;
+          })
+        ]);
+        localStorage.removeItem(localStorageKey);
+        setCountdown(initialCountdown);
+        setTimeout(() => setClaimed(false), 1000);
+      } catch (error) {
+
+        console.error('Failed to process claim:', error);
+
+        setClaimed(false);
+
+        setIsClaimable(true);
+      }
+    }
+  };
 
 
 
@@ -222,7 +329,15 @@ export default function DashboardPage() {
                 </div>
 
                 <div className=''>
-                  <Button className='w-full font-bold text-[15px] flex justify-center items-center rounded-xl p-6'> <LockIcon /> Claim 100</Button>
+                  <Button
+                    className={`w-full font-bold text-[15px] flex justify-center items-center rounded-xl p-6 *
+                      ${isClaimable ? 'bg-green-500' : 'bg-gray-300'}`}
+                    onClick={handleClaim}
+                    disabled={!isClaimable}
+                  >
+                    <LockIcon />
+                    Claim 100
+                  </Button>
                 </div>
               </div>
 
