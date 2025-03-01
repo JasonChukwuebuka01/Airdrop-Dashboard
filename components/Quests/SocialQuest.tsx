@@ -19,9 +19,6 @@ const SocialQuest = () => {
             <ConnectTelegram />
             <ConnectYoutubeXname />
             <AddDiscordXTelegramName />
-
-
-
         </section>
     )
 }

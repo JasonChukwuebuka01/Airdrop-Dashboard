@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Check, Lock, Globe, DollarSign, Clock, Calendar, LockIcon, TrafficConeIcon } from 'lucide-react';
+import { Check, Lock, Globe, DollarSign, Clock, Calendar, LockIcon, TrafficConeIcon, UnlockIcon } from 'lucide-react';
 import DialogeBox from './DialogeBox';
 import ReferralQuest from '../Quests/ReferralQuest';
 import SocialQuest from '../Quests/SocialQuest';
@@ -14,8 +14,6 @@ const QuestsRewards = () => {
 
 
     const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
-
-
 
     const initialCountdown = 1 * 10; // 3 minutes in seconds
 
@@ -41,6 +39,8 @@ const QuestsRewards = () => {
 
 
 
+
+    
     //resetting local storage by removing to start all over.
     useEffect(() => {
 
@@ -60,6 +60,8 @@ const QuestsRewards = () => {
         };
 
     }, [streak])
+
+
 
 
 
@@ -227,6 +229,8 @@ const QuestsRewards = () => {
             if (interval) clearInterval(interval);
         };
     }, [countdown]);
+
+
 
 
 
@@ -414,7 +418,9 @@ const QuestsRewards = () => {
 
 
 
+
     return (
+
 
         <section className="bg-gray-900 text-white p-5 rounded-lg w-full ">
             <header>
@@ -453,7 +459,9 @@ const QuestsRewards = () => {
                                     className={`bg-purple-700 text-white py-2 px-4 rounded-md disabled:bg-gray-700 
                 ${isClaimable && 'hover:bg-purple-600'} w-full font-bold text-[15px] flex justify-center items-center rounded-xl p-6 gap-2  border border-gray-300`}
                                 >
-                                    <LockIcon size={18} />
+                                    {
+                                        isClaimable ? <UnlockIcon size={18} /> : <LockIcon size={18} /> 
+                                    }
                                     {
                                         claimed ?
                                             "Claimed"
