@@ -154,6 +154,10 @@ const QuestsRewards = () => {
                 const now = Date.now();
                 const timeDiff = now - lastClaimTime;
                 const hoursDiff = timeDiff / (1000 * 60 * 60);
+                console.log("Now" + now);
+                console.log("Last Claim Time" + lastClaimTime);
+                console.log("Time Diff" + timeDiff);
+                console.log("Hours Diff" + hoursDiff);
 
                 // Reset streak if more than 24 hours have passed
                 if (hoursDiff > 24) {
