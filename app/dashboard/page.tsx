@@ -252,7 +252,7 @@ export default function DashboardPage() {
             <aside className="grid grid-cols-1 sm:grid-cols-6 w-full h-full lg:overflow-hidden  ">
 
               <div className="h-full col-span-3">
-                <h2 className='text-center font-bold pt-2'>Speedtest Quality</h2>
+                <h2 className='text-center font-bold pt-2'>Speedtest Qualityy</h2>
                 <CustomSpeedometer />
               </div>
 

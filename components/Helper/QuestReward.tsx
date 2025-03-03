@@ -264,6 +264,8 @@ const QuestsRewards = () => {
 
     const progressWidth = Math.min((streak / 28) * 100, 100); // Calculate progress width
 
+    
+
     return (
         <section className="bg-gray-900 text-white p-5 rounded-lg w-full ">
             <header>
