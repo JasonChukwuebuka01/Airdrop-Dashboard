@@ -85,3 +85,120 @@ export const tableData: NetworkData[] = [
         Bytes: 100
     }
 ];
+
+
+
+interface TransactionHistory {
+    TransactionId: string;
+    TransactionType: string;
+    Time: string;
+    BytesEarned: number;
+    Details: string;
+}
+export const transactionHistory: TransactionHistory[] = [
+    {
+        TransactionId: "TRX001",
+        TransactionType: "Daily Claim Quest",
+        Time: "2025-02-04 11:26",
+        BytesEarned: 100,
+        Details: "Network sharing reward"
+    },
+    {
+        TransactionId: "TRX002",
+        TransactionType: "Speedtest Earning",
+        Time: "2025-02-04 12:45",
+        BytesEarned: 200,
+        Details: "Referral bonus"
+    },
+    {
+        TransactionId: "TRX003",
+        TransactionType: "Speedtest Earning",
+        Time: "2025-02-04 13:15",
+        BytesEarned: 200,
+        Details: "Data usage"
+    },
+    {
+        TransactionId: "TRX004",
+        TransactionType: "Daily Claim Quest",
+        Time: "2025-02-04 14:30",
+        BytesEarned: 100,
+        Details: "Network sharing reward"
+    },
+    {
+        TransactionId: "TRX005",
+        TransactionType: "Speedtest Earning",
+        Time: "2025-02-04 15:45",
+        BytesEarned: 200,
+        Details: "Data usage"
+    },
+    {
+        TransactionId: "TRX006",
+        TransactionType: "Speedtest Earning",
+        Time: "2025-02-04 16:30",
+        BytesEarned: 200,
+        Details: "Network sharing reward"
+    },
+    {
+        TransactionId: "TRX007",
+        TransactionType: "Speedtest Earning",
+        Time: "2025-02-04 17:15",
+        BytesEarned: 200,
+        Details: "Referral bonus"
+    },
+    {
+        TransactionId: "TRX008",
+        TransactionType: "Daily Claim Quest",
+        Time: "2025-02-04 18:00",
+        BytesEarned: 100,
+        Details: "Data usage"
+    },
+    {
+        TransactionId: "TRX009",
+        TransactionType: "Daily Claim Quest",
+        Time: "2025-02-04 19:20",
+        BytesEarned: 100,
+        Details: "Network sharing reward"
+    },
+    {
+        TransactionId: "TRX010",
+        TransactionType: "Daily Claim Quest",
+        Time: "2025-02-04 20:10",
+        BytesEarned: 100,
+        Details: "Network sharing reward"
+    },
+    {
+        TransactionId: "TRX011",
+        TransactionType: "Daily Claim Quest",
+        Time: "2025-02-04 21:00",
+        BytesEarned: 100,
+        Details: "Data usage"
+    },
+    {
+        TransactionId: "TRX012",
+        TransactionType: "Speedtest Earning",
+        Time: "2025-02-04 21:45",
+        BytesEarned: 200,
+        Details: "Network sharing reward"
+    },
+    {
+        TransactionId: "TRX013",
+        TransactionType: "Speedtest Earning",
+        Time: "2025-02-04 22:30",
+        BytesEarned: 200,
+        Details: "Referral bonus"
+    },
+    {
+        TransactionId: "TRX014",
+        TransactionType: "Speedtest Earning",
+        Time: "2025-02-04 23:15",
+        BytesEarned: 200,
+        Details: "Data usage"
+    },
+    {
+        TransactionId: "TRX015",
+        TransactionType: "Speedtest Earning",
+        Time: "2025-02-05 00:00",
+        BytesEarned: 200,
+        Details: "Network sharing reward"
+    }
+];

@@ -2,15 +2,15 @@
 
 
 import React, { useEffect, useState } from 'react'
-import DataTable from '@/components/Helper/dataTable'
 import SwitchDemo from '@/components/Helper/SwitchDemo'
-import { tableData } from '@/data/tableData';
+import { transactionHistory} from '@/data/tableData';
+import TransactionHistoryTable from '@/components/Helper/TransactionHistoryTable';
 
 
 
 
 
-const TransactionHistory = () => {
+const TransactionHistory = () => { 
 
 
 
@@ -29,7 +29,7 @@ const TransactionHistory = () => {
 
                 await new Promise(resolve => {
                     setTimeout(() => {
-                        setTableData(tableData);
+                        setTableData(transactionHistory);
                         resolve(true)
                     }, 2000)
                 });
@@ -67,7 +67,7 @@ const TransactionHistory = () => {
             </header>
 
             <section>
-                <DataTable tableData={tableDatas} HideIpAddress={HideIpAddress} isLoading={isLoading} />
+                <TransactionHistoryTable tableData={tableDatas} HideIpAddress={HideIpAddress} isLoading={isLoading} />
             </section>
         </section>
     )
