@@ -65,16 +65,16 @@ export default function TransactionHistoryTable({ tableData, HideIpAddress, isLo
                                         key={index}
                                         className='border border-gray-300 text-base rounded-lg p-4 transition-all duration-300 ease-in-out hover:bg-gray-300 hover:shadow-md'
                                     >
-                                        <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-pre-wrap">{data.TransactionId}</TableCell>
-                                        <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis">{data.TransactionType}<span className='ml-1'>MB/s</span></TableCell>
-                                        <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis">{data.Time} <span className='ml-1'>MB/s</span></TableCell>
+                                        <TableCell className="p-4 w-[200px] min-w-[200px] max-w-[200px] whitespace-pre-wrap">{data.TransactionId}</TableCell>
+                                        <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis">{data.TransactionType}</TableCell>
+                                        <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis">{data.Time} <span className='ml-1'>{data.cycle}</span></TableCell>
                                         <TableCell className="p-4 w-[150px]">
                                             <div className='border-2 border-black lg:w-[40%] flex items-center justify-center gap-3 p-1 pl-2 pr-2 rounded-lg'>
                                                 <span className='font-bold '>{data.BytesEarned}</span>
                                                 <div><TrafficConeIcon /></div>
                                             </div>
                                         </TableCell>
-                                        <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis">
+                                        <TableCell className="p-4 w-[200px] min-w-[200px] max-w-[200px]  whitespace-nowrap overflow-hidden text-ellipsis">
                                             {data.Details}
                                         </TableCell>
 

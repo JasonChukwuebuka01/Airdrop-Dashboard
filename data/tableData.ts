@@ -94,111 +94,128 @@ interface TransactionHistory {
     Time: string;
     BytesEarned: number;
     Details: string;
+    cycle: string;
 }
+
 export const transactionHistory: TransactionHistory[] = [
     {
-        TransactionId: "TRX001",
+        TransactionId: "TRANS-1740751112799-464349",
         TransactionType: "Daily Claim Quest",
-        Time: "2025-02-04 11:26",
+        Time: "2025-02-04",
         BytesEarned: 100,
-        Details: "Network sharing reward"
+        Details: "Earned Bytes for daily streak 1",
+        cycle: "kilo cycle"
     },
     {
-        TransactionId: "TRX002",
+        TransactionId: "TRANS-1740751112800-467821",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04 12:45",
+        Time: "2025-02-04",
         BytesEarned: 200,
-        Details: "Referral bonus"
+        Details: "Earned Bytes From Speedtest",
+        cycle: "kilo cycle"
     },
     {
-        TransactionId: "TRX003",
+        TransactionId: "TRANS-1740751112801-469234",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04 13:15",
+        Time: "2025-02-04",
         BytesEarned: 200,
-        Details: "Data usage"
+        Details: "Earned Bytes From Speedtest",
+        cycle: "kilo cycle"
     },
     {
-        TransactionId: "TRX004",
+        TransactionId: "TRANS-1740751112802-471567",
         TransactionType: "Daily Claim Quest",
-        Time: "2025-02-04 14:30",
+        Time: "2025-02-04",
         BytesEarned: 100,
-        Details: "Network sharing reward"
+        Details: "Earned Bytes for daily streak 2",
+        cycle: "kilo cycle"
     },
     {
-        TransactionId: "TRX005",
+        TransactionId: "TRANS-1740751112803-473890",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04 15:45",
+        Time: "2025-02-04",
         BytesEarned: 200,
-        Details: "Data usage"
+        Details: "Earned Bytes From Speedtest",
+        cycle: "kilo cycle"
     },
     {
-        TransactionId: "TRX006",
+        TransactionId: "TRANS-1740751112804-476123",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04 16:30",
+        Time: "2025-02-04",
         BytesEarned: 200,
-        Details: "Network sharing reward"
+        Details: "Earned Bytes From Speedtest",
+        cycle: "kilo cycle"
     },
     {
-        TransactionId: "TRX007",
+        TransactionId: "TRANS-1740751112805-478456",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04 17:15",
+        Time: "2025-02-04",
         BytesEarned: 200,
-        Details: "Referral bonus"
+        Details: "Earned Bytes From Speedtest",
+        cycle: "kilo cycle"
     },
     {
-        TransactionId: "TRX008",
+        TransactionId: "TRANS-1740751112806-480789",
         TransactionType: "Daily Claim Quest",
-        Time: "2025-02-04 18:00",
+        Time: "2025-02-04",
         BytesEarned: 100,
-        Details: "Data usage"
+        Details: "Earned Bytes for daily streak 3",
+        cycle: "kilo cycle"
     },
     {
-        TransactionId: "TRX009",
+        TransactionId: "TRANS-1740751112807-483012",
         TransactionType: "Daily Claim Quest",
-        Time: "2025-02-04 19:20",
+        Time: "2025-02-04",
         BytesEarned: 100,
-        Details: "Network sharing reward"
+        Details: "Earned Bytes for daily streak 1",
+        cycle: "mega cycle"
     },
     {
-        TransactionId: "TRX010",
+        TransactionId: "TRANS-1740751112808-485345",
         TransactionType: "Daily Claim Quest",
-        Time: "2025-02-04 20:10",
+        Time: "2025-02-04",
         BytesEarned: 100,
-        Details: "Network sharing reward"
+        Details: "Earned Bytes for daily streak 2",
+        cycle: "mega cycle"
     },
     {
-        TransactionId: "TRX011",
+        TransactionId: "TRANS-1740751112809-487678",
         TransactionType: "Daily Claim Quest",
-        Time: "2025-02-04 21:00",
+        Time: "2025-02-04",
         BytesEarned: 100,
-        Details: "Data usage"
+        Details: "Earned Bytes for daily streak 3",
+        cycle: "mega cycle"
     },
     {
-        TransactionId: "TRX012",
+        TransactionId: "TRANS-1740751112810-489901",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04 21:45",
+        Time: "2025-02-04",
         BytesEarned: 200,
-        Details: "Network sharing reward"
+        Details: "Earned Bytes From Speedtest",
+        cycle: "mega cycle"
     },
     {
-        TransactionId: "TRX013",
+        TransactionId: "TRANS-1740751112811-492234",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04 22:30",
+        Time: "2025-02-04",
         BytesEarned: 200,
-        Details: "Referral bonus"
+        Details: "Earned Bytes From Speedtest",
+        cycle: "mega cycle"
     },
     {
-        TransactionId: "TRX014",
+        TransactionId: "TRANS-1740751112812-494567",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04 23:15",
+        Time: "2025-02-04",
         BytesEarned: 200,
-        Details: "Data usage"
+        Details: "Earned Bytes From Speedtest",
+        cycle: "mega cycle"
     },
     {
-        TransactionId: "TRX015",
+        TransactionId: "TRANS-1740751112813-496890",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-05 00:00",
+        Time: "2025-02-05",
         BytesEarned: 200,
-        Details: "Network sharing reward"
+        Details: "Earned Bytes From Speedtest",
+        cycle: "mega cycle"
     }
 ];
