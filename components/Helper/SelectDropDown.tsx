@@ -37,7 +37,6 @@ export default function SelectDropDown({ setSelectedValue }: SelectDropDownProps
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
-                    <SelectLabel >All Campaign</SelectLabel>
                     <SelectItem value="All Campaign">All Campaign</SelectItem>
                     <SelectItem value="kilo cycle">Kilo Cycle</SelectItem>
                     <SelectItem value="mega cycle">Mega Cycle</SelectItem>

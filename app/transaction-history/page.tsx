@@ -2,7 +2,6 @@
 
 
 import React, { useEffect, useState } from 'react'
-import SwitchDemo from '@/components/Helper/SwitchDemo'
 import { transactionHistory } from '@/data/tableData';
 import TransactionHistoryTable from '@/components/Helper/TransactionHistoryTable';
 import SelectDropDown from '@/components/Helper/SelectDropDown';
@@ -30,13 +29,12 @@ const TransactionHistory = () => {
 
         await new Promise(resolve => {
           setTimeout(() => {
-
-            const filteredTableData = selectedValue ? transactionHistory.filter(item => item.cycle === selectedValue) : transactionHistory;
+            const filteredTableData = selectedValue === "All Campaign" ? transactionHistory : selectedValue? transactionHistory.filter(item => item.cycle === selectedValue) : transactionHistory;
 
             setTableData(filteredTableData);
 
             resolve(true)
-          }, 4000)
+          }, 2000)
         });
 
       } catch (error) {
@@ -49,7 +47,6 @@ const TransactionHistory = () => {
     fetchData();
 
   }, [selectedValue])
-
 
 
 
@@ -142,14 +139,3 @@ export default TransactionHistory;
 //   });
 // }, [data, date]);
 
-//   const [campaignFilter, setCampaignFilter] = useState<string>('');
-
-//   const filteredCampaignData = useMemo(() => {
-//       if (!campaignFilter) {
-//           return filteredData;
-//       }
-
-//       return filteredData.filter(item =>
-//           item.campaign.toLowerCase().includes(campaignFilter.toLowerCase())
-//       );
-//   }, [filteredData, campaignFilter]);
