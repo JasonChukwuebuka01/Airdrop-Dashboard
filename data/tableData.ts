@@ -101,7 +101,7 @@ export const transactionHistory: TransactionHistory[] = [
     {
         TransactionId: "TRANS-1740751112799-464349",
         TransactionType: "Daily Claim Quest",
-        Time: "2025-02-04",
+        Time: "04/03/2025",
         BytesEarned: 100,
         Details: "Earned Bytes for daily streak 1",
         cycle: "kilo cycle"
@@ -109,7 +109,7 @@ export const transactionHistory: TransactionHistory[] = [
     {
         TransactionId: "TRANS-1740751112800-467821",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04",
+        Time: "04/05/2025",
         BytesEarned: 200,
         Details: "Earned Bytes From Speedtest",
         cycle: "kilo cycle"
@@ -117,7 +117,7 @@ export const transactionHistory: TransactionHistory[] = [
     {
         TransactionId: "TRANS-1740751112801-469234",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04",
+        Time: "04/07/2025",
         BytesEarned: 200,
         Details: "Earned Bytes From Speedtest",
         cycle: "kilo cycle"
@@ -125,7 +125,7 @@ export const transactionHistory: TransactionHistory[] = [
     {
         TransactionId: "TRANS-1740751112802-471567",
         TransactionType: "Daily Claim Quest",
-        Time: "2025-02-04",
+        Time: "04/09/2025",
         BytesEarned: 100,
         Details: "Earned Bytes for daily streak 2",
         cycle: "kilo cycle"
@@ -133,7 +133,7 @@ export const transactionHistory: TransactionHistory[] = [
     {
         TransactionId: "TRANS-1740751112803-473890",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04",
+        Time: "04/11/2025",
         BytesEarned: 200,
         Details: "Earned Bytes From Speedtest",
         cycle: "kilo cycle"
@@ -141,7 +141,7 @@ export const transactionHistory: TransactionHistory[] = [
     {
         TransactionId: "TRANS-1740751112804-476123",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04",
+        Time: "04/13/2025",
         BytesEarned: 200,
         Details: "Earned Bytes From Speedtest",
         cycle: "kilo cycle"
@@ -149,7 +149,7 @@ export const transactionHistory: TransactionHistory[] = [
     {
         TransactionId: "TRANS-1740751112805-478456",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04",
+        Time: "04/15/2025",
         BytesEarned: 200,
         Details: "Earned Bytes From Speedtest",
         cycle: "kilo cycle"
@@ -157,7 +157,7 @@ export const transactionHistory: TransactionHistory[] = [
     {
         TransactionId: "TRANS-1740751112806-480789",
         TransactionType: "Daily Claim Quest",
-        Time: "2025-02-04",
+        Time: "04/17/2025",
         BytesEarned: 100,
         Details: "Earned Bytes for daily streak 3",
         cycle: "kilo cycle"
@@ -165,7 +165,7 @@ export const transactionHistory: TransactionHistory[] = [
     {
         TransactionId: "TRANS-1740751112807-483012",
         TransactionType: "Daily Claim Quest",
-        Time: "2025-02-04",
+        Time: "04/19/2025",
         BytesEarned: 100,
         Details: "Earned Bytes for daily streak 1",
         cycle: "mega cycle"
@@ -173,7 +173,7 @@ export const transactionHistory: TransactionHistory[] = [
     {
         TransactionId: "TRANS-1740751112808-485345",
         TransactionType: "Daily Claim Quest",
-        Time: "2025-02-04",
+        Time: "04/21/2025",
         BytesEarned: 100,
         Details: "Earned Bytes for daily streak 2",
         cycle: "mega cycle"
@@ -181,7 +181,7 @@ export const transactionHistory: TransactionHistory[] = [
     {
         TransactionId: "TRANS-1740751112809-487678",
         TransactionType: "Daily Claim Quest",
-        Time: "2025-02-04",
+        Time: "04/23/2025",
         BytesEarned: 100,
         Details: "Earned Bytes for daily streak 3",
         cycle: "mega cycle"
@@ -189,7 +189,7 @@ export const transactionHistory: TransactionHistory[] = [
     {
         TransactionId: "TRANS-1740751112810-489901",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04",
+        Time: "04/25/2025",
         BytesEarned: 200,
         Details: "Earned Bytes From Speedtest",
         cycle: "mega cycle"
@@ -197,7 +197,7 @@ export const transactionHistory: TransactionHistory[] = [
     {
         TransactionId: "TRANS-1740751112811-492234",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04",
+        Time: "04/27/2025",
         BytesEarned: 200,
         Details: "Earned Bytes From Speedtest",
         cycle: "mega cycle"
@@ -205,7 +205,7 @@ export const transactionHistory: TransactionHistory[] = [
     {
         TransactionId: "TRANS-1740751112812-494567",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-04",
+        Time: "04/29/2025",
         BytesEarned: 200,
         Details: "Earned Bytes From Speedtest",
         cycle: "mega cycle"
@@ -213,7 +213,7 @@ export const transactionHistory: TransactionHistory[] = [
     {
         TransactionId: "TRANS-1740751112813-496890",
         TransactionType: "Speedtest Earning",
-        Time: "2025-02-05",
+        Time: "04/30/2025",
         BytesEarned: 200,
         Details: "Earned Bytes From Speedtest",
         cycle: "mega cycle"

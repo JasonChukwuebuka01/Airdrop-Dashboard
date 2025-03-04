@@ -3,74 +3,75 @@
 
 import React, { useEffect, useState } from 'react'
 import SwitchDemo from '@/components/Helper/SwitchDemo'
-import { transactionHistory} from '@/data/tableData';
+import { transactionHistory } from '@/data/tableData';
 import TransactionHistoryTable from '@/components/Helper/TransactionHistoryTable';
+import SelectDropDown from '@/components/Helper/SelectDropDown';
 
 
 
 
 
-const TransactionHistory = () => { 
+const TransactionHistory = () => {
 
 
 
-    const [HideIpAddress, setHideIpAddress] = useState<boolean>(true);
-    const [isLoading, setIsLoading] = useState(true);
-    const [tableDatas, setTableData] = useState<any[]>([]);
+  const [selectedValue, setSelectedValue] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [tableDatas, setTableData] = useState<any[]>([]);
 
-    // Fetch data
-    useEffect(() => {
+  // Fetch data
+  useEffect(() => {
 
-        const fetchData = async () => {
+    const fetchData = async () => {
 
-            setIsLoading(true);
+      setIsLoading(true);
 
-            try {
+      try {
 
-                await new Promise(resolve => {
-                    setTimeout(() => {
-                        setTableData(transactionHistory);
-                        resolve(true)
-                    }, 2000)
-                });
+        await new Promise(resolve => {
+          setTimeout(() => {
 
-            } catch (error) {
-                console.error(error)
-            } finally {
-                setIsLoading(false)
-            }
-        };
+            const filteredTableData = selectedValue ? transactionHistory.filter(item => item.cycle === selectedValue) : transactionHistory;
 
-        fetchData();
-    }, [])
+            setTableData(filteredTableData);
 
-    
+            resolve(true)
+          }, 4000)
+        });
+
+      } catch (error) {
+        console.error(error)
+      } finally {
+        setIsLoading(false)
+      }
+    };
+
+    fetchData();
+
+  }, [selectedValue])
 
 
 
 
 
-    return (
-        <section className=' border border-gray-300 p-4 rounded-lg '>
-            <header className='flex justify-between items-center mb-3'>
-                <h2 className='text-base lg:text-xl font-bold text-gray-800 mb-2 '>Transaction History</h2>
 
-                <article className='flex gap-2 justify-center items-center'>
-                    <div>
-                        <SwitchDemo
-                            setHideIpAddress={setHideIpAddress}
-                            HideIpAddress={HideIpAddress}
-                        />
-                    </div>
-                    <h2 className='text-base lg:text-lg font-bold text-gray-800 text-center'>Hide IP Address</h2>
-                </article>
-            </header>
+  return (
+    <section className=' border border-gray-300 p-4 rounded-lg '>
+      <header className='flex justify-between items-center mb-3'>
+        <h2 className='text-base lg:text-xl font-bold text-gray-800 mb-2 '>Transaction History</h2>
 
-            <section>
-                <TransactionHistoryTable tableData={tableDatas} HideIpAddress={HideIpAddress} isLoading={isLoading} />
-            </section>
-        </section>
-    )
+        <article className='flex gap-2 justify-center items-center'>
+          <SelectDropDown
+            setSelectedValue={setSelectedValue}
+          />
+        </article>
+      </header>
+
+      <section>
+        <TransactionHistoryTable tableData={tableDatas} isLoading={isLoading} />
+      </section>
+    </section>
+  )
 }
 
 
@@ -81,8 +82,8 @@ export default TransactionHistory;
 
 
 
-  {/* Filters */}
-  {/* <div className="flex items-center justify-between mb-5">
+{/* Filters */ }
+{/* <div className="flex items-center justify-between mb-5">
     <div className="flex items-center space-x-2">
         <label htmlFor="allCampaign" className="mr-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">All Campaign</label>
         <Input
@@ -131,24 +132,24 @@ export default TransactionHistory;
   </div> */}
 
 
-   // const filteredData = useMemo(() => {
-   //   return data.filter((item) => {
-   //     if (date?.from && date?.to) {
-   //       const itemDate = new Date(item.time);
-   //       return itemDate >= date.from && itemDate <= date.to;
-   //     }
-   //     return true;
-   //   });
-   // }, [data, date]);
+// const filteredData = useMemo(() => {
+//   return data.filter((item) => {
+//     if (date?.from && date?.to) {
+//       const itemDate = new Date(item.time);
+//       return itemDate >= date.from && itemDate <= date.to;
+//     }
+//     return true;
+//   });
+// }, [data, date]);
 
-   //   const [campaignFilter, setCampaignFilter] = useState<string>('');
+//   const [campaignFilter, setCampaignFilter] = useState<string>('');
 
-   //   const filteredCampaignData = useMemo(() => {
-   //       if (!campaignFilter) {
-   //           return filteredData;
-   //       }
+//   const filteredCampaignData = useMemo(() => {
+//       if (!campaignFilter) {
+//           return filteredData;
+//       }
 
-   //       return filteredData.filter(item =>
-   //           item.campaign.toLowerCase().includes(campaignFilter.toLowerCase())
-   //       );
-   //   }, [filteredData, campaignFilter]);
+//       return filteredData.filter(item =>
+//           item.campaign.toLowerCase().includes(campaignFilter.toLowerCase())
+//       );
+//   }, [filteredData, campaignFilter]);

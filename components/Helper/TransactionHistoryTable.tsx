@@ -11,20 +11,19 @@ import {
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import { LoaderPinwheelIcon, TrafficConeIcon } from "lucide-react" // Import loader icon
-import ToolTipProvider from './ToolTipProvider';
+
 
 
 
 interface DataTableProps {
     tableData: any[]
-    HideIpAddress: boolean
     isLoading?: boolean
 }
 
 
 
 
-export default function TransactionHistoryTable({ tableData, HideIpAddress, isLoading }: DataTableProps) {
+export default function TransactionHistoryTable({ tableData, isLoading }: DataTableProps) {
     // Pagination states
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
@@ -65,16 +64,16 @@ export default function TransactionHistoryTable({ tableData, HideIpAddress, isLo
                                         key={index}
                                         className='border border-gray-300 text-base rounded-lg p-4 transition-all duration-300 ease-in-out hover:bg-gray-300 hover:shadow-md'
                                     >
-                                        <TableCell className="p-4 w-[200px] min-w-[200px] max-w-[200px] whitespace-pre-wrap">{data.TransactionId}</TableCell>
+                                        <TableCell className="p-4 w-[220px] min-w-[220px] max-w-[220px] whitespace-pre-wrap">{data.TransactionId}</TableCell>
                                         <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis">{data.TransactionType}</TableCell>
-                                        <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis">{data.Time} <span className='ml-1'>{data.cycle}</span></TableCell>
+                                        <TableCell className="p-4 w-[200px] min-w-[200px] max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis">{data.Time} <span className='ml-1 p-2 rounded-xl border text-white font-bold bg-green-600 px-4'>{data.cycle}</span></TableCell>
                                         <TableCell className="p-4 w-[150px]">
-                                            <div className='border-2 border-black lg:w-[40%] flex items-center justify-center gap-3 p-1 pl-2 pr-2 rounded-lg'>
+                                            <div className='border-2 border-black lg:w-[60%] flex items-center justify-center gap-3 p-1 px-4 rounded-lg'>
                                                 <span className='font-bold '>{data.BytesEarned}</span>
                                                 <div><TrafficConeIcon /></div>
                                             </div>
                                         </TableCell>
-                                        <TableCell className="p-4 w-[200px] min-w-[200px] max-w-[200px]  whitespace-nowrap overflow-hidden text-ellipsis">
+                                        <TableCell className="p-4 w-[220px] min-w-[220px] max-w-[220px]  whitespace-nowrap overflow-hidden text-ellipsis">
                                             {data.Details}
                                         </TableCell>
 
