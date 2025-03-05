@@ -51,7 +51,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ onDateRangeChange, in
               (date.to ?
                 (`${format(date.from, "PPP")} - ${format(date.to, "PPP")}`) : (format(date.from, "PPP"))
               )
-              : (<span>Pick a date</span>)
+              : (<span>Pick aa date</span>)
           }
         </Button>
       </PopoverTrigger>
