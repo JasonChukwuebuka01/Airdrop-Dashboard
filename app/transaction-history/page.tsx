@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { transactionHistory } from '@/data/tableData';
 import TransactionHistoryTable from '@/components/Helper/TransactionHistoryTable';
 import SelectDropDown from '@/components/Helper/SelectDropDown';
+import DateRangePicker from '@/components/Helper/DateRangePicker';
 
 
 
@@ -29,7 +30,7 @@ const TransactionHistory = () => {
 
         await new Promise(resolve => {
           setTimeout(() => {
-            const filteredTableData = selectedValue === "All Campaign" ? transactionHistory : selectedValue? transactionHistory.filter(item => item.cycle === selectedValue) : transactionHistory;
+            const filteredTableData = selectedValue === "All Campaign" ? transactionHistory : selectedValue ? transactionHistory.filter(item => item.cycle === selectedValue) : transactionHistory;
 
             setTableData(filteredTableData);
 
@@ -49,6 +50,14 @@ const TransactionHistory = () => {
   }, [selectedValue])
 
 
+  const [selectedDateRange, setSelectedDateRange] = useState<any | undefined>(undefined);
+
+
+  const handleDateRangeChange = (dateRange: any) => {
+    setSelectedDateRange(dateRange);
+  };
+
+
 
 
 
@@ -61,6 +70,10 @@ const TransactionHistory = () => {
           <SelectDropDown
             setSelectedValue={setSelectedValue}
           />
+          <DateRangePicker 
+          onDateRangeChange={handleDateRangeChange} 
+          />
+
         </article>
       </header>
 
