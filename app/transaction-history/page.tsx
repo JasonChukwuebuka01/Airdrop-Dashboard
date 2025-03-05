@@ -55,6 +55,7 @@ const TransactionHistory = () => {
 
   const handleDateRangeChange = (dateRange: any) => {
     setSelectedDateRange(dateRange);
+    console.log(dateRange)
   };
 
 
@@ -70,8 +71,8 @@ const TransactionHistory = () => {
           <SelectDropDown
             setSelectedValue={setSelectedValue}
           />
-          <DateRangePicker 
-          onDateRangeChange={handleDateRangeChange} 
+          <DateRangePicker
+            onDateRangeChange={handleDateRangeChange}
           />
 
         </article>
