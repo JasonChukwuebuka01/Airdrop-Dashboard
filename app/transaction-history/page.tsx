@@ -44,9 +44,11 @@ const TransactionHistory = () => {
 
             
             if (!selectedDateRange?.from || !selectedDateRange.to) {
-              //setTableData(transactionHistory)
+             
               // Return original array if no date range is selected
+
             } else {
+
               const { from, to } = selectedDateRange;
 
               // Convert dates to short format (M/D/YYYY)
@@ -57,6 +59,7 @@ const TransactionHistory = () => {
               const formattedFrom = formatDate(from);
               const formattedTo = formatDate(to);
 
+              
               const parseDate = (dateStr :any) => {
                 const [day, month, year] = dateStr.split("/").map(Number);
                 return new Date(year, month - 1, day); // month - 1 because JS months are 0-based

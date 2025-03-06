@@ -12,14 +12,13 @@ import { Calendar1Icon } from "lucide-react";
 
 interface DateRangePickerProps {
   onDateRangeChange: (dateRange: DateRange | undefined) => void; // Callback function
-  initialDateRange?: DateRange | undefined;
 }
 
 
 
 
-const DateRangePicker: React.FC<DateRangePickerProps> = ({ onDateRangeChange, initialDateRange }) => {
-  const [date, setDate] = useState<DateRange | undefined>(initialDateRange);
+const DateRangePicker: React.FC<DateRangePickerProps> = ({ onDateRangeChange }) => {
+  const [date, setDate] = useState<DateRange | undefined>(undefined);
 
 
 
@@ -45,7 +44,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ onDateRangeChange, in
             !date && "text-muted-foreground"
           )}
         >
-          <Calendar1Icon className="mr-2 h-4 w-4" />
+
           {
             date?.from ?
               (date.to ?
@@ -53,12 +52,12 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ onDateRangeChange, in
               )
               : (<span>Pick a date</span>)
           }
+          <Calendar1Icon className="ml-5 h-4 w-4" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="end">
         <Calendar
           mode="range"
-          defaultMonth={date?.from}
           selected={date}
           onSelect={setDate}
           numberOfMonths={2}
@@ -70,19 +69,3 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ onDateRangeChange, in
 };
 
 export default DateRangePicker;
-
-// Function for filtering an array of dates:
-export const filterDatesByRange = (
-  dates: Date[],
-  dateRange: DateRange | undefined
-): Date[] => {
-  if (!dateRange?.from || !dateRange.to) {
-    return dates; // Return original array if no date range is selected
-  }
-
-  const { from, to } = dateRange;
-
-  return dates.filter((date) => {
-    return date >= from && date <= to;
-  });
-};
