@@ -32,7 +32,7 @@ export default function SelectDropDown({ setSelectedValue }: SelectDropDownProps
 
     return (
         <Select onValueChange={handleValueChange} value={value}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="lg:w-[180px]">
                 <SelectValue placeholder="All Campaign" />
             </SelectTrigger>
             <SelectContent>

@@ -42,15 +42,11 @@ const TransactionHistory = () => {
             };
 
 
-            
+            //Logic for sorting and filtering date range
             if (!selectedDateRange?.from || !selectedDateRange.to) {
-             
               // Return original array if no date range is selected
-
             } else {
-
               const { from, to } = selectedDateRange;
-
               // Convert dates to short format (M/D/YYYY)
               const formatDate = (date: Date) => {
                 return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
@@ -59,12 +55,11 @@ const TransactionHistory = () => {
               const formattedFrom = formatDate(from);
               const formattedTo = formatDate(to);
 
-              
-              const parseDate = (dateStr :any) => {
+              const parseDate = (dateStr: any) => {
                 const [day, month, year] = dateStr.split("/").map(Number);
-                return new Date(year, month - 1, day); // month - 1 because JS months are 0-based
+                return new Date(month - 1, day, year); // month - 1 because JS months are 0-based
               };
-              
+
               const ParsedDateFrom = parseDate(formattedFrom);
               const ParsedDateTo = parseDate(formattedTo);
 
@@ -72,7 +67,7 @@ const TransactionHistory = () => {
 
               const filteredTableData = transactionHistory.filter((data) => {
                 const itemDate = parseDate(data.Time);
-                return itemDate >= ParsedDateFrom && itemDate <= ParsedDateTo ;
+                return itemDate >= ParsedDateFrom && itemDate <= ParsedDateTo;
               });
 
               setTableData(filteredTableData);
@@ -109,10 +104,10 @@ const TransactionHistory = () => {
 
   return (
     <section className=' border border-gray-300 p-4 rounded-lg '>
-      <header className='flex justify-between items-center mb-3'>
+      <header className='flex flex-col lg:flex-row justify-between lg:items-center mb-3'>
         <h2 className='text-base lg:text-xl font-bold text-gray-800 mb-2 '>Transaction History</h2>
 
-        <article className='flex gap-2 justify-center items-center'>
+        <article className='flex gap-2 justify-center lg:items-center flex-col lg:flex-row'>
           <SelectDropDown
             setSelectedValue={setSelectedValue}
           />

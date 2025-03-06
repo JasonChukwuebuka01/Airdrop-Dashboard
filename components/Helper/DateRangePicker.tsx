@@ -17,6 +17,7 @@ interface DateRangePickerProps {
 
 
 
+
 const DateRangePicker: React.FC<DateRangePickerProps> = ({ onDateRangeChange }) => {
   const [date, setDate] = useState<DateRange | undefined>(undefined);
 
@@ -40,7 +41,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ onDateRangeChange }) 
         <Button
           variant={"outline"}
           className={cn(
-            "w-[300px] justify-start text-left font-normal",
+            "lg:w-[300px] justify-start text-left font-normal",
             !date && "text-muted-foreground"
           )}
         >
@@ -52,7 +53,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ onDateRangeChange }) 
               )
               : (<span>Pick a date</span>)
           }
-          <Calendar1Icon className="ml-5 h-4 w-4" />
+          <Calendar1Icon className="ml-3 h-4 w-4" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="end">

@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import { LoaderPinwheelIcon, TrafficConeIcon } from "lucide-react" // Import loader icon
+import Image from 'next/image';
 
 
 
@@ -62,18 +63,18 @@ export default function TransactionHistoryTable({ tableData, isLoading }: DataTa
                                 getCurrentPageData().map((data, index) => (
                                     <TableRow
                                         key={index}
-                                        className='border border-gray-300 text-base rounded-lg p-4 transition-all duration-300 ease-in-out hover:bg-gray-300 hover:shadow-md'
+                                        className='border border-gray-300 text-base rounded-lg p-4 transition-all duration-300 ease-in-out hover:bg-gray-300 hover:shadow-md overflow-auto'
                                     >
                                         <TableCell className="p-4 w-[220px] min-w-[220px] max-w-[220px] whitespace-pre-wrap">{data.TransactionId}</TableCell>
-                                        <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis">{data.TransactionType}</TableCell>
-                                        <TableCell className="p-4 w-[200px] min-w-[200px] max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis">{data.Time} <span className='ml-1 p-2 rounded-xl border text-white font-bold bg-green-600 px-4'>{data.cycle}</span></TableCell>
-                                        <TableCell className="p-4 w-[150px]">
+                                        <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap ">{data.TransactionType}</TableCell>
+                                        <TableCell className="p-4 w-[200px] min-w-[200px] max-w-[200px] whitespace-nowrap ">{data.Time} <span className='ml-1 p-2 rounded-xl border text-white font-bold bg-green-600 px-4 '>{data.cycle}</span></TableCell>
+                                        <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap">
                                             <div className='border-2 border-black lg:w-[60%] flex items-center justify-center gap-3 p-1 px-4 rounded-lg'>
                                                 <span className='font-bold '>{data.BytesEarned}</span>
                                                 <div><TrafficConeIcon /></div>
                                             </div>
                                         </TableCell>
-                                        <TableCell className="p-4 w-[220px] min-w-[220px] max-w-[220px]  whitespace-nowrap overflow-hidden text-ellipsis">
+                                        <TableCell className="p-4 w-[220px] min-w-[220px] max-w-[220px]  whitespace-break-spaces">
                                             {data.Details}
                                         </TableCell>
 
@@ -83,9 +84,21 @@ export default function TransactionHistoryTable({ tableData, isLoading }: DataTa
                             ) : isLoading === false ?
 
                                 (
-                                    <TableRow className='border-2 border-red-500 w-full'>
-                                        <TableCell className="w-full h-[400px] flex items-center justify-center border-2 border-blue-500">
-                                            <p className="text-gray-500">No data available</p>
+                                    <TableRow className='w-full border-2 border-black'>
+                                        <TableCell colSpan={5} className="h-[400px] text-center">
+                                            <div className="w-full h-full flex flex-col items-center justify-center">
+                                                <div className="w-full max-w-[200px] h-auto">
+                                                    <Image
+                                                        src="https://app.despeed.net/media/campaign/no-data.png"
+                                                        alt="No referral data"
+                                                        width={100}
+                                                        height={100}
+                                                        priority
+                                                        className="w-full h-auto object-contain"
+                                                    />
+                                                </div>
+                                                <p className="text-gray-500 text-xl font-bold mt-2">Looks like you haven't earned any Bytes yet!</p>
+                                            </div>
                                         </TableCell>
                                     </TableRow>
 
