@@ -54,20 +54,22 @@ const TransactionHistory = () => {
                 return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
               };
 
-
-
-              const addDateString = (dateStr: string) => {
-                const [month, day, year] = dateStr.split('/').map(Number);
-                return day + month + year;
-              };
-
               const formattedFrom = formatDate(from);
               const formattedTo = formatDate(to);
+
+              const parseDate = (dateStr :any) => {
+                const [day, month, year] = dateStr.split("/").map(Number);
+                return new Date(year, month - 1, day); // month - 1 because JS months are 0-based
+              };
+              
+              const ParsedDateFrom = parseDate(formattedFrom);
+              const ParsedDateTo = parseDate(formattedTo);
 
 
 
               const filteredTableData = transactionHistory.filter((data) => {
-                return addDateString(data.Time) >= addDateString(formattedFrom) && addDateString(data.Time) <= addDateString(formattedTo) 
+                const itemDate = parseDate(data.Time);
+                return itemDate >= ParsedDateFrom && itemDate <= ParsedDateTo ;
               });
 
               setTableData(filteredTableData);
