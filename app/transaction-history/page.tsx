@@ -18,6 +18,7 @@ const TransactionHistory = () => {
   const [selectedValue, setSelectedValue] = useState<string>("");
   const [isLoading, setIsLoading] = useState(true);
   const [tableDatas, setTableData] = useState<any[]>([]);
+  const [selectedDateRange, setSelectedDateRange] = useState<any | undefined>(undefined);
 
   // Fetch data
   useEffect(() => {
@@ -30,9 +31,48 @@ const TransactionHistory = () => {
 
         await new Promise(resolve => {
           setTimeout(() => {
-            const filteredTableData = selectedValue === "All Campaign" ? transactionHistory : selectedValue ? transactionHistory.filter(item => item.cycle === selectedValue) : transactionHistory;
 
-            setTableData(filteredTableData);
+            if (selectedValue) {
+              const filteredTableData = selectedValue === "All Campaign" ? transactionHistory : selectedValue ? transactionHistory.filter(item => item.cycle === selectedValue) : transactionHistory;
+
+              setTableData(filteredTableData);
+
+            } else {
+              setTableData(transactionHistory)
+            };
+
+
+            
+            if (!selectedDateRange?.from || !selectedDateRange.to) {
+              //setTableData(transactionHistory)
+              // Return original array if no date range is selected
+            } else {
+              const { from, to } = selectedDateRange;
+
+              // Convert dates to short format (M/D/YYYY)
+              const formatDate = (date: Date) => {
+                return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+              };
+
+
+
+              const addDateString = (dateStr: string) => {
+                const [month, day, year] = dateStr.split('/').map(Number);
+                return day + month + year;
+              };
+
+              const formattedFrom = formatDate(from);
+              const formattedTo = formatDate(to);
+
+
+
+              const filteredTableData = transactionHistory.filter((data) => {
+                return addDateString(data.Time) >= addDateString(formattedFrom) && addDateString(data.Time) <= addDateString(formattedTo) 
+              });
+
+              setTableData(filteredTableData);
+            }
+
 
             resolve(true)
           }, 2000)
@@ -47,15 +87,15 @@ const TransactionHistory = () => {
 
     fetchData();
 
-  }, [selectedValue])
+  }, [selectedValue, selectedDateRange])
 
 
-  const [selectedDateRange, setSelectedDateRange] = useState<any | undefined>(undefined);
+
 
 
   const handleDateRangeChange = (dateRange: any) => {
     setSelectedDateRange(dateRange);
-    console.log(dateRange)
+
   };
 
 

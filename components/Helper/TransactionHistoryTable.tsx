@@ -100,7 +100,7 @@ export default function TransactionHistoryTable({ tableData, isLoading }: DataTa
             {
                 isLoading &&
                 (
-                    <section className='w-full flex items-center justify-center'>
+                    <section className='w-full h-full flex items-center justify-center absolute inset-0 top-5 left-10'>
                         <div className="w-[500px] h-[300px] flex items-center justify-center">
                             <LoaderPinwheelIcon className="w-8 h-8 animate-spin" />
                         </div>
