@@ -105,7 +105,7 @@ const TransactionHistory = () => {
   return (
     <section className=' border border-gray-300 p-4 rounded-lg '>
       <header className='flex flex-col lg:flex-row justify-between lg:items-center mb-3'>
-        <h2 className='text-base lg:text-xl font-bold text-gray-800 mb-2 '>Transaction History</h2>
+        <h2 className='text-base lg:text-xl font-bold text-gray-800 mb-2 '>Transaction hHistory</h2>
 
         <article className='flex gap-2 justify-center lg:items-center flex-col lg:flex-row'>
           <SelectDropDown
