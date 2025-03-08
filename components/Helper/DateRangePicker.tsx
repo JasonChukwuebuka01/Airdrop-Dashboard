@@ -63,7 +63,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ onDateRangeChange }) 
 
 
                 {
-                  date?.from && date.to ? (<DeleteIcon onClick={handleDeleteIcon} />) : (<Calendar1Icon className="w-6 h-6" />)
+                  date?.from != undefined ? (<DeleteIcon onClick={handleDeleteIcon} />) : (<Calendar1Icon className="w-6 h-6" />)
                 }
 
 
