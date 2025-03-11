@@ -53,7 +53,7 @@ export default function TransactionHistoryTable({ tableData, isLoading }: DataTa
                         <TableHead className='font-bold p-4'>Transaction Type</TableHead>
                         <TableHead className='font-bold p-4'>Time</TableHead>
                         <TableHead className="font-bold p-4">Bytes Earned</TableHead>
-                        <TableHead className="font-bold p-4">Detailss</TableHead>
+                        <TableHead className="font-bold p-4">Details</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
