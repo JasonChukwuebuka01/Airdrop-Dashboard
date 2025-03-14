@@ -32,9 +32,6 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ onDateRangeChange }) 
 
 
 
-  function handleDeleteIcon() {
-    setDate(undefined);
-  }
 
 
 
@@ -49,27 +46,32 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ onDateRangeChange }) 
             !date && "text-muted-foreground"
           )}
         >
-
           {
-            date?.from ?
-              (date.to ?
-                (`${format(date.from, "PPP")} - ${format(date.to, "PPP")}`) : (format(date.from, "PPP"))
+            date?.from ? (
+              <div className="flex items-center justify-between w-full">
+                <span>
+                  {date.to
+                    ? `${format(date.from, "PPP")} - ${format(date.to, "PPP")}`
+                    : format(date.from, "PPP")}
+                </span>
+                <DeleteIcon className="w-6 h-6 cursor-pointer ml-2" />
+              </div>
+            )
+              :
+              (
+                <section className="flex justify-between items-center w-full">
+                  <div className="flex items-center  justify-between  gap-10 w-full">
+                    <div className="flex items-center gap-9">
+                      <span>Start date </span>
+                      <span>End Date</span>
+                    </div>
+
+
+                    <Calendar1Icon className="w-6 h-6" />
+                  </div>
+                </section>
               )
-              : (<section className="flex justify-between items-center w-full">
-                <div className="flex items-center gap-10">
-                  <span>Start date </span>
-                  <span>End Date</span>
-                </div>
-
-
-                {
-                  date?.from != undefined ? (<DeleteIcon onClick={handleDeleteIcon} />) : (<Calendar1Icon className="w-6 h-6" />)
-                }
-
-
-              </section>)
           }
-
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="end">

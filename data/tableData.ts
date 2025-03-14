@@ -219,3 +219,40 @@ export const transactionHistory: TransactionHistory[] = [
         cycle: "mega cycle"
     }
 ];
+
+
+
+
+interface CycleData {
+    Cycle: string;
+    StartDate: string
+    EndDate: string
+    ReferralReward: number;
+    SpeedtestEarning: number;
+    ReferralCommission: number;
+    QuestEarning: number;
+    Total: number;
+}
+
+export const cycleData: CycleData[] = [
+    {
+        Cycle: "Kilo Cycle",
+        StartDate: "01/01/2025 🕐12:00 ",
+        EndDate: "28/02/2025 🕐11:59 ",
+        ReferralReward: 2500,
+        SpeedtestEarning: 13600,
+        ReferralCommission: 1800,
+        QuestEarning: 13800,
+        Total: 31700
+    },
+    {
+        Cycle: "Mega Cycle",
+        StartDate: "01/01/2025 🕐12:00 ",
+        EndDate: "28/02/2025 🕐11:59 ",
+        ReferralReward: 3200,
+        SpeedtestEarning: 15400,
+        ReferralCommission: 2100,
+        QuestEarning: 14500,
+        Total: 35200
+    }
+];

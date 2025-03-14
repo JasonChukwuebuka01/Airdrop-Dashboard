@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { transactionHistory } from '@/data/tableData';
-import TransactionHistoryTable from '@/components/Helper/TransactionHistoryTable';
+import TransactionHistoryTable from '@/components/Tables/TransactionHistoryTable';
 import SelectDropDown from '@/components/Helper/SelectDropDown';
 import DateRangePicker from '@/components/Helper/DateRangePicker';
 

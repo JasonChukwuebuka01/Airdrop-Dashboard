@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import { LoaderPinwheelIcon, TrafficConeIcon } from "lucide-react" // Import loader icon
-import ToolTipProvider from './ToolTipProvider';
+import ToolTipProvider from '../Helper/ToolTipProvider';
 
 
 
