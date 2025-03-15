@@ -47,7 +47,7 @@ const EarningsPage = () => {
 
           } catch (error) {
 
-            console.error('Failed to updatee localStorage:', error);
+            console.error('Failed to update localStorage:', error);
           }
           return newCountdown;
         });
