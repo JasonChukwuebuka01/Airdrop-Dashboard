@@ -10,7 +10,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { LoaderPinwheelIcon, TrafficConeIcon } from "lucide-react" // Import loader icon
+import { Clock1Icon, LoaderPinwheelIcon, TrafficConeIcon } from "lucide-react" // Import loader icon
 import Image from 'next/image';
 
 
@@ -68,18 +68,36 @@ export default function EarningsTable({ tableData, isLoading }: DataTableProps) 
                                         className='border border-gray-300 text-base rounded-lg p-4 transition-all duration-300 ease-in-out hover:bg-gray-300 hover:shadow-md overflow-auto'
                                     >
                                         <TableCell className="p-4 w-[130px] min-w-[130px] max-w-[130px] whitespace-pre-wrap">{data.Cycle}</TableCell>
-                                        <TableCell className="p-4 w-[180px] min-w-[180px] max-w-[180px] whitespace-pre-wrap">
+                                        <TableCell className="p-4 w-[220px] min-w-[220px] max-w-[220px] whitespace-pre-wrap">
+
+                                            <div className='flex'>
+                                                <section className='items-center flex justify-center flex-col mr-1 gap-[2px]'>
+                                                    <span className='w-2 h-[10px] border-none rounded-full bg-purple-600 flex items-center justify-center'></span>
+                                                    <div className='flex flex-col gap-[0.7px] items-center justify-center'>
+                                                        <span className='w-[0.1px] h-1  bg-purple-600  border-none  outline-none'></span>
+                                                        <span className='w-[0.1px] h-1  bg-purple-600  border-none outline-none'></span>
+                                                        <span className='w-[0.1px] h-1  bg-purple-600 border-none  outline-none'></span>
+                                                    </div>
+                                                    <span className='w-2 h-[10px] border-none rounded-full  bg-purple-600 flex items-center justify-center'></span>
+                                                </section>
 
 
-                                            <article>
-                                                <div>{data.StartDate}</div>
-                                                <div className='flex flex-col text-blue-500'>
-                                                    <span className='w-1'></span>
-                                                    <span className='w-1'></span>
-                                                    <span className='w-1'></span>
-                                                </div>
-                                                <div>{data.EndDate}</div>
-                                            </article>
+
+                                                <section>
+                                                    <article>
+                                                        <div className='flex items-center'>{data.StartDate}</div>
+
+                                                        <div>{data.EndDate}</div>
+                                                    </article>
+                                                </section>
+
+
+                                                <section className="ml-3">
+                                                    <div className='flex items-center justify-center'><Clock1Icon size={15}/>{data.StartTime}</div>
+                                                    <div className='flex items-center justify-center' > <Clock1Icon size={15}/>{data.EndTime}</div>
+                                                </section>
+
+                                            </div>
 
                                         </TableCell>
                                         <TableCell className="p-4 w-[180px] min-w-[180px] max-w-[180px] whitespace-nowrap ">

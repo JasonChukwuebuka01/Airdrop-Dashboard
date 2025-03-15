@@ -20,6 +20,66 @@ const TransactionHistory = () => {
   const [tableDatas, setTableData] = useState<any[]>([]);
   const [selectedDateRange, setSelectedDateRange] = useState<any | undefined>(undefined);
 
+
+
+
+  const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
+
+
+  const [countdown, setCountdown] = useState<number>(() => {
+    const stored = localStorage.getItem(localStorageKey);
+    return stored ? Number(stored) : 0;
+  });
+
+
+
+
+
+
+  
+
+  useEffect(() => {
+
+    let interval: NodeJS.Timeout;
+
+    if (countdown > 0) {
+      interval = setInterval(() => {
+
+        setCountdown((prevCountdown) => {
+
+          const newCountdown = prevCountdown - 1;
+
+          try {
+
+            localStorage.setItem(localStorageKey, newCountdown.toString());
+
+          } catch (error) {
+
+            console.error('Failed to update localStorage:', error);
+          }
+          return newCountdown;
+        });
+      }, 1000);
+
+    } else {
+
+      //setIsClaimable(true);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [countdown]);
+
+
+
+
+
+
+
+
+
+
   // Fetch data
   useEffect(() => {
 

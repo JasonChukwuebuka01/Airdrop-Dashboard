@@ -227,6 +227,8 @@ interface CycleData {
     Cycle: string;
     StartDate: string
     EndDate: string
+    StartTime: string
+    EndTime: string
     ReferralReward: number;
     SpeedtestEarning: number;
     ReferralCommission: number;
@@ -237,8 +239,10 @@ interface CycleData {
 export const cycleData: CycleData[] = [
     {
         Cycle: "Kilo Cycle",
-        StartDate: "01/01/2025 🕐12:00 ",
-        EndDate: "28/02/2025 🕐11:59 ",
+        StartDate: "01/01/2025",
+        EndDate: "28/02/2025",
+        StartTime: "12:00",
+        EndTime: "11:59",
         ReferralReward: 2500,
         SpeedtestEarning: 13600,
         ReferralCommission: 1800,
@@ -247,8 +251,10 @@ export const cycleData: CycleData[] = [
     },
     {
         Cycle: "Mega Cycle",
-        StartDate: "01/01/2025 🕐12:00 ",
-        EndDate: "28/02/2025 🕐11:59 ",
+        StartDate: "01/01/2025",
+        EndDate: "28/02/2025",
+        StartTime: "12:00",
+        EndTime: "11:59",
         ReferralReward: 3200,
         SpeedtestEarning: 15400,
         ReferralCommission: 2100,
