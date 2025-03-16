@@ -1,4 +1,5 @@
 import { BotIcon, CopyIcon, LockIcon, TrafficConeIcon, Twitter } from "lucide-react";
+import { toast } from "sonner";
 
 
 
@@ -9,7 +10,8 @@ const AddDiscordXTelegramName = () => {
     function handleCopy() {
 
         window.navigator.clipboard.writeText('၊||၊ DeSpeed ၊||၊')
-            .then(() => alert("copied"))
+            .then(() => toast.success('Copied!'))
+            .catch((err) => console.error('Failed to copy text: ', err));
 
     }
 

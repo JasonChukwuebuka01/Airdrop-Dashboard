@@ -1,5 +1,6 @@
 import { CopyIcon, LockIcon, TrafficConeIcon, Twitter, YoutubeIcon } from 'lucide-react'
 import React from 'react'
+import { toast } from 'sonner'
 
 
 
@@ -9,7 +10,8 @@ const ConnectYoutubeXname = () => {
      function handleCopy(){
         
         window.navigator.clipboard.writeText('၊||၊ DeSpeed ၊||၊')
-        .then(()=> alert("copied"))
+        .then(()=> toast.success('Copied!'))
+        .catch((err)=> console.error('Failed to copy text: ', err))
 
      }
 
@@ -78,9 +80,10 @@ const ConnectYoutubeXname = () => {
                     </span>
                 </button>
             </section>
+            
 
         </article>
     )
 }
 
-export default ConnectYoutubeXname
+export default ConnectYoutubeXname;
