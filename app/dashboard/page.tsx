@@ -9,6 +9,7 @@ import { Calendar1Icon, CopyIcon, LockIcon, LucideTwitter, Share2Icon, TicketChe
 import Link from 'next/link';
 import DemoEarningsChart from '@/components/Dashboard/DemoEarningChart';
 import ShowTable from '@/components/Dashboard/ShowTable';
+import { toast, Toaster } from 'sonner';
 
 
 
@@ -189,7 +190,7 @@ export default function DashboardPage() {
   function copyText() {
 
     navigator.clipboard.writeText("https://app.despeed.net/register?ref=mm6FQ0AmwxiX")
-      .then(() => alert("Link copied to clipboard!"))
+      .then(() => toast("Copied!"))
       .catch((err) => console.error("Failed to copy text: ", err));
   }
 
@@ -268,6 +269,25 @@ export default function DashboardPage() {
               </div>
 
             </aside>
+            <Toaster
+              className="custom-toast"
+              position="top-center"
+              offset="16px"
+              toastOptions={{
+                style: {
+                  width: '80px',
+                  padding: '8px',
+                  margin: '4px',
+                  background: "black",
+                  fontSize: '18px',
+                  color: 'white',
+                  textAlign: 'center',
+                  borderRadius: '8px',
+                  borderWidth: '0px'
+
+                }
+              }}
+            />
           </article>
         </section>
         {/** End Kilo Cycle section */}

@@ -46,7 +46,7 @@ const DialogeBox = () => {
                 <ChevronRight />
             </AlertDialogTrigger>
 
-            <AlertDialogContent className="max-w-[45rem] p-0 pb-3">
+            <AlertDialogContent className="lg:max-w-[45rem] p-0 pb-3">
                 <AlertDialogHeader className='p-0 '>
                     <section className='flex justify-between items-center p-5 border-b border-gray-300 mb-3'>
                         <AlertDialogTitle className='text-2xl font-bold'>Bytes Bonus Milestones</AlertDialogTitle>

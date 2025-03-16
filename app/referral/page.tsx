@@ -7,6 +7,7 @@ import ReferralTable from "@/components/Helper/ReferralTable";
 import { CopyIcon, Gift, TimerIcon, TwitterIcon, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { ReactNode, useEffect, useState } from 'react';
+import { toast, Toaster } from "sonner";
 
 interface StatItem {
   name: string;
@@ -127,7 +128,7 @@ export default function ReferralPage() {
   function copyText() {
 
     navigator.clipboard.writeText("https://app.despeed.net/register?ref=mm6FQ0AmwxiX")
-      .then(() => alert("Link copied to clipboard!"))
+      .then(() => toast("Copied!"))
       .catch((err) => console.error("Failed to copy text: ", err));
   }
 
@@ -226,7 +227,25 @@ export default function ReferralPage() {
       {/** End of referral Table Section */}
 
 
+      <Toaster
+        className="custom-toast"
+        position="top-center"
+        offset="16px"
+        toastOptions={{
+          style: {
+            width: '80px',
+            padding: '8px',
+            margin: '4px',
+            background: "black",
+            fontSize: '18px',
+            color: 'white',
+            textAlign: 'center',
+            borderRadius: '8px',
+            borderWidth: '0px'
 
+          }
+        }}
+      />
 
 
     </section>

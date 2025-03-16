@@ -5,6 +5,7 @@ import { Check, Lock, Globe, DollarSign, Clock, Calendar, LockIcon, TrafficConeI
 import DialogeBox from './DialogeBox';
 import ReferralQuest from '../Quests/ReferralQuest';
 import SocialQuest from '../Quests/SocialQuest';
+import { toast, Toaster } from 'sonner';
 
 const QuestsRewards = () => {
     const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
@@ -24,10 +25,7 @@ const QuestsRewards = () => {
     });
     const [claimed, setClaimed] = useState<boolean>(false);
     const [totalEarned, setTotalEarned] = useState<number>(0);
-    const [dailyEarned, setDailyEarned] = useState<number>(() => {
-        const dailyPoint = localStorage.getItem("dailyPoint");
-        return dailyPoint ? parseInt(dailyPoint) : 0;
-    });
+   
     const [questsCompleted, setQuestsCompleted] = useState<number>(0);
     const [streakSevenClicked, setStreakSevenClicked] = useState<string>(localStorage.getItem("seven") || "true");
     const [streakFourteenClicked, setStreakFourTeenClicked] = useState<string>(localStorage.getItem("fourteen") || "true");
@@ -154,7 +152,7 @@ const QuestsRewards = () => {
                 const now = Date.now();
                 const timeDiff = now - lastClaimTime;
                 const hoursDiff = timeDiff / (1000 * 60 * 60);
-             
+
 
                 // Reset streak if more than 24 hours have passed
                 if (hoursDiff > 24) {
@@ -179,14 +177,18 @@ const QuestsRewards = () => {
                         localStorage.setItem("streak", newStreak.toString());
                         return newStreak;
                     }),
-                    // ...rest of your existing Promise.all code
-                ]);
+
+                ]).then(() => {
+                    toast.success("Daily Claim successfully")
+                })
+
 
                 localStorage.removeItem(localStorageKey);
                 setCountdown(initialCountdown);
                 setTimeout(() => setClaimed(false), 1000);
             } catch (error) {
                 console.error('Failed to process claim:', error);
+                toast.error("Failed to process claim")
                 setClaimed(false);
                 setIsClaimable(true);
             }
@@ -202,8 +204,10 @@ const QuestsRewards = () => {
                         localStorage.setItem("TotalEarned", totalEarned.toString());
                         return totalEarned;
                     });
+
                     setStreakSevenClicked("false");
                     localStorage.setItem("seven", "false");
+                    toast.success("Weekly Claim successful")
                     setTimeout(() => {
                         setIsWeeklyClaimableButton("false");
                         localStorage.setItem("claimableButton", "false");
@@ -216,8 +220,10 @@ const QuestsRewards = () => {
                         localStorage.setItem("TotalEarned", totalEarned.toString());
                         return totalEarned;
                     });
+
                     setStreakFourTeenClicked("false");
-                    localStorage.setItem("fourteen", "false")
+                    localStorage.setItem("fourteen", "false");
+                    toast.success("Weekly Claim successful")
                     setTimeout(() => {
                         setIsWeeklyClaimableButton("false")
                         localStorage.setItem("claimableButton", "false")
@@ -230,8 +236,10 @@ const QuestsRewards = () => {
                         localStorage.setItem("TotalEarned", totalEarned.toString());
                         return totalEarned;
                     });
+
                     setStreakTwentyOneClicked("false");
-                    localStorage.setItem("twentyOne", "false")
+                    localStorage.setItem("twentyOne", "false");
+                    toast.success("Weekly Claim successful")
                     setTimeout(() => {
                         setIsWeeklyClaimableButton("false");
                         localStorage.setItem("claimableButton", "false")
@@ -244,8 +252,10 @@ const QuestsRewards = () => {
                         localStorage.setItem("TotalEarned", totalEarned.toString());
                         return totalEarned;
                     });
+
                     setStreakTwentyEightClicked("false");
                     localStorage.setItem("twentyEight", "false");
+                    toast.success("Weekly Claim successful")
                     setTimeout(() => {
                         setIsWeeklyClaimableButton("false")
                         localStorage.setItem("claimableButton", "false")
@@ -264,7 +274,7 @@ const QuestsRewards = () => {
 
     const progressWidth = Math.min((streak / 28) * 100, 100); // Calculate progress width
 
-    
+
 
     return (
         <section className="bg-gray-900 text-white p-5 rounded-lg w-full ">
@@ -409,6 +419,26 @@ const QuestsRewards = () => {
             <ReferralQuest />
 
             <SocialQuest />
+
+            <Toaster
+                className="custom-toast"
+                position="top-center"
+                offset="16px"
+                toastOptions={{
+                    style: {
+                        width: '280px',
+                        padding: '8px',
+                        margin: '4px',
+                        background: "black",
+                        fontSize: '18px',
+                        color: 'white',
+                        textAlign: 'center',
+                        borderRadius: '8px',
+                        borderWidth: '0px'
+
+                    }
+                }}
+            />
 
         </section>
     );
