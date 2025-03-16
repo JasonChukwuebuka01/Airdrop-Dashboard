@@ -233,7 +233,7 @@ export default function ReferralPage() {
         offset="16px"
         toastOptions={{
           style: {
-            width: '80px',
+            width: '150px',
             padding: '8px',
             margin: '4px',
             background: "black",
@@ -246,7 +246,6 @@ export default function ReferralPage() {
           }
         }}
       />
-
 
     </section>
   );

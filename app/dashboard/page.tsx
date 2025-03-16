@@ -269,25 +269,7 @@ export default function DashboardPage() {
               </div>
 
             </aside>
-            <Toaster
-              className="custom-toast"
-              position="top-center"
-              offset="16px"
-              toastOptions={{
-                style: {
-                  width: '80px',
-                  padding: '8px',
-                  margin: '4px',
-                  background: "black",
-                  fontSize: '18px',
-                  color: 'white',
-                  textAlign: 'center',
-                  borderRadius: '8px',
-                  borderWidth: '0px'
 
-                }
-              }}
-            />
           </article>
         </section>
         {/** End Kilo Cycle section */}
@@ -412,6 +394,26 @@ export default function DashboardPage() {
         {/** End of Table Data section */}
 
 
+
+        <Toaster
+          className="custom-toast"
+          position="top-center"
+          offset="16px"
+          toastOptions={{
+            style: {
+              width: '80px',
+              padding: '8px',
+              margin: '4px',
+              background: "black",
+              fontSize: '18px',
+              color: 'white',
+              textAlign: 'center',
+              borderRadius: '8px',
+              borderWidth: '0px'
+
+            }
+          }}
+        />
       </article>
     </>
   );

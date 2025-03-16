@@ -10,9 +10,10 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { CopyIcon, LoaderPinwheelIcon, TrafficConeIcon } from "lucide-react" 
+import { CopyIcon, LoaderPinwheelIcon, TrafficConeIcon } from "lucide-react"
 import ToolTipProvider from './ToolTipProvider';
 import Image from 'next/image';
+import { toast, Toaster } from 'sonner';
 
 
 
@@ -28,7 +29,7 @@ interface DataTableProps {
 export default function ReferralTable({ tableData, HideIpAddress, isLoading }: DataTableProps) {
     // Pagination states
     const [currentPage, setCurrentPage] = useState(1);
-    
+
     const itemsPerPage = 5;
 
     // Calculate total pages
@@ -44,7 +45,7 @@ export default function ReferralTable({ tableData, HideIpAddress, isLoading }: D
 
     function copyText() {
         navigator.clipboard.writeText("https://app.despeed.net/register?ref=mm6FQ0AmwxiX")
-            .then(() => alert("Link copied to clipboard!"))
+            .then(() => toast.success("Copied!"))
             .catch((err) => console.error("Failed to copy text: ", err));
     }
 
@@ -115,7 +116,7 @@ export default function ReferralTable({ tableData, HideIpAddress, isLoading }: D
             </Table>
 
             {
-                isLoading && 
+                isLoading &&
                 (
                     <section className='w-full flex items-center justify-center'>
                         <div className="w-[500px] h-[300px] flex items-center justify-center">
@@ -125,7 +126,7 @@ export default function ReferralTable({ tableData, HideIpAddress, isLoading }: D
                 )
             }
             {
-                tableData.length <= 0 && !isLoading &&(
+                tableData.length <= 0 && !isLoading && (
                     <section className='w-full'>
                         <article className="w-full h-[400px] flex flex-col items-center justify-center pb-4 border border-gray-300">
 
@@ -144,7 +145,7 @@ export default function ReferralTable({ tableData, HideIpAddress, isLoading }: D
                             <p className="text-sm md:text-base pl-8 pr-8">Invite your friends now and start earning rewards!</p>
 
                             <div className="w-[220px] xl:w-[220px] flex justify-center items-center gap-2  rounded-xl border-2 border-gray-300 cursor-pointer mt-4 p-4 h-[10vh] font-bold"
-                                onClick={() => copyText()}
+                                onClick={copyText}
                             >
                                 <div><CopyIcon /></div>
                                 <button>
@@ -191,6 +192,10 @@ export default function ReferralTable({ tableData, HideIpAddress, isLoading }: D
                 )
             }
 
+           
+
         </section>
     )
 }
+
+/**  */
