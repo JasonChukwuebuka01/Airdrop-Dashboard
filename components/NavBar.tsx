@@ -74,7 +74,7 @@ const NavBar = () => {
                                             initial={{ height: 0, bottom: 5}}
                                             animate={{ height: "50%", bottom: 0 }}
                                             transition={{
-                                                duration: 0.4,
+                                                duration: 0.3,
                                                 ease: "easeOut"
                                             }}
                                             style={{
