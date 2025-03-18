@@ -12,27 +12,32 @@ const menuItems: MenuItem[] = [
     {
         name: "Dashboard",
         href: "/dashboard",
-        icon: "📊"
+        icon: "/Images/DarkDashboard.svg",
+        active: "/Images/active-dashboard.svg"
     },
     {
         name: "Referral",
         href: "/referral",
-        icon: "👥"
+        icon: "/Images/referral.svg",
+        active: "/Images/active-referral.svg"
     },
     {
         name: "Quests",
         href: "/quests",
-        icon: "🎯"
+        icon: "/Images/quests.svg",
+        active: "/Images/active-quests.svg"
     },
     {
         name: "Transaction History",
         href: "/transaction-history",
-        icon: "📝"
+        icon: "/Images/transaction-history.svg",
+        active: "/Images/active-transaction-history.svg"
     },
     {
         name: "Earnings",
         href: "/earnings",
-        icon: "💰"
+        icon: "/Images/earnings.svg",
+        active: "/Images/active-earnings.svg"
     }
 ];
 
@@ -56,22 +61,35 @@ const NavBar = () => {
                         <Link
                             key={index}
                             href={item.href}
-                            className="flex flex-col items-center justify-center py-4 rounded-md transition-all duration-300 hover:bg-gray-700 group w-full border-b border-b-gray-700/30 relative"
+                            className="py-6 flex flex-col items-center justify-center  rounded-md transition-all duration-300 hover:bg-gray-700 group w-full border-b border-b-gray-700/30 relative"
                         >
                             <span className="text-3xl group-hover:scale-110 transition-transform">
-                                {item.icon}
+                                {
+                                    path === item.href ? (
+                                        <img
+                                            src={item.active}
+                                            alt={item.name}
+                                            className="w-7 h-7"
+                                        />
+                                    ) :
+                                        (
+                                            <img
+                                                src={item.icon}
+                                                alt={item.name}
+                                                className="w-7 h-7"
+                                            />
+                                        )
+                                }
                             </span>
-                            <span className="text-sm text-gray-300 font-medium group-hover:text-white mt-2">
-                                {item.name}
-                            </span>
+                            <span className={`text-sm text-gray-300 font-medium group-hover:text-white mt-2 ${path === item.href ? "text-purple-500" : "text-white"}`} >{item.name}</span>
 
                             {
                                 path === item.href && (
+                                    
                                     <div className='absolute top-0 left-0 h-full w-1 flex  justify-center items-center  '>
-
                                         <motion.div
                                             className="absolute h-[10%] w-2 bg-purple-500 top-5 left-0 rounded-xl"
-                                            initial={{ height: 0, bottom: 5}}
+                                            initial={{ height: 0, bottom: 5 }}
                                             animate={{ height: "50%", bottom: 0 }}
                                             transition={{
                                                 duration: 0.4,
@@ -81,9 +99,7 @@ const NavBar = () => {
                                                 transformOrigin: "bottom"
                                             }}
                                         />
-
                                     </div>
-
                                 )
                             }
 
