@@ -1,4 +1,4 @@
-import { LockIcon, TrafficConeIcon, TwitterIcon } from 'lucide-react'
+import { LockIcon, TrafficConeIcon,  XIcon } from 'lucide-react'
 import React from 'react'
 
 
@@ -6,28 +6,30 @@ import React from 'react'
 
 const ConnectX = () => {
 
+
+
     return (
-        
+
         <article className='grid grid-cols-1 gap-2 md:grid-cols-6 h-[90%]'>
 
             <section
-                className='border border-gray-700  mb-3 rounded-xl md:col-span-3 p-4'
+                className=' bg-[#06030f] border border-gray-900  mb-3 rounded-xl md:col-span-3 p-4'
             >
 
                 <div className='flex items-center gap-3 mb-2'>
-                    <div className=' w-[15%] lg:w-[9%] p-3 bg-gray-200 rounded-2xl flex justify-center items-center text-black'>
-                       <TwitterIcon/>
+                    <div className=' w-[15%] lg:w-[9%] p-3  bg-gradient-to-r from-[#3b3941] to-[#0d0624]  rounded-2xl flex justify-center items-center text-black'>
+                        <XIcon className='text-purple-500' />
                     </div>
 
                     <div className='w-[90%] flex flex-col justify-center items-start'>
                         <h2 className='text-base mb-1 font-bold'>Connect your X</h2>
-                        <button className='border border-gray-700 p-2 text-sm text-center px-5 rounded-xl'>Connect</button>
+                        <button className='border border-gray-500 p-2 text-sm text-center px-5 rounded-xl bg-white/15'>Connect</button>
                     </div>
 
                 </div>
                 <button
                     disabled={true}
-                    className={` text-white py-1 px-4 disabled:bg-gray-700  font-bold text-[15px] flex justify-center items-center rounded-xl gap-2  border border-gray-300 mt-1 cursor-not-allowed`}
+                    className={` text-white py-1 px-4 disabled:bg-white/25  font-bold text-[15px] flex justify-center items-center rounded-xl gap-2  border border-gray-300 mt-1 cursor-not-allowed`}
                 >
                     <LockIcon size={18} />
                     <span className='flex gap-2 justify-center items-center'>
@@ -38,19 +40,19 @@ const ConnectX = () => {
             </section>
 
             <section
-                className='border border-gray-700  mb-3 rounded-xl md:col-span-3 p-4'
+                className=' bg-[#06030f] border border-gray-900  mb-3 rounded-xl md:col-span-3 p-4'
             >
 
                 <div className='flex items-center gap-3 mb-2'>
-                    <div className=' w-[15%] lg:w-[9%] p-3 bg-gray-200 rounded-2xl flex justify-center items-center text-black'>
-                        <TwitterIcon />
+                    <div className=' w-[15%] lg:w-[9%] p-3  bg-gradient-to-r from-[#3b3941] to-[#0d0624] rounded-2xl flex justify-center items-center text-black'>
+                        <XIcon className='text-purple-500' />
                     </div>
 
                     <div className='w-[90%] flex flex-col justify-center items-start'>
                         <h2 className='text-base mb-1 font-bold'>Follow DeSpeed on X</h2>
                         <div>
-                            <button className='border border-gray-700 p-2 text-sm text-center px-5 rounded-xl'>Follow</button>
-                            <button className='border border-gray-700 p-2 text-sm text-center px-5 rounded-xl ml-2'>Verify</button>
+                            <button className='border border-gray-500 p-2 text-sm text-center px-5 rounded-xl bg-white/15'>Follow</button>
+                            <button className='border border-gray-500 p-2 text-sm text-center px-5 rounded-xl ml-2 bg-white/15'>Verify</button>
                         </div>
 
                     </div>
@@ -72,4 +74,4 @@ const ConnectX = () => {
     )
 }
 
-export default ConnectX
+export default ConnectX;
