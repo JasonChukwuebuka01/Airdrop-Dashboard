@@ -43,7 +43,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ onDateRangeChange }) 
           variant={"outline"}
           className={cn(
             "lg:w-[300px] justify-start text-left font-normal",
-            !date && "text-muted-foreground"
+            !date && "bg-gray-800/40 border-none text-white"
           )}
         >
           {
@@ -59,7 +59,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ onDateRangeChange }) 
             )
               :
               (
-                <section className="flex justify-between items-center w-full">
+                <section className="flex justify-between items-center w-full ">
                   <div className="flex items-center  justify-between  gap-10 w-full">
                     <div className="flex items-center gap-9">
                       <span>Start date </span>

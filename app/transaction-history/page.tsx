@@ -36,7 +36,7 @@ const TransactionHistory = () => {
 
 
 
-  
+
 
   useEffect(() => {
 
@@ -160,30 +160,29 @@ const TransactionHistory = () => {
 
 
 
- /**
-    * Parent = bg-[#06030f]
-    * Child = bg-[#0E0417] */
 
 
   return (
-    <section className='p-4 pb-0'>
-      <header className='flex flex-col lg:flex-row justify-between lg:items-center mb-3'>
-        <h2 className='text-base lg:text-xl font-bold text-gray-800 mb-2 '>Transaction History</h2>
 
-        <article className='flex gap-2 justify-center lg:items-center flex-col lg:flex-row'>
-          <SelectDropDown
-            setSelectedValue={setSelectedValue}
-          />
-          <DateRangePicker
-            onDateRangeChange={handleDateRangeChange}
-          />
+    <section className='h-[85%] p-4   overflow-auto bg-[#06030f] text-white'>
+      <article className='p-2 px-4  pt-6 border border-gray-900  bg-[#0E0417] rounded-2xl'>
+        <header className='flex flex-col lg:flex-row justify-between lg:items-center mb-3'>
+          <h2 className='text-base lg:text-xl font-bold mb-2 '>Transaction History</h2>
 
-        </article>
-      </header>
+          <article className='flex gap-2 justify-center lg:items-center flex-col lg:flex-row'>
+            <SelectDropDown
+              setSelectedValue={setSelectedValue}
+            />
+            <DateRangePicker
+              onDateRangeChange={handleDateRangeChange}
+            />
+          </article>
+        </header>
 
-      <section>
-        <TransactionHistoryTable tableData={tableDatas} isLoading={isLoading} />
-      </section>
+        <section>
+          <TransactionHistoryTable tableData={tableDatas} isLoading={isLoading} />
+        </section>
+      </article>
     </section>
   )
 }

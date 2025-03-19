@@ -10,7 +10,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { LoaderPinwheelIcon, TrafficConeIcon } from "lucide-react" // Import loader icon
+import { LoaderPinwheelIcon, TrafficConeIcon } from "lucide-react" 
 import Image from 'next/image';
 
 
@@ -42,18 +42,20 @@ export default function TransactionHistoryTable({ tableData, isLoading }: DataTa
 
 
 
+  
+
 
     return (
 
         <section className="w-full relatve ">
-            <Table className=' overflow-scroll border border-gray-300 rounded-lg'>
-                <TableHeader className='rounded-lg mb-4'>
-                    <TableRow className='border-b border-gray-300 text-base rounded-lg'>
-                        <TableHead className="font-bold p-4">Transaction Id</TableHead>
-                        <TableHead className='font-bold p-4'>Transaction Type</TableHead>
-                        <TableHead className='font-bold p-4'>Time</TableHead>
-                        <TableHead className="font-bold p-4">Bytes Earned</TableHead>
-                        <TableHead className="font-bold p-4">Details</TableHead>
+            <Table className=' overflow-scroll border border-gray-900 rounded-lg'>
+                <TableHeader className='rounded-lg mb-4 bg-black/15'>
+                    <TableRow className='border-b border-gray-900 text-base rounded-lg hover:bg-black/15'>
+                        <TableHead className="font-bold p-4 text-white">Transaction Id</TableHead>
+                        <TableHead className='font-bold p-4 text-white'>Transaction Type</TableHead>
+                        <TableHead className='font-bold p-4 text-white'>Time</TableHead>
+                        <TableHead className="font-bold p-4 text-white">Bytes Earned</TableHead>
+                        <TableHead className="font-bold p-4 text-white">Details</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -63,13 +65,13 @@ export default function TransactionHistoryTable({ tableData, isLoading }: DataTa
                                 getCurrentPageData().map((data, index) => (
                                     <TableRow
                                         key={index}
-                                        className='border border-gray-300 text-base rounded-lg p-4 transition-all duration-300 ease-in-out hover:bg-gray-300 hover:shadow-md overflow-auto'
+                                        className='border border-gray-900 text-base rounded-lg p-4 transition-all duration-300 ease-in-out hover:bg-black/25 hover:shadow-md overflow-auto text-white/60'
                                     >
                                         <TableCell className="p-4 w-[220px] min-w-[220px] max-w-[220px] whitespace-pre-wrap">{data.TransactionId}</TableCell>
                                         <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap ">{data.TransactionType}</TableCell>
-                                        <TableCell className="p-4 w-[200px] min-w-[200px] max-w-[200px] whitespace-nowrap ">{data.Time} <span className='ml-1 p-2 rounded-xl border text-white font-bold bg-green-600 px-4 '>{data.cycle}</span></TableCell>
+                                        <TableCell className="p-4 w-[200px] min-w-[200px] max-w-[200px] whitespace-nowrap ">{data.Time} <span className='ml-1 p-2 rounded-xl border-none text-white font-bold bg-green-600 px-4 '>{data.cycle}</span></TableCell>
                                         <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap">
-                                            <div className='border-2 border-black lg:w-[60%] flex items-center justify-center gap-3 p-1 px-4 rounded-lg'>
+                                            <div className='  bg-gradient-to-r from-[#392c47] to-[#0E0417] border border-gray-900 lg:w-[60%] flex items-center justify-center gap-3 p-1 px-4 rounded-lg'>
                                                 <span className='font-bold '>{data.BytesEarned}</span>
                                                 <div><TrafficConeIcon /></div>
                                             </div>
@@ -129,6 +131,7 @@ export default function TransactionHistoryTable({ tableData, isLoading }: DataTa
                             size="sm"
                             onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                             disabled={currentPage === 1}
+                            className="bg-black/25 text-white border border-gray-900"
                         >
                             Previous
                         </Button>
@@ -139,6 +142,7 @@ export default function TransactionHistoryTable({ tableData, isLoading }: DataTa
                                     variant={currentPage === page ? "default" : "outline"}
                                     size="sm"
                                     onClick={() => setCurrentPage(page)}
+                                    className={currentPage === page ? "border border-gray-900 bg-gradient-to-r from-purple-300 to-purple-500" : "bg-black/25 text-white border border-gray-900"}
                                 >
                                     {page}
                                 </Button>
@@ -148,6 +152,7 @@ export default function TransactionHistoryTable({ tableData, isLoading }: DataTa
                             size="sm"
                             onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                             disabled={currentPage === totalPages}
+                            className="bg-black/25 text-white border border-gray-900"
                         >
                             Next
                         </Button>
