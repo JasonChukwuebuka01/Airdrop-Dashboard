@@ -65,7 +65,7 @@ const NavBar = () => {
                         <Link
                             key={index}
                             href={item.href}
-                            className="py-6 flex flex-col items-center justify-center  rounded-md transition-all duration-300 hover:bg-gray-700 group w-full border-b border-b-gray-700/30 relative"
+                            className="py-6 flex flex-col items-center justify-center  rounded-md transition-all duration-300 hover:bg-black/25 group w-full border-b border-b-gray-700/30 relative"
                         >
                             <span className="text-3xl group-hover:scale-110 transition-transform">
                                 {
@@ -85,7 +85,12 @@ const NavBar = () => {
                                         )
                                 }
                             </span>
-                            <span className={`text-sm text-gray-300 font-medium group-hover:text-white mt-2 ${path === item.href ? "text-purple-500" : "text-white"}`} >{item.name}</span>
+                         {
+                            path === item.href ? (
+                                <span className={`text-sm font-medium group-hover:text-white mt-2 text-purple-500`} >{item.name}</span>
+                            ) : 
+                            (   <span className={`text-sm  font-medium group-hover:text-white mt-2 text-white}`} >{item.name}</span>)
+                         }
 
                             {
                                 path === item.href && (

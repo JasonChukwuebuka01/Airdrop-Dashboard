@@ -52,9 +52,9 @@ const ShowTable = () => {
 
 
     return (
-        <section className=' border border-gray-300 p-4 rounded-lg '>
+        <section className=' border border-gray-900 p-4 rounded-lg bg-[#0E0417] text-white'>
             <header className='flex justify-between items-center mb-3'>
-                <h2 className='text-base lg:text-xl font-bold text-gray-800 mb-2 '>Speedtest Statistics</h2>
+                <h2 className='text-base lg:text-xl font-bold  mb-2 '>Speedtest Statistics</h2>
 
                 <article className='flex gap-2 justify-center items-center'>
                     <div>
@@ -63,7 +63,7 @@ const ShowTable = () => {
                             HideIpAddress={HideIpAddress}
                         />
                     </div>
-                    <h2 className='text-base lg:text-lg font-bold text-gray-800 text-center'>Hide IP Address</h2>
+                    <h2 className='text-base lg:text-lg font-bold  text-center'>Hide IP Address</h2>
                 </article>
             </header>
 

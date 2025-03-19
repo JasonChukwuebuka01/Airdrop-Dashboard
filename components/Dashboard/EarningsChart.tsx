@@ -3,8 +3,8 @@
 
 // components/EarningsChart.tsx
 import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import chartData from '@/data/chartData';
-
 
 interface DataPoint {
     date: string;
@@ -71,7 +71,7 @@ const EarningsChart: React.FC = () => {
 
     return (
         <div className="p-4 pt-0 pb-0 flex-1">
-            <h2 className="text-2xl font-bold ">Earnings Statistics</h2>
+           
             <div ref={chartRef} className="relative overflow-x-auto -mt-7 h-[48vh] scroll-smooth">
                 <div style={{ width: chartWidth + 40, height: chartHeight + 45 }} className="relative">
                     {/* Vertical Axis Labels */}
@@ -102,17 +102,30 @@ const EarningsChart: React.FC = () => {
                         >
                             {/* Quest Earning Bar */}
                             {item.questsEarning > 0 && (
-                                <div
+                                <motion.div
+                                    initial={{ height: 0 }}
+                                    animate={{ 
+                                        height: `${(item.questsEarning / maxValue) * chartHeight}px`
+                                    }}
+                                    transition={{
+                                        duration: 0.8,
+                                        ease: "easeOut"
+                                    }}
                                     style={{
-                                        height: `${(item.questsEarning / maxValue) * chartHeight}px`,
                                         bottom: 0,
                                         width: barWidth,
                                         backgroundColor: 'white',
                                     }}
-                                    className="absolute rounded-sm "
+                                    className="absolute rounded-sm"
                                     onMouseEnter={(e) => {
                                         const rect = (e.target as Element).getBoundingClientRect();
-                                        setHoveredTooltip({ type: 'quests', x: rect.left, y: rect.top, value: item.questsEarning, date: item.date });
+                                        setHoveredTooltip({ 
+                                            type: 'quests', 
+                                            x: rect.left, 
+                                            y: rect.top, 
+                                            value: item.questsEarning, 
+                                            date: item.date 
+                                        });
                                     }}
                                     onMouseLeave={() => setHoveredTooltip(null)}
                                 >
@@ -132,13 +145,20 @@ const EarningsChart: React.FC = () => {
                                             </div>
                                         </div>
                                     )}
-                                </div>
+                                </motion.div>
                             )}
                             {/* Speedtest Earning Bar */}
                             {item.speedtestEarning > 0 && (
-                                <div
+                                <motion.div
+                                    initial={{ height: 0 }}
+                                    animate={{ 
+                                        height: `${(item.speedtestEarning / maxValue) * chartHeight}px`
+                                    }}
+                                    transition={{
+                                        duration: 0.8,
+                                        ease: "easeOut"
+                                    }}
                                     style={{
-                                        height: `${(item.speedtestEarning / maxValue) * chartHeight}px`,
                                         bottom: (item.questsEarning / maxValue) * chartHeight,
                                         width: barWidth,
                                         backgroundColor: 'purple',
@@ -166,13 +186,20 @@ const EarningsChart: React.FC = () => {
                                             </div>
                                         </div>
                                     )}
-                                </div>
+                                </motion.div>
                             )}
                             {/* Referral Earning Bar */}
                             {item.referralEarning > 0 && (
-                                <div
+                                <motion.div
+                                    initial={{ height: 0 }}
+                                    animate={{ 
+                                        height: `${(item.referralEarning / maxValue) * chartHeight}px`
+                                    }}
+                                    transition={{
+                                        duration: 0.8,
+                                        ease: "easeOut"
+                                    }}
                                     style={{
-                                        height: `${(item.questsEarning / maxValue) * chartHeight}px`,
                                         bottom: 0,
                                         width: barWidth,
                                         backgroundColor: 'pink',
@@ -180,7 +207,13 @@ const EarningsChart: React.FC = () => {
                                     className="absolute rounded-sm "
                                     onMouseEnter={(e) => {
                                         const rect = (e.target as Element).getBoundingClientRect();
-                                        setHoveredTooltip({ type: 'quests', x: rect.left, y: rect.top, value: item.questsEarning, date: item.date });
+                                        setHoveredTooltip({ 
+                                            type: 'quests', 
+                                            x: rect.left, 
+                                            y: rect.top, 
+                                            value: item.questsEarning, 
+                                            date: item.date 
+                                        });
                                     }}
                                     onMouseLeave={() => setHoveredTooltip(null)}
                                 >
@@ -200,7 +233,7 @@ const EarningsChart: React.FC = () => {
                                             </div>
                                         </div>
                                     )}
-                                </div>
+                                </motion.div>
                             )}
                         </div>
                     ))}

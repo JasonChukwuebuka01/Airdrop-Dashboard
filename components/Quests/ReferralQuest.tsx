@@ -33,7 +33,7 @@ const ReferralQuest = () => {
     return (
 
 
-        <section className='mt-[18rem] lg:mt-2'>
+        <section className='mt-[18rem] lg:mt-2 '>
             <h1 className='text-2xl font-semibold mb-1'>Referral Quests</h1>
 
             <article className='grid grid-cols-1 gap-2 md:grid-cols-6 h-[90%]'>
@@ -43,12 +43,12 @@ const ReferralQuest = () => {
                         referralDataFirstHalf.map((referralData, index) => (
                             <article
                                 key={index}
-                                className='border border-gray-700 pl-2  pr-2 pb-5 pt-5 h-[30%] mb-3 rounded-xl'
+                                className='border border-gray-900 pl-2  pr-2 pb-5 pt-5 h-[30%] mb-3 rounded-xl  bg-[#06030f]'
                             >
 
                                 <div className='flex items-center gap-3 mb-2'>
-                                    <div className=' w-[15%] lg:w-[9%] p-3 bg-gray-200 rounded-2xl flex justify-center items-center text-black'>
-                                        <span className='border border-black rounded-full w-[100%] h-[100%] pl-3 pr-3 pt-1 pb-1 flex justify-center items-center text-xs font-bold'>{referralData.totalRefNumber}</span>
+                                    <div className=' w-[15%] lg:w-[9%] p-3 bg-gradient-to-r from-[#3b3941] to-[#0d0624]  rounded-2xl flex justify-center items-center '>
+                                        <span className='bg-gradient-to-r from-pink-200 to-[#6620d6]  rounded-full w-[100%] h-[100%] pl-3 pr-3 pt-1 pb-1 flex justify-center items-center text-xs font-bold text-white'>{referralData.totalRefNumber}</span>
                                     </div>
 
                                     <div className='w-[90%] flex flex-col justify-center items-start'>
@@ -59,7 +59,7 @@ const ReferralQuest = () => {
                                 </div>
                                 <button
                                     disabled={true}
-                                    className={` text-white py-1 px-4 disabled:bg-gray-700  font-bold text-[15px] flex justify-center items-center rounded-xl gap-2  border border-gray-300 mt-1`}
+                                    className={` text-white py-1 px-4 disabled:bg-white/25   font-bold text-[15px] flex justify-center items-center rounded-xl gap-2  border border-gray-500 mt-1`}
                                 >
                                     <LockIcon size={18} />
                                     <span className='flex gap-2 justify-center items-center'>
@@ -83,12 +83,12 @@ const ReferralQuest = () => {
                        referralDataSecondHalf.map((referralData, index) => (
                             <article
                                 key={index}
-                                className='border border-gray-700 pl-2  pr-2 pb-5 pt-5 h-[30%] mb-3 rounded-xl'
+                                className='border border-gray-900 pl-2  pr-2 pb-5 pt-5 h-[30%] mb-3 rounded-xl  bg-[#06030f]'
                             >
 
                                 <div className='flex items-center gap-3 mb-2'>
-                                    <div className=' w-[15%] lg:w-[9%] p-3 bg-gray-200 rounded-2xl flex justify-center items-center text-black'>
-                                        <span className='border border-black rounded-full w-[100%] h-[100%] pl-3 pr-3 pt-1 pb-1 flex justify-center items-center text-xs font-bold'>{referralData.totalRefNumber}</span>
+                                    <div className=' w-[15%] lg:w-[9%] p-3  bg-gradient-to-r from-[#3b3941] to-[#0d0624] rounded-2xl flex justify-center items-center '>
+                                        <span className='bg-gradient-to-r from-pink-200 to-[#6620d6]  rounded-full w-[100%] h-[100%] pl-3 pr-3 pt-1 pb-1 flex justify-center items-center text-xs font-bold'>{referralData.totalRefNumber}</span>
                                     </div>
 
                                     <div className='w-[90%] flex flex-col justify-center items-start'>
@@ -99,7 +99,7 @@ const ReferralQuest = () => {
                                 </div>
                                 <button
                                     disabled={true}
-                                    className={` text-white py-1 px-4 disabled:bg-gray-700  font-bold text-[15px] flex justify-center items-center rounded-xl gap-2  border border-gray-300 mt-1`}
+                                    className={` text-white py-1 px-4 disabled:bg-white/25  font-bold text-[15px] flex justify-center items-center rounded-xl gap-2  border border-gray-500 mt-1`}
                                 >
                                     <LockIcon size={18} />
                                     <span className='flex gap-2 justify-center items-center'>

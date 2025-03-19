@@ -55,14 +55,14 @@ export default function ReferralTable({ tableData, HideIpAddress, isLoading }: D
     return (
 
         <section className="w-full relatve ">
-            <Table className=' overflow-scroll border border-gray-300 rounded-lg'>
-                <TableHeader className='rounded-lg mb-4'>
-                    <TableRow className='border-b border-gray-300 text-base rounded-lg'>
-                        <TableHead className="font-bold p-4">Username</TableHead>
-                        <TableHead className='font-bold p-4'>Email</TableHead>
-                        <TableHead className='font-bold p-4'>Registration Date</TableHead>
-                        <TableHead className="font-bold p-4">Referral Status</TableHead>
-                        <TableHead className="font-bold p-4">Referral Bonus</TableHead>
+            <Table className=' overflow-scroll border border-gray-900 rounded-lg'>
+                <TableHeader className='rounded-lg mb-4 bg-black/25'>
+                    <TableRow className='border-b border-gray-900 text-base rounded-lg  hover:bg-black/25'>
+                        <TableHead className="font-bold p-4 text-white">Username</TableHead>
+                        <TableHead className='font-bold p-4 text-white'>Email</TableHead>
+                        <TableHead className='font-bold p-4 text-white'>Registration Date</TableHead>
+                        <TableHead className="font-bold p-4 text-white">Referral Status</TableHead>
+                        <TableHead className="font-bold p-4 text-white">Referral Bonus</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -72,7 +72,7 @@ export default function ReferralTable({ tableData, HideIpAddress, isLoading }: D
                                 getCurrentPageData().map((data, index) => (
                                     <TableRow
                                         key={index}
-                                        className='border border-gray-300 text-base rounded-lg p-4 transition-all duration-300 ease-in-out hover:bg-gray-300 hover:shadow-md'
+                                        className='border border-gray-900 text-base rounded-lg p-4 transition-all duration-300 ease-in-out hover:bg-black/25 hover:shadow-md'
                                     >
                                         <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-pre-wrap">{data.Time}</TableCell>
                                         <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis">{data.DownloadSpeed}<span className='ml-1'>MB/s</span></TableCell>
@@ -128,7 +128,7 @@ export default function ReferralTable({ tableData, HideIpAddress, isLoading }: D
             {
                 tableData.length <= 0 && !isLoading && (
                     <section className='w-full'>
-                        <article className="w-full h-[400px] flex flex-col items-center justify-center pb-4 border border-gray-300">
+                        <article className="w-full h-[400px] flex flex-col items-center justify-center pb-4 border border-gray-900">
 
                             <div className="w-full max-w-[200px] h-auto">
                                 <Image
@@ -144,10 +144,10 @@ export default function ReferralTable({ tableData, HideIpAddress, isLoading }: D
                             <h2 className='text-base md:text-xl font-bold text-center'>Looks like you haven't referred anyone yet!</h2>
                             <p className="text-sm md:text-base pl-8 pr-8">Invite your friends now and start earning rewards!</p>
 
-                            <div className="w-[220px] xl:w-[220px] flex justify-center items-center gap-2  rounded-xl border-2 border-gray-300 cursor-pointer mt-4 p-4 h-[10vh] font-bold"
+                            <div className="w-[220px] xl:w-[220px] flex justify-center items-center gap-2  rounded-xl  bg-gradient-to-r from-pink-200 to-[#6620d6] text-white cursor-pointer mt-4 p-4 h-[7vh] font-bold"
                                 onClick={copyText}
                             >
-                                <div><CopyIcon /></div>
+                                <div><CopyIcon fill='white'/></div>
                                 <button>
                                     Copy Referral link
                                 </button>

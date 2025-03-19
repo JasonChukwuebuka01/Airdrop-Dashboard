@@ -4,7 +4,7 @@
 import { DatePickerDemo } from "@/components/Helper/DatePicker";
 import Info from "@/components/Helper/Info";
 import ReferralTable from "@/components/Helper/ReferralTable";
-import { CopyIcon, Gift, TimerIcon, TwitterIcon, UserPlus } from "lucide-react";
+import { CopyIcon, Gift, TimerIcon, TwitterIcon, UserPlus, XIcon } from "lucide-react";
 import Link from "next/link";
 import { ReactNode, useEffect, useState } from 'react';
 import { toast, Toaster } from "sonner";
@@ -108,17 +108,17 @@ export default function ReferralPage() {
     {
       name: "Successful Referral",
       value: 0,
-      icon: <UserPlus size={30} />
+      icon: <UserPlus size={30} fill="white" className="text-white"/>
     },
     {
       name: "Pending Referrals",
       value: 0,
-      icon: <TimerIcon size={30} />
+      icon: <TimerIcon size={30}  className="text-purple-500"/>
     },
     {
       name: "Total Referral Bonus",
       value: 0,
-      icon: <Gift size={30} />
+      icon: <Gift size={30}   className="text-purple-500"/>
     }
   ];
 
@@ -137,24 +137,24 @@ export default function ReferralPage() {
 
 
   return (
-    <section className='h-[85%] p-4 overflow-auto'>
+    <section className='h-[85%] p-4 overflow-auto bg-[#06030f]'>
 
       {/**Referral Header */}
-      <article className="border border-gray-300 p-4 pl-3 pr-3 rounded-lg">
-        <h1 className="text-xl font-bold text-gray-800 mb-2">Referral Campaign</h1>
+      <article className="border border-gray-900 p-4 pl-3 pr-3 rounded-lg bg-[#0E0417]">
+        <h1 className="text-xl font-bold text-white mb-2 ">Referral Campaign</h1>
 
         <section className="grid grid-cols-1 md:grid-cols-9 gap-4">
           {
             stats.map((stat, index) => (
               <div
                 key={index}
-                className="w-full md:col-span-3 bg-white p-3 rounded-2xl border border-gray-300 flex items-center gap-3 h-[15vh] lg:h-[20vh]"
+                className={`${index === 0 && "bg-gradient-to-r from-pink-200 to-[#6620d6]"}  w-full md:col-span-3 bg-white p-3 rounded-2xl border-none flex items-center gap-3 h-[15vh] lg:h-[18vh] bg-gradient-to-r from-[#392c47] to-[#23063b]`}
               >
-                <div className='h-[70%] p-6 bg-gray-200 rounded-2xl flex justify-center items-center text-4xl'>
+                <div className={`${index === 0 && "bg-white/55"} h-[70%] p-6  bg-[#06030f] rounded-3xl flex justify-center items-center text-4xl`}>
                   {stat.icon}
                 </div>
 
-                <div>
+                <div className="text-white">
                   <div className='text-[15px] w-full font-bold'>{stat.name}</div>
                   <div className='text-3xl font-bold'>{stat.value}</div>
                 </div>
@@ -168,13 +168,13 @@ export default function ReferralPage() {
 
 
       {/**Copy Link / Tweet referral Section */}
-      <article className="border border-gray-300 mt-6 flex flex-col lg:flex-row gap-4 items-center p-4 rounded-xl">
-        <div className="w-full h-[7vh]  lg:w-[280px] xl:w-[250px] lg:h-[7vh] truncate flex  justify-center items-center p-3 rounded-xl border-2 border-gray-300"><span className="overflow-hidden text-center ">https://app.despeed.net/register?ref=mm6FQ0AmwxiX</span></div>
+      <article className="border border-gray-900  bg-[#0E0417] mt-6 flex flex-col lg:flex-row gap-4 items-center p-4 rounded-xl">
+        <div className="w-full h-[7vh]  lg:w-[280px] xl:w-[250px] lg:h-[7vh] truncate flex  justify-center items-center p-3 rounded-xl border border-gray-700 bg-gray-800/40 text-white"><span className="overflow-hidden text-center ">https://app.despeed.net/register?ref=mm6FQ0AmwxiX</span></div>
 
-        <div className="w-full lg:w-[200px] xl:w-[150px] h-[7vh] flex justify-center items-center gap-2  rounded-xl border-2 border-gray-300 cursor-pointer"
+        <div className="w-full lg:w-[200px] xl:w-[150px] h-[7vh] flex justify-center items-center gap-2  rounded-xl cursor-pointer bg-gradient-to-r from-pink-200 to-[#6620d6] text-white"
           onClick={() => copyText()}
         >
-          <div><CopyIcon /></div>
+          <div><CopyIcon fill="white"/></div>
           <button>
             Copy Link
           </button>
@@ -183,15 +183,15 @@ export default function ReferralPage() {
           href="https://twitter.com/intent/tweet?text=Join%20Despeed%20and%20get%20free%20data%20when%20you%20sign%20up%20using%20my%20link%20https://app.despeed.net/register?ref=mm6FQ0AmwxiX"
           className="w-full lg:w-[280px] xl:w-[200px] h-[7vh] block"
         >
-          <div className="w-full flex h-full justify-center items-center gap-3 border-2 border-gray-300 rounded-xl p-1">
-            <div><TwitterIcon /></div>
+          <div className="w-full flex h-full justify-center items-center gap-1 bg-[#0EA5E9]  rounded-xl p-1 text-white">
+            <div><XIcon/></div>
             <span>Tweet Referral</span>
           </div>
         </Link>
 
-        <div className="w-full lg:w-[400px] xl:w-[550px] h-[7vh] flex items-center justify-center gap-1 border border-gray-300 rounded-xl">
+        <div className="w-full lg:w-[400px] xl:w-[550px] h-[7vh] flex items-center justify-center gap-1 rounded-xl border border-gray-700 bg-gray-800/40 text-white ">
           <span className="text-sm pl-2 truncate">Unlock additional 200 Bytes as a reward for every successful referral you make!</span>
-          <div className=""><Info /></div>
+          <div className="pr-3"><Info /></div>
         </div>
       </article>
 
@@ -204,12 +204,12 @@ export default function ReferralPage() {
       {/**  referral Table Section */}
 
       <article
-        className="border border-gray-300 mt-6  gap-4 items-center  p-4 rounded-xl "
+        className="border border-gray-900 mt-6  gap-4 items-center  p-4 rounded-xl bg-[#0E0417]  text-white "
       >
         <header className='w-full h-full flex  flex-col lg:flex-row lg:justify-between lg:items-center mb-3 '>
-          <h2 className='text-base lg:text-xl font-bold text-gray-800  h-full'>Referral Status</h2>
+          <h2 className='text-base lg:text-xl font-bold   h-full'>Referral Status</h2>
 
-          <div className="border border-gray-500 rounded-xl overflow-hidden">
+          <div className="rounded-xl overflow-hidden ">
             <DatePickerDemo />
           </div>
         </header>

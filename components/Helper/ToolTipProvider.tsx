@@ -21,7 +21,7 @@ const ToolTipProvider = ({ BytesValue }: props) => {
         <TooltipProvider>
             <Tooltip>
                 <TooltipTrigger>
-                    <div className='border-2 border-black flex items-center justify-center gap-2 p-1 pl-2 pr-2 rounded-lg'>
+                    <div className='border border-gray-900 flex items-center justify-center gap-2 p-1 pl-2 pr-2 rounded-lg bg-gradient-to-r from-[#392c47] to-[#0E0417]'>
                         <span className='font-bold'>{BytesValue}</span>
                         <div><TrafficConeIcon /></div>
                     </div>

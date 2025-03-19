@@ -25,7 +25,7 @@ const QuestsRewards = () => {
     });
     const [claimed, setClaimed] = useState<boolean>(false);
     const [totalEarned, setTotalEarned] = useState<number>(0);
-   
+
     const [questsCompleted, setQuestsCompleted] = useState<number>(0);
     const [streakSevenClicked, setStreakSevenClicked] = useState<string>(localStorage.getItem("seven") || "true");
     const [streakFourteenClicked, setStreakFourTeenClicked] = useState<string>(localStorage.getItem("fourteen") || "true");
@@ -274,20 +274,20 @@ const QuestsRewards = () => {
 
     const progressWidth = Math.min((streak / 28) * 100, 100); // Calculate progress width
 
-
+   
 
     return (
-        <section className="bg-gray-900 text-white p-5 rounded-lg w-full ">
+        <section className=" text-white p-3 rounded-3xl w-full  bg-[#0E0417] ">
             <header>
                 <h1 className="text-2xl font-semibold mb-1">Quests & Rewards</h1>
             </header>
 
             <article className='grid grid-cols-1 lg:grid-cols-7 gap-4'>
                 <section className=' lg:col-span-5'>
-                    <article className="bg-gray-800 rounded-lg p-5 mb-5 border border-gray-700">
+                    <article className=" bg-[#06030f] rounded-lg p-5 mb-5 border border-gray-900">
                         <div className="flex justify-between md:items-center md:flex-row flex-col ">
                             <header className="flex items-center mb-3 md:mb-0 ">
-                                <div className="bg-purple-700 rounded-2xl w-12 h-12  flex items-center justify-center mr-3">
+                                <div className="bg-gradient-to-r from-pink-200 to-[#6620d6] rounded-2xl w-12 h-12  flex items-center justify-center mr-3">
                                     <Check size={20} aria-hidden="true" />
                                 </div>
                                 <div>
@@ -310,8 +310,8 @@ const QuestsRewards = () => {
                                     onClick={handleClaim}
                                     disabled={!isClaimable || claimed}
                                     aria-label={claimed ? "Already claimed" : "Claim daily reward"}
-                                    className={`bg-purple-700 text-white py-2 px-4 rounded-md disabled:bg-gray-700 
-                ${isClaimable && 'hover:bg-purple-600'} w-full font-bold text-[15px] flex justify-center items-center rounded-xl p-6 gap-2  border border-gray-300`}
+                                    className={`bg-purple-700 text-white py-2 px-4 rounded-md disabled:bg-white/25
+                ${isClaimable && 'hover:bg-purple-600'} w-full font-bold text-[15px] flex justify-center items-center rounded-xl p-6 gap-2  border border-gray-500`}
                                 >
                                     {
                                         isClaimable ? <UnlockIcon size={18} /> : <LockIcon size={18} />
@@ -331,9 +331,9 @@ const QuestsRewards = () => {
                         </div>
                     </article>
 
-                    <article className="bg-gray-800 rounded-2xl mb-5 pb-2">
-                        <section className="bg-gray-800 rounded-2xl p-5  flex items-center border border-gray-700">
-                            <div className="bg-purple-700 rounded-2xl w-12 h-12  flex items-center justify-center mr-3">
+                    <article className="bg-[#06030f] rounded-2xl mb-5 pb-2">
+                        <section className="bg-[#06030f] rounded-2xl p-5  flex items-center border border-gray-900">
+                            <div className="bg-gradient-to-r from-pink-200 to-[#6620d6] rounded-2xl w-12 h-12  flex items-center justify-center mr-3">
                                 <Calendar size={20} aria-hidden="true" />
                             </div>
 
@@ -356,36 +356,35 @@ const QuestsRewards = () => {
                                 </div>
 
                                 <div className="absolute top-[200%] left-0 transform -translate-y-1/2 w-full flex justify-between">
-                                    <span className="text-white text-xs relative -top-6 left-[23%] bg-gray-800 rounded-md p-1 flex  justify-center items-center">7<Calendar size={20} className="inline-block ml-1" /></span>
-                                    <span className="text-white text-xs relative -top-6 left-[15%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">14<Calendar size={18} className="inline-block ml-1" /></span>
-                                    <span className="text-white text-xs relative -top-6 left-[10%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">21<Calendar size={18} className="inline-block ml-1" /></span>
-                                    <span className="text-white text-xs relative -top-6 left-[0%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">28<Calendar size={18} className="inline-block ml-1" /></span>
+                                    <span className="text-white text-xs relative -top-6 left-[23%] bg-gray-800 rounded-md p-1 flex  justify-center items-center">7<Calendar size={20} className="inline-block ml-1 text-purple-500" /></span>
+                                    <span className="text-white text-xs relative -top-6 left-[15%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">14<Calendar size={18} className="inline-block ml-1 text-purple-500" /></span>
+                                    <span className="text-white text-xs relative -top-6 left-[10%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">21<Calendar size={18} className="inline-block ml-1 text-purple-500" /></span>
+                                    <span className="text-white text-xs relative -top-6 left-[0%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">28<Calendar size={18} className="inline-block ml-1 text-purple-500" /></span>
                                 </div>
                             </div>
                             {/* End Progress Bar */}
                         </section>
 
-                        <article className="bg-gray-800 rounded-lg mb-5 mt-5 w-[97%] mx-auto border border-gray-700">
-                            <div className="flex justify-between items-center  border-b border-b-gray-700 p-2">
+                        <article className="bg-[#06030f] rounded-lg mb-5 mt-5 w-[97%] mx-auto border border-gray-900 overflow-hidden">
+                            <div className="flex justify-between items-center  border-b border-b-gray-900 p-2 bg-white/15">
                                 <div className=''>
                                     <h3 className="text-lg font-medium flex items-center">
-                                        <div className="w-8 h-8 flex items-center justify-center">🎁</div>
+                                        <div className="w-8 h-8 flex items-center justify-center font-bold">🎁</div>
                                         Weekly check-in Bytes bonus
                                     </h3>
                                 </div>
                                 <button
-                                    onClick={handleWeeklyClaim}
-                                    // disabled={!isWeeklyClaimableButton}
+                                    onClick={handleWeeklyClaim}               
                                     aria-label={claimed ? "Already claimed" : "Claim daily reward"}
                                     className={` text-white py-2 px-4 rounded-md 
-         ${isWeeklyClaimableButton === "true" && 'bg-purple-600'} font-bold text-[15px] flex justify-center items-center rounded-xl p-3 gap-2  border border-gray-300`}
+         ${isWeeklyClaimableButton === "true" && 'bg-purple-600'} bg-white/25 font-bold text-[15px] flex justify-center items-center rounded-xl p-3 gap-2  border border-gray-500`}
                                 >
                                     <Lock size={16} className="mr-1" />
                                     {weeklyButtonValue}
                                     <Globe size={16} className="ml-1" />
                                 </button>
                             </div>
-                            <div className="flex justify-between items-center mt-3 p-2 pl-4 pr-4">
+                            <div className="flex justify-between items-center mt-3 p-2 pl-4 pr-4 pb-4">
                                 <p className="text-gray-400 text-base">Bytes bonus for next milestones</p>
                                 <DialogeBox />
                             </div>
@@ -394,7 +393,7 @@ const QuestsRewards = () => {
                 </section>
 
                 <aside className=" col-span-2 grid grid-cols-1 gap-5 h-[5vh] w-full ">
-                    <article className="bg-gradient-to-r from-pink-400 to-purple-700  p-4 pt-5 pb-5 w-full rounded-2xl mx-auto flex  items-center gap-4">
+                    <article className="bg-gradient-to-r from-pink-200 to-[#6620d6] p-4 pt-5 pb-5 w-full rounded-2xl mx-auto flex  items-center gap-4">
                         <div className="bg-white/20 rounded-3xl w-16 h-16 flex items-center justify-center ">
                             <DollarSign size={24} aria-hidden="true" />
                         </div>
@@ -404,7 +403,7 @@ const QuestsRewards = () => {
                         </div>
                     </article>
 
-                    <article className="bg-gray-800  p-4 pt-5 pb-5 w-full rounded-2xl mx-auto flex  items-center gap-4">
+                    <article className="bg-[#06030f] p-4 pt-5 pb-5 w-full rounded-2xl mx-auto flex  items-center gap-4 border border-gray-900">
                         <div className="bg-white/20 rounded-3xl w-16 h-16 flex items-center justify-center">
                             <Clock size={24} aria-hidden="true" />
                         </div>

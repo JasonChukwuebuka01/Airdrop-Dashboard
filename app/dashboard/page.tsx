@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import EarningsChart from '@/components/Dashboard/EarningsChart';
 import CustomSpeedometer from '@/components/Helper/Meter';
 import { Button } from '@/components/ui/button';
-import { Calendar1Icon, CopyIcon, LockIcon, LucideTwitter, Share2Icon, TicketCheckIcon, TicketPercent, TimerIcon, TrafficConeIcon, UnlockIcon, XIcon } from 'lucide-react';
+import { Calendar1Icon, CheckCircle2Icon, CheckIcon, CopyIcon, LockIcon, LucideTwitter, Share2Icon, TicketCheckIcon, TicketPercent, TimerIcon, TrafficConeIcon, UnlockIcon, XIcon } from 'lucide-react';
 import Link from 'next/link';
 import DemoEarningsChart from '@/components/Dashboard/DemoEarningChart';
 import ShowTable from '@/components/Dashboard/ShowTable';
@@ -209,12 +209,12 @@ export default function DashboardPage() {
           <article className="bg-[#0E0417] p-3 pb-10 rounded-lg border-[1px] border-gray-900 flex flex-col  justify-center lg:h-[25vh]">
             <h2 className="text-xl font-bold text-white mb-2 pt-4">Current Stage: Kilo Cycle</h2>
             <section className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white">
-              <aside className="flex rounded-lg justify-center p-1 px-2 h-[15vh] border-[1px] border-gray-900  bg-[#211037]">
+              <aside className="flex rounded-2xl justify-center p-1 px-2 h-[15vh] border-[1px] border-gray-900 bg-gradient-to-r from-[#392c47] to-[#0E0417]">
                 <article className='w-full h-full rounded-lg flex justify-between gap-4 '>
 
                   <div className='flex gap-2 w-[80%] h-full items-center'>
                     <div className='h-[70%] p-5 rounded-3xl flex justify-center items-center bg-[#06030f]'>
-                      <Calendar1Icon />
+                      <Calendar1Icon className='text-purple-500' />
                     </div>
                     <div className=' w-[70%] flex flex-col '>
                       <div className='text-sm w-full  font-bold'>Today’s Earnings</div>
@@ -223,7 +223,7 @@ export default function DashboardPage() {
                   </div>
 
                   <div className='w-[15%] h-full flex items-end justify-end'>
-                    <div><TrafficConeIcon size={40} /></div>
+                    <div><TrafficConeIcon size={40} className='text-purple-500'/></div>
                   </div>
                 </article>
 
@@ -314,15 +314,15 @@ export default function DashboardPage() {
 
 
         {/** Quest and Earning Statistics section */}
-        <section className="grid grid-cols-1 lg:grid-cols-6 gap-4 mt-6 pb-8">
-          <article className="w-full lg:col-span-2 bg-white p-2 rounded-xl border-[1px] border-gray-300  pb-4">
-            <h2 className='text-xl font-bold text-gray-800 mb-2 '>Quests</h2>
+        <section className="grid grid-cols-1 lg:grid-cols-6 gap-4 mt-6 pb-8 ">
+          <article className="w-full lg:col-span-2 p-2 rounded-xl border-[1px] border-gray-900  pb-4 bg-[#0E0417] text-white">
+            <h2 className='text-xl font-bold mb-2 '>Quests</h2>
 
-            <section className='grid grid-cols-1 gap-4'>
-              <div className="flex flex-col gap-2 border-[1px] border-gray-300 p-2 rounded-xl pb-4">
-                <div className="flex gap-3 bg-gray-100 rounded-lg p-2 ">
-                  <section className='h-[90%] p-4 bg-gray-200 rounded-2xl flex justify-center items-center border-[1px] border-gray-300 '>
-                    <TicketCheckIcon />
+            <section className='grid grid-cols-1 gap-4 '>
+              <div className="flex flex-col gap-2 border-[1px] border-gray-900 p-2 rounded-xl pb-4 bg-[#06030f]">
+                <div className="flex gap-3 rounded-lg p-2 ">
+                  <section className='h-[90%] p-4 bg-gray-800 rounded-2xl flex justify-center items-center border-[1px] border-gray-900 '>
+                    <CheckCircle2Icon className='text-purple-500' />
                   </section>
                   <section className='flex flex-col justify-center items-start '>
                     <h2 className='text-base font-bold text-center'>Daily Claim</h2>
@@ -330,12 +330,11 @@ export default function DashboardPage() {
                   </section>
                 </div>
 
-                <div className=''>
+                <div >
                   <Button
                     className={`w-full font-bold text-[15px] flex justify-center items-center rounded-xl p-6 
-                      ${isClaimable ? 'bg-purple-700 hover:bg-purple-600' : 'bg-gray-700  cursor-not-allowed '}`}
+                      ${isClaimable ? 'bg-purple-700 hover:bg-purple-600' : 'bg-gray-900  cursor-not-allowed border border-gray-700 '} `}
                     onClick={handleClaim}
-                  //disabled={!isClaimable}
                   >
                     {
                       isClaimable ? <UnlockIcon /> : <LockIcon />
@@ -345,9 +344,9 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2 border-[1px] border-gray-300 p-2 rounded-xl pb-4">
-                <div className="flex gap-3 bg-gray-100 rounded-lg p-2 ">
-                  <section className='h-[90%] p-4 bg-gray-200 rounded-2xl flex justify-center items-center border-[1px] border-gray-300 '>
+              <div className="flex flex-col gap-2 border-[1px] border-gray-900 p-2 rounded-xl pb-4 bg-[#06030f] ">
+                <div className="flex gap-3 rounded-lg p-2 bg-[#06030f]">
+                  <section className='h-[90%] p-4 rounded-2xl flex justify-center items-center border-[1px] border-gray-300 '>
                     <TimerIcon />
                   </section>
                   <section className='flex flex-col justify-center items-start '>
@@ -358,7 +357,7 @@ export default function DashboardPage() {
 
                 <div className=''>
                   <Link href="/quests">
-                    <Button className='w-full font-bold text-[15px] flex justify-center items-center rounded-xl p-6'> View all Quests</Button>
+                    <Button className='w-full font-bold text-[15px] flex justify-center items-center rounded-xl p-6 bg-gray-900 border border-gray-700 '> View all Quests</Button>
                   </Link>
                 </div>
               </div>
@@ -368,8 +367,8 @@ export default function DashboardPage() {
           </article>
 
 
-          <article className="lg:col-span-4 bg-white p-4 rounded-xl border-[1px] border-gray-300 w-full ">
-
+          <article className="lg:col-span-4 bg-[#0E0417]  p-4 rounded-xl border-[1px] border-gray-900 w-full  text-white ">
+            <h2 className="text-2xl font-bold ">Earnings Statistics</h2>
             {
               ShowDemo ?
                 (
@@ -419,3 +418,4 @@ export default function DashboardPage() {
   );
 }
 {/*  */ }
+
