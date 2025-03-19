@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import EarningsChart from '@/components/Dashboard/EarningsChart';
 import CustomSpeedometer from '@/components/Helper/Meter';
 import { Button } from '@/components/ui/button';
-import { Calendar1Icon, CopyIcon, LockIcon, LucideTwitter, Share2Icon, TicketCheckIcon, TicketPercent, TimerIcon, TrafficConeIcon, UnlockIcon } from 'lucide-react';
+import { Calendar1Icon, CopyIcon, LockIcon, LucideTwitter, Share2Icon, TicketCheckIcon, TicketPercent, TimerIcon, TrafficConeIcon, UnlockIcon, XIcon } from 'lucide-react';
 import Link from 'next/link';
 import DemoEarningsChart from '@/components/Dashboard/DemoEarningChart';
 import ShowTable from '@/components/Dashboard/ShowTable';
@@ -200,20 +200,20 @@ export default function DashboardPage() {
   return (
 
     <>
-      <article className='h-[85%] p-4 overflow-auto'>
+      <article className='h-[85%] p-4 overflow-auto bg-[#06030f]'>
 
         {/**Kilo Cycle section */}
 
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
 
-          <article className="bg-white p-3 pb-10 rounded-lg border-[1px] border-gray-300 flex flex-col  justify-center lg:h-[25vh]">
-            <h2 className="text-xl font-bold text-gray-800 mb-2 pt-4">Current Stage: Kilo Cycle</h2>
-            <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <aside className="flex rounded-lg justify-center p-1 h-[15vh] border-[1px] border-gray-300 ">
+          <article className="bg-[#0E0417] p-3 pb-10 rounded-lg border-[1px] border-gray-900 flex flex-col  justify-center lg:h-[25vh]">
+            <h2 className="text-xl font-bold text-white mb-2 pt-4">Current Stage: Kilo Cycle</h2>
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white">
+              <aside className="flex rounded-lg justify-center p-1 px-2 h-[15vh] border-[1px] border-gray-900  bg-[#211037]">
                 <article className='w-full h-full rounded-lg flex justify-between gap-4 '>
 
                   <div className='flex gap-2 w-[80%] h-full items-center'>
-                    <div className='h-[70%] p-4 bg-gray-200 rounded-2xl flex justify-center items-center'>
+                    <div className='h-[70%] p-5 rounded-3xl flex justify-center items-center bg-[#06030f]'>
                       <Calendar1Icon />
                     </div>
                     <div className=' w-[70%] flex flex-col '>
@@ -228,11 +228,11 @@ export default function DashboardPage() {
                 </article>
 
               </aside>
-              <aside className="flex rounded-lg justify-center p-1 h-[15vh] border-[1px] border-gray-300">
+              <aside className="flex rounded-2xl justify-center p-1 h-[15vh] border-none px-4 bg-gradient-to-r from-pink-200 to-[#7734E1]">
                 <article className='w-full h-full rounded-lg flex justify-between gap-4 '>
 
-                  <div className='flex gap-2 w-[80%] h-full items-center'>
-                    <div className='h-[70%] p-4 bg-gray-200 rounded-2xl flex justify-center items-center '>
+                  <div className='flex gap-2 w-[80%] h-full items-center '>
+                    <div className='h-[70%] p-5  rounded-3xl flex justify-center items-center bg-gradient-to-r from-pink-100 to-pink-300'>
                       <TicketPercent />
                     </div>
                     <div className=' w-[70%] flex flex-col'>
@@ -249,7 +249,7 @@ export default function DashboardPage() {
             </section>
           </article>
 
-          <article className="bg-white pl-2 pr-2 pt-0  pb-3 flex rounded-lg border-[1px] border-gray-300 h-[50vh] sm:h-[30vh]  lg:pb-0 lg:h-[25vh]">
+          <article className="bg-[#0E0417] text-white pl-2 pr-2 pt-0  pb-3 flex rounded-lg border-[1px] border-gray-900 h-[50vh] sm:h-[30vh]  lg:pb-0 lg:h-[25vh]">
             <aside className="grid grid-cols-1 sm:grid-cols-6 w-full h-full lg:overflow-hidden  ">
 
               <div className="h-full col-span-3">
@@ -257,14 +257,14 @@ export default function DashboardPage() {
                 <CustomSpeedometer />
               </div>
 
-              <div className="col-span-3 flex  sm:border-l-[1px] lg:border-gray-300 h-full mt-2 sm:mt-0 lg:mt-0 gap-3 ">
-                <div className="w-1/2 flex flex-col justify-center items-end h-full">
+              <div className="col-span-3 flex  sm:border-l-[1px] lg:border-gray-900 h-full mt-2 sm:mt-0 lg:mt-0 gap-3 ">
+                <div className="w-1/2 flex flex-col justify-center items-end h-full ">
                   <div className="text-sm font-bold mb-2">Download Speed</div>
-                  <h2 className="text-3xl p-4 rounded-xl text-center font-bold border-2 border-gray-300">0.77 <span className="text-sm -mt-2 block" >MB/s</span></h2>
+                  <h2 className="text-3xl p-4 rounded-xl text-center font-bold border border-gray-900 bg-gray-800">0.00 <span className="text-sm -mt-2 block" >MB/s</span></h2>
                 </div>
                 <div className="w-1/2 flex flex-col justify-center items-start lg:items-center h-full">
                   <div className="text-sm font-bold mb-2">Upload Speed</div>
-                  <h2 className="text-3xl  p-4 rounded-xl text-center font-bold border-2 border-gray-300 ">2.44<span className="text-sm -mt-2 block" >MB/s</span></h2>
+                  <h2 className="text-3xl  p-4 rounded-xl text-center font-bold border border-gray-900 bg-gray-800 ">0.00<span className="text-sm -mt-2 block" >MB/s</span></h2>
                 </div>
               </div>
 
@@ -279,11 +279,11 @@ export default function DashboardPage() {
 
 
         {/**referral section */}
-        <section className="flex flex-col sm:flex-row  justify-center items-center sm:justify-between gap-6 p-4 mt-6 border-[1px] border-gray-300 rounded-2xl">
+        <section className="flex flex-col sm:flex-row  justify-center items-center sm:justify-between gap-6 p-4 mt-6 border-[1px] border-gray-900 rounded-2xl bg-[#0E0417] text-white">
 
           <article className="flex items-center gap-3">
-            <div className="text-sm font-bold border-[1px] border-gray-300 p-2 rounded-xl">
-              <Share2Icon size={30} />
+            <div className="text-sm font-bold  bg-gray-800 p-2 rounded-xl">
+              <Share2Icon size={30} className='text-purple-500' />
             </div>
             <div className="text-lg font-bold">Refer Your Friends</div>
           </article>
@@ -291,18 +291,18 @@ export default function DashboardPage() {
           <article className="grid grid-cols-1 sm:grid-cols-2 w-full sm:w-[50%] lg:w-[30%] rounded-lg gap-2">
             <div className=" text-sm font-bold flex justify-end">
               <Button
-                className='flex gap-2  pr-2 pl-2 pt-6 pb-6 rounded-lg  w-full sm:w-[80%] '
+                className='flex gap-2 pr-2 pl-2 pt-6 pb-6 rounded-lg w-full sm:w-[80%] bg-gradient-to-r from-purple-300 to-purple-500'
                 onClick={copyText}
               >
-                <CopyIcon size={20} />
-                <span>Copy Link</span>
+                <CopyIcon size={25} />
+                <span className='font-bold'>Copy Link</span>
               </Button>
             </div>
             <div className="text-2xl font-bold">
-              <Button className='flex gap-3 p-6 rounded-lg w-full '
+              <Button className='flex gap-1 p-6 rounded-lg w-full bg-[#0EA5E9] '
                 onMouseDown={(e) => e.preventDefault()}>
-                <LucideTwitter size={20} />
-                <span>Tweet Referral</span>
+                <XIcon size={35} />
+                <span className='font-bold'>Tweet Referral</span>
               </Button>
             </div>
           </article>

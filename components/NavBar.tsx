@@ -6,8 +6,6 @@ import { usePathname } from 'next/navigation';
 import React from 'react'
 import { motion } from "framer-motion";
 
-
-
 const menuItems: MenuItem[] = [
     {
         name: "Dashboard",
@@ -41,9 +39,6 @@ const menuItems: MenuItem[] = [
     }
 ];
 
-
-
-
 const NavBar = () => {
 
     const path = usePathname();
@@ -51,9 +46,18 @@ const NavBar = () => {
 
 
 
-
     return (
-        <section className="hidden xl:block w-[13%] bg-gray-800 text-white relative h-full  overflow-hidden  border-r-[1px] border-r-gray-700/30">
+        <motion.section 
+            initial={{ x: 20, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ 
+                duration: 0.5,
+                ease: "easeOut",
+                type: "spring",
+                stiffness: 100
+            }}
+            className="hidden xl:block w-[11%] bg-[#0E0417] text-white relative h-full overflow-hidden border-r-[1px] border-r-gray-700/30"
+        >
             <h1 className="text-2xl font-bold text-center sticky top-0 p-6">DeSpeed</h1>
             <nav className="h-full w-full flex flex-col justify-start ">
                 {
@@ -88,7 +92,7 @@ const NavBar = () => {
                                     
                                     <div className='absolute top-0 left-0 h-full w-1 flex  justify-center items-center  '>
                                         <motion.div
-                                            className="absolute h-[10%] w-2 bg-purple-500 top-5 left-0 rounded-xl"
+                                            className="absolute h-[10%] w-[6px] bg-purple-500 top-5 left-0 rounded-xl"
                                             initial={{ height: 0, bottom: 5 }}
                                             animate={{ height: "50%", bottom: 0 }}
                                             transition={{
@@ -106,7 +110,7 @@ const NavBar = () => {
                         </Link>
                     ))}
             </nav>
-        </section>
+        </motion.section>
     )
 }
 

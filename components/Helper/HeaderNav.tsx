@@ -6,7 +6,7 @@ import ThumbNail from './ThumbNail'
 const HeaderNav = () => {
 
     return (
-        <section className=" bg-gray-800 flex justify-between items-center h-[15vh] border-b border-b-gray-700/30 sticky top-0 z-10 p-4">
+        <section className="flex justify-between items-center h-[15vh] border-b border-b-gray-700/30 sticky top-0 z-10 p-4 bg-[#0E0417]">
             <div className="xl:hidden">
                 <ThumbNail />
             </div>
