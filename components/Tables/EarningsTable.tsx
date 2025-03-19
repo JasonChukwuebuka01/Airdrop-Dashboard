@@ -46,16 +46,16 @@ export default function EarningsTable({ tableData, isLoading }: DataTableProps) 
     return (
 
         <section className="w-full relatve ">
-            <Table className=' overflow-scroll border border-gray-300 rounded-lg'>
-                <TableHeader className='rounded-lg mb-4'>
-                    <TableRow className='border-b border-gray-300 text-base rounded-lg'>
-                        <TableHead className="font-bold p-4">Cycle</TableHead>
-                        <TableHead className='font-bold p-4'>Start/End Date</TableHead>
-                        <TableHead className='font-bold p-4'>Referral Reward</TableHead>
-                        <TableHead className='font-bold p-4'>Speedtest Earning</TableHead>
-                        <TableHead className="font-bold p-4">Referral Commission</TableHead>
-                        <TableHead className="font-bold p-4">Quest Earning</TableHead>
-                        <TableHead className="font-bold p-4">Total</TableHead>
+            <Table className=' overflow-scroll border border-gray-900 rounded-lg'>
+                <TableHeader className='rounded-lg mb-4 bg-black/15 '>
+                    <TableRow className='border-b border-gray-900 text-base rounded-lg hover:bg-black/25 '>
+                        <TableHead className="font-bold p-4 text-white">Cycle</TableHead>
+                        <TableHead className='font-bold p-4 text-white'>Start/End Date</TableHead>
+                        <TableHead className='font-bold p-4 text-white'>Referral Reward</TableHead>
+                        <TableHead className='font-bold p-4 text-white'>Speedtest Earning</TableHead>
+                        <TableHead className="font-bold p-4 text-white">Referral Commission</TableHead>
+                        <TableHead className="font-bold p-4 text-white">Quest Earning</TableHead>
+                        <TableHead className="font-bold p-4 text-white">Total</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -65,7 +65,7 @@ export default function EarningsTable({ tableData, isLoading }: DataTableProps) 
                                 getCurrentPageData().map((data, index) => (
                                     <TableRow
                                         key={index}
-                                        className='border border-gray-300 text-base rounded-lg p-4 transition-all duration-300 ease-in-out hover:bg-gray-300 hover:shadow-md overflow-auto'
+                                        className='border border-gray-900 text-base rounded-lg p-4 transition-all duration-300 ease-in-out hover:bg-black/25 hover:shadow-md overflow-auto'
                                     >
                                         <TableCell className="p-4 w-[130px] min-w-[130px] max-w-[130px] whitespace-pre-wrap">{data.Cycle}</TableCell>
                                         <TableCell className="p-4 w-[220px] min-w-[220px] max-w-[220px] whitespace-pre-wrap">
@@ -101,31 +101,31 @@ export default function EarningsTable({ tableData, isLoading }: DataTableProps) 
 
                                         </TableCell>
                                         <TableCell className="p-4 w-[180px] min-w-[180px] max-w-[180px] whitespace-nowrap ">
-                                            <div className='border border-black lg:w-[60%] flex items-center justify-center gap-3 p-1 px-4 rounded-lg'>
+                                            <div className=' bg-gradient-to-r from-[#392c47] to-[#0E0417] border border-gray-900 lg:w-[60%] flex items-center justify-center gap-3 p-1 px-4 rounded-lg'>
                                                 <span className='font-bold '> {data.ReferralReward}</span>
                                                 <div><TrafficConeIcon /></div>
                                             </div>
                                         </TableCell>
                                         <TableCell className="p-4 w-[180px] min-w-[180px] max-w-[180px] whitespace-nowrap ">
-                                            <div className='border border-black lg:w-[60%] flex items-center justify-center gap-3 p-1 px-4 rounded-lg'>
+                                            <div className='bg-gradient-to-r from-[#392c47] to-[#0E0417] border border-gray-900 lg:w-[60%] flex items-center justify-center gap-3 p-1 px-4 rounded-lg'>
                                                 <span className='font-bold '>{data.SpeedtestEarning}</span>
                                                 <div><TrafficConeIcon /></div>
                                             </div>
                                         </TableCell>
                                         <TableCell className="p-4 w-[200px] min-w-[200px] max-w-[200px] whitespace-nowrap">
-                                            <div className='border border-black lg:w-[60%] flex items-center justify-center gap-3 p-1 px-4 rounded-lg'>
+                                            <div className=' bg-gradient-to-r from-[#392c47] to-[#0E0417] border border-gray-900 lg:w-[60%] flex items-center justify-center gap-3 p-1 px-4 rounded-lg'>
                                                 <span className='font-bold '>{data.ReferralCommission}</span>
                                                 <div><TrafficConeIcon /></div>
                                             </div>
                                         </TableCell>
                                         <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px]  whitespace-break-spaces">
-                                            <div className='border border-black lg:w-[130px] flex items-center justify-center gap-3 p-1 px-4 rounded-lg'>
+                                            <div className=' bg-gradient-to-r from-[#392c47] to-[#0E0417] border border-gray-900 lg:w-[130px] flex items-center justify-center gap-3 p-1 px-4 rounded-lg'>
                                                 <span className='font-bold '>{data.QuestEarning}</span>
                                                 <div><TrafficConeIcon /></div>
                                             </div>
                                         </TableCell>
                                         <TableCell className="p-4 w-[200px] min-w-[200px] max-w-[200px]  whitespace-break-spaces">
-                                            <div className='border border-black lg:w-[130px] flex items-center justify-center gap-3 p-1 px-4 rounded-lg'>
+                                            <div className=' bg-gradient-to-r from-[#392c47] to-[#0E0417] border border-gray-900 lg:w-[130px] flex items-center justify-center gap-3 p-1 px-4 rounded-lg'>
                                                 <span className='font-bold '> {data.Total}</span>
                                                 <div><TrafficConeIcon /></div>
                                             </div>

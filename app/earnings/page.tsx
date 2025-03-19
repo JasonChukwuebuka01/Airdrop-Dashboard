@@ -106,20 +106,26 @@ const EarningsPage = () => {
 
 
 
+  /**
+       * Parent = bg-[#06030f]
+       * Child = bg-[#0E0417] */
+
 
 
 
 
 
   return (
-    <section className='p-4 pb-0'>
-      <header className='flex flex-col lg:flex-row justify-between lg:items-center mb-3'>
-        <h2 className='text-base lg:text-xl font-bold text-gray-800 mb-2 '>Earnings</h2>
-      </header>
+    <section className='h-[85%] p-4 overflow-auto bg-[#06030f] text-white'>
+      <article className='border border-gray-900 p-4 rounded-2xl bg-[#0E0417] '>
+        <header className='flex flex-col lg:flex-row justify-between lg:items-center mb-3'>
+          <h2 className='text-base lg:text-xl font-bold mb-2 '>Earnings</h2>
+        </header>
 
-      <section>
-        <EarningsTable tableData={tableDatas} isLoading={isLoading} />
-      </section>
+        <section>
+          <EarningsTable tableData={tableDatas} isLoading={isLoading} />
+        </section>
+      </article>
     </section>
   )
 }
