@@ -29,7 +29,7 @@ const ConnectX = () => {
                 </div>
                 <button
                     disabled={true}
-                    className={` text-white py-1 px-4 disabled:bg-white/25  font-bold text-[15px] flex justify-center items-center rounded-xl gap-2  border border-gray-300 mt-1 cursor-not-allowed`}
+                    className={` text-white py-1 px-4 disabled:bg-white/25  font-bold text-[15px] flex justify-center items-center rounded-xl gap-2  border border-gray-500 mt-1 cursor-not-allowed`}
                 >
                     <LockIcon size={18} />
                     <span className='flex gap-2 justify-center items-center'>
@@ -60,7 +60,7 @@ const ConnectX = () => {
                 </div>
                 <button
                     disabled={true}
-                    className={` text-white py-1 px-4 disabled:bg-gray-700  font-bold text-[15px] flex justify-center items-center rounded-xl gap-2  border border-gray-300 mt-1 cursor-not-allowed`}
+                    className={` text-white py-1 px-4 disabled:bg-white/25  font-bold text-[15px] flex justify-center items-center rounded-xl gap-2  border border-gray-500 mt-1 cursor-not-allowed`}
                 >
                     <LockIcon size={18} />
                     <span className='flex gap-2 justify-center items-center'>

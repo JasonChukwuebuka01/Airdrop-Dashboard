@@ -277,14 +277,14 @@ const QuestsRewards = () => {
    
 
     return (
-        <section className=" text-white p-3 rounded-3xl w-full  bg-[#0E0417] ">
+        <section className=" text-white p-3 rounded-3xl w-full  bg-[#0E0417] borderborder-gray-900">
             <header>
                 <h1 className="text-2xl font-semibold mb-1">Quests & Rewards</h1>
             </header>
 
             <article className='grid grid-cols-1 lg:grid-cols-7 gap-4'>
                 <section className=' lg:col-span-5'>
-                    <article className=" bg-[#06030f] rounded-lg p-5 mb-5 border border-gray-900">
+                    <article className=" bg-[#06030f] rounded-2xl p-5 mb-5 border border-gray-900">
                         <div className="flex justify-between md:items-center md:flex-row flex-col ">
                             <header className="flex items-center mb-3 md:mb-0 ">
                                 <div className="bg-gradient-to-r from-pink-200 to-[#6620d6] rounded-2xl w-12 h-12  flex items-center justify-center mr-3">
@@ -331,7 +331,7 @@ const QuestsRewards = () => {
                         </div>
                     </article>
 
-                    <article className="bg-[#06030f] rounded-2xl mb-5 pb-2">
+                    <article className="bg-[#06030f] rounded-2xl mb-5 pb-2 border border-gray-900">
                         <section className="bg-[#06030f] rounded-2xl p-5  flex items-center border border-gray-900">
                             <div className="bg-gradient-to-r from-pink-200 to-[#6620d6] rounded-2xl w-12 h-12  flex items-center justify-center mr-3">
                                 <Calendar size={20} aria-hidden="true" />

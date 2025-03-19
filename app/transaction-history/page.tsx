@@ -160,6 +160,9 @@ const TransactionHistory = () => {
 
 
 
+ /**
+    * Parent = bg-[#06030f]
+    * Child = bg-[#0E0417] */
 
 
   return (
