@@ -164,7 +164,7 @@ const TransactionHistory = () => {
 
   return (
 
-    <section className='h-[85%] p-4   overflow-auto bg-[#06030f] text-white'>
+    <section className='h-[86%] p-4   overflow-auto bg-[#06030f] text-white'>
       <article className='p-2 px-4  pt-6 border border-gray-900  bg-[#0E0417] rounded-2xl'>
         <header className='flex flex-col lg:flex-row justify-between lg:items-center mb-3'>
           <h2 className='text-base lg:text-xl font-bold mb-2 '>Transaction History</h2>

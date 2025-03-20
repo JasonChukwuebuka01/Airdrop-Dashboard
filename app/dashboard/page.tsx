@@ -200,7 +200,7 @@ export default function DashboardPage() {
   return (
 
     <>
-      <article className='h-[85%] p-4 overflow-auto bg-[#06030f]'>
+      <article className='h-[86%] p-4 overflow-auto bg-[#06030f]'>
 
         {/**Kilo Cycle section */}
 
@@ -346,8 +346,8 @@ export default function DashboardPage() {
 
               <div className="flex flex-col gap-2 border-[1px] border-gray-900 p-2 rounded-xl pb-4 bg-[#06030f] ">
                 <div className="flex gap-3 rounded-lg p-2 bg-[#06030f]">
-                  <section className='h-[90%] p-4 rounded-2xl flex justify-center items-center border-[1px] border-gray-300 '>
-                    <TimerIcon />
+                  <section className='h-[90%] p-4 rounded-2xl bg-gray-800  flex justify-center items-center border-[1px] border-gray-900 '>
+                    <TimerIcon  className='text-purple-500'/>
                   </section>
                   <section className='flex flex-col justify-center items-start '>
                     <h2 className='text-base font-bold text-center'>Quests Completed</h2>

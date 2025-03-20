@@ -10,7 +10,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { Clock1Icon, LoaderPinwheelIcon, TrafficConeIcon } from "lucide-react" 
+import { Clock1Icon, LoaderPinwheelIcon, TrafficConeIcon } from "lucide-react"
 import Image from 'next/image';
 
 
@@ -25,12 +25,15 @@ interface DataTableProps {
 
 
 export default function EarningsTable({ tableData, isLoading }: DataTableProps) {
+
     // Pagination states
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
+
     // Calculate total pages
     const totalPages = Math.ceil(tableData.length / itemsPerPage)
+
 
     // Get current page data
     const getCurrentPageData = () => {
@@ -38,6 +41,8 @@ export default function EarningsTable({ tableData, isLoading }: DataTableProps) 
         const endIndex = startIndex + itemsPerPage
         return tableData.slice(startIndex, endIndex)
     }
+
+
 
 
 
@@ -93,8 +98,8 @@ export default function EarningsTable({ tableData, isLoading }: DataTableProps) 
 
 
                                                 <section className="ml-3">
-                                                    <div className='flex items-center justify-center'><Clock1Icon size={15}/>{data.StartTime}</div>
-                                                    <div className='flex items-center justify-center' > <Clock1Icon size={15}/>{data.EndTime}</div>
+                                                    <div className='flex items-center justify-center'><Clock1Icon size={15} />{data.StartTime}</div>
+                                                    <div className='flex items-center justify-center' > <Clock1Icon size={15} />{data.EndTime}</div>
                                                 </section>
 
                                             </div>

@@ -137,7 +137,7 @@ export default function ReferralPage() {
 
 
   return (
-    <section className='h-[85%] p-4 overflow-auto bg-[#06030f]'>
+    <section className='h-[86%] p-4 overflow-auto bg-[#06030f]'>
 
       {/**Referral Header */}
       <article className="border border-gray-900 p-4 pl-3 pr-3 rounded-lg bg-[#0E0417]">

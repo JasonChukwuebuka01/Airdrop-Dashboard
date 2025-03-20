@@ -10,7 +10,7 @@ import { toast, Toaster } from 'sonner';
 const QuestsRewards = () => {
     const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
 
-    const initialCountdown = 6 * 50; // 3 minutes in seconds
+    const initialCountdown =  10; // 3 minutes in seconds
 
     const [countdown, setCountdown] = useState<number>(() => {
         const stored = localStorage.getItem(localStorageKey);
@@ -137,6 +137,7 @@ const QuestsRewards = () => {
             }, 1000);
         } else {
             setIsClaimable(true);
+           // setCountdown(initialCountdown);
         }
         return () => {
             if (interval) clearInterval(interval);
@@ -277,12 +278,12 @@ const QuestsRewards = () => {
    
 
     return (
-        <section className=" text-white p-3 rounded-3xl w-full  bg-[#0E0417] borderborder-gray-900">
+        <section className=" text-white p-1 lg:p-3 rounded-3xl w-full  bg-[#0E0417] border border-gray-900">
             <header>
-                <h1 className="text-2xl font-semibold mb-1">Quests & Rewards</h1>
+                <h1 className="text-2xl font-semibold mb-1 mt-4 lg:mt-0 px-5 lg:px-0">Quests & Rewards</h1>
             </header>
 
-            <article className='grid grid-cols-1 lg:grid-cols-7 gap-4'>
+            <article className='grid grid-cols-1 lg:grid-cols-7 lg:gap-4 '>
                 <section className=' lg:col-span-5'>
                     <article className=" bg-[#06030f] rounded-2xl p-5 mb-5 border border-gray-900">
                         <div className="flex justify-between md:items-center md:flex-row flex-col ">
@@ -331,7 +332,7 @@ const QuestsRewards = () => {
                         </div>
                     </article>
 
-                    <article className="bg-[#06030f] rounded-2xl mb-5 pb-2 border border-gray-900">
+                    <article className="bg-[#06030f] rounded-2xl mb-5 pb-2 border border-gray-900 w-[100%]">
                         <section className="bg-[#06030f] rounded-2xl p-5  flex items-center border border-gray-900">
                             <div className="bg-gradient-to-r from-pink-200 to-[#6620d6] rounded-2xl w-12 h-12  flex items-center justify-center mr-3">
                                 <Calendar size={20} aria-hidden="true" />
@@ -366,9 +367,9 @@ const QuestsRewards = () => {
                         </section>
 
                         <article className="bg-[#06030f] rounded-lg mb-5 mt-5 w-[97%] mx-auto border border-gray-900 overflow-hidden">
-                            <div className="flex justify-between items-center  border-b border-b-gray-900 p-2 bg-white/15">
-                                <div className=''>
-                                    <h3 className="text-lg font-medium flex items-center">
+                            <div className="flex  flex-col md:flex-row justify-between md:items-center  border-b border-b-gray-900 p-2 bg-white/15">
+                                <div className='mb-2 md:mb-0'>
+                                    <h3 className=" text-base md:text-lg font-medium flex items-center gap-2">
                                         <div className="w-8 h-8 flex items-center justify-center font-bold">🎁</div>
                                         Weekly check-in Bytes bonus
                                     </h3>
@@ -376,7 +377,7 @@ const QuestsRewards = () => {
                                 <button
                                     onClick={handleWeeklyClaim}               
                                     aria-label={claimed ? "Already claimed" : "Claim daily reward"}
-                                    className={` text-white py-2 px-4 rounded-md 
+                                    className={` w-[40%] md:w-[18%] text-white py-2 px-4 rounded-md 
          ${isWeeklyClaimableButton === "true" && 'bg-purple-600'} bg-white/25 font-bold text-[15px] flex justify-center items-center rounded-xl p-3 gap-2  border border-gray-500`}
                                 >
                                     <Lock size={16} className="mr-1" />

@@ -97,7 +97,7 @@ const NavBar = () => {
                                     
                                     <div className='absolute top-0 left-0 h-full w-1 flex  justify-center items-center  '>
                                         <motion.div
-                                            className="absolute h-[10%] w-[6px] bg-purple-500 top-5 left-0 rounded-xl"
+                                            className="absolute h-[10%] w-[6px] bg-gradient-to-r from-pink-200 to-[#7734E1] top-5 left-0 rounded-xl"
                                             initial={{ height: 0, bottom: 5 }}
                                             animate={{ height: "50%", bottom: 0 }}
                                             transition={{
