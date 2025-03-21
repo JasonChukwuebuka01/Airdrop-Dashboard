@@ -63,7 +63,7 @@ export default function EarningsTable({ tableData, isLoading }: DataTableProps) 
                         <TableHead className="font-bold p-4 text-white">Total</TableHead>
                     </TableRow>
                 </TableHeader>
-                <TableBody>
+                <TableBody className='text-white/60'>
                     {
                         getCurrentPageData().length > 0 ?
                             (
