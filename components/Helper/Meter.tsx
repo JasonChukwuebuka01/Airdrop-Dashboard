@@ -1,13 +1,13 @@
 import React from 'react';
 
-const CustomSpeedometer = ({ value = 50, maxValue = 100 }) => {
+const CustomSpeedometer = ({ value = 0, maxValue = 100 }) => {
   const radius = 100;
   const strokeWidth = 20;
   const circumference = 2 * Math.PI * radius;
   const progress = (value / maxValue) * circumference;
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center ">
     <svg width="250" height="125" viewBox="0 0 250 150">
         {/* Background Circle */}
         <circle
@@ -15,7 +15,7 @@ const CustomSpeedometer = ({ value = 50, maxValue = 100 }) => {
           cy="125"
           r={radius}
           fill="none"
-          stroke="#e0e0e0"
+          stroke="rgb(168,83,241)"
           strokeWidth={strokeWidth}
         />
         {/* Progress Circle */}
@@ -24,7 +24,7 @@ const CustomSpeedometer = ({ value = 50, maxValue = 100 }) => {
           cy="125"
           r={radius}
           fill="none"
-          stroke="#4caf50"
+          stroke="rgb(168,83,241)"
           strokeWidth={strokeWidth}
           strokeDasharray={circumference}
           strokeDashoffset={circumference - progress}

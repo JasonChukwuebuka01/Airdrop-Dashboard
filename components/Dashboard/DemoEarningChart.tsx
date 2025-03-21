@@ -74,9 +74,9 @@ const DemoEarningsChart: React.FC<DemoEarningsChartProps> = ({ handleShowDemo })
 
 
     return (
-        <div className="p-4 pt-0 pb-0 flex-1 relative">
+        <div className="sm:p-4 pt-0 pb-0 flex-1 relative">
             {/* Glass overlay */}
-            <div className="absolute inset-0 top-7 bg-black/40 backdrop-blur-sm z-[5] rounded-lg flex items-center justify-center">
+            <div className="absolute inset-0 top-9 sm:top-0 md:top-6  bg-black/40 backdrop-blur-md z-[5] rounded-lg flex items-center justify-center">
                 <div className="bg-white/80 p-4 rounded-full shadow-lg">
                     {ShowDemoIcon ? (
                         <RepeatIcon
@@ -92,7 +92,7 @@ const DemoEarningsChart: React.FC<DemoEarningsChartProps> = ({ handleShowDemo })
             </div>
 
            
-            <div ref={chartRef} className="relative overflow-x-auto -mt-7 h-[48vh]">
+            <div ref={chartRef} className="relative overflow-x-auto -mt-7 h-[40vh]  sm:h-[28vh] lg:h-[48vh]">
                 <div style={{ width: chartWidth + 40, height: chartHeight + 45 }} className="relative">
                     {/* Vertical Axis Labels */}
                     {yAxisValues.map((value) => (

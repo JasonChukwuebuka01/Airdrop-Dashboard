@@ -70,9 +70,9 @@ const EarningsChart: React.FC = () => {
 
 
     return (
-        <div className="p-4 pt-0 pb-0 flex-1">
+        <section className="sm:p-4 pt-0 pb-0 flex-1">
            
-            <div ref={chartRef} className="relative overflow-x-auto -mt-7 h-[48vh] scroll-smooth">
+            <div ref={chartRef} className="relative overflow-x-auto -mt-7   h-[40vh] sm:h-[28vh] lg:h-[48vh] scroll-smooth">
                 <div style={{ width: chartWidth + 40, height: chartHeight + 45 }} className="relative">
                     {/* Vertical Axis Labels */}
                     {yAxisValues.map((value) => (
@@ -257,7 +257,7 @@ const EarningsChart: React.FC = () => {
                     <span className='text-xs'>Speedtest Earning</span>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

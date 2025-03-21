@@ -82,7 +82,7 @@ export default function DataTable({ tableData, HideIpAddress, isLoading }: DataT
                                                     ) :
                                                     (
 
-                                                        <div className='border border-gray-900 lg:w-[40%]  flex items-center justify-center gap-3 p-1 pl-2 pr-2 rounded-lg bg-gradient-to-r from-[#392c47] to-[#0E0417]'>
+                                                        <div className='border border-gray-900 sm:w-[60%] lg:w-[40%]  flex items-center justify-center gap-3 p-1 pl-2 pr-2 rounded-lg bg-gradient-to-r from-[#392c47] to-[#0E0417]'>
                                                             <span className='font-bold '>{data.Bytes}</span>
                                                             <div><TrafficConeIcon /></div>
                                                         </div>

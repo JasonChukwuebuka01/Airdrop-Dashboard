@@ -69,7 +69,7 @@ export default function TransactionHistoryTable({ tableData, isLoading }: DataTa
                                     >
                                         <TableCell className="p-4 w-[220px] min-w-[220px] max-w-[220px] whitespace-pre-wrap">{data.TransactionId}</TableCell>
                                         <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap ">{data.TransactionType}</TableCell>
-                                        <TableCell className="p-4 w-[200px] min-w-[200px] max-w-[200px] whitespace-nowrap ">{data.Time} <span className='ml-1 p-2 rounded-xl border-none text-white font-bold bg-green-600 px-4 '>{data.cycle}</span></TableCell>
+                                        <TableCell className="p-4 w-[220px] min-w-[220px] max-w-[220px] whitespace-nowrap ">{data.Time} <span className='ml-1 p-2 rounded-xl border-none text-white font-bold bg-green-600 px-4 '>{data.cycle}</span></TableCell>
                                         <TableCell className="p-4 w-[150px] min-w-[150px] max-w-[150px] whitespace-nowrap">
                                             <div className='  bg-gradient-to-r from-[#392c47] to-[#0E0417] border border-gray-900 lg:w-[60%] flex items-center justify-center gap-3 p-1 px-4 rounded-lg'>
                                                 <span className='font-bold '>{data.BytesEarned}</span>

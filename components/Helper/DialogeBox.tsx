@@ -36,7 +36,7 @@ const DialogeBox = () => {
 
             <AlertDialogContent asChild className='border border-gray-600'>
                 <motion.div
-                    className=" bg-[#11051b] w-[95%] text-white md:w-[80%] lg:max-w-[45rem] p-0 pb-3 fixed top-[50%] left-[50%] rounded-2xl"
+                    className=" bg-[#12051d] w-[95%] text-white md:w-[80%] lg:max-w-[45rem] p-0 pb-3 fixed top-[50%] left-[50%] rounded-2xl"
                     initial={{ y: "-100%", x: "-50%", opacity: 0 }}
                     animate={{ y: "-50%", x: "-50%", opacity: 1 }}    
                     transition={{ 

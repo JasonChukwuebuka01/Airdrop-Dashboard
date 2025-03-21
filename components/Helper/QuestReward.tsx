@@ -378,7 +378,7 @@ const QuestsRewards = () => {
                                     onClick={handleWeeklyClaim}               
                                     aria-label={claimed ? "Already claimed" : "Claim daily reward"}
                                     className={` w-[40%] md:w-[18%] text-white py-2 px-4 rounded-md 
-         ${isWeeklyClaimableButton === "true" && 'bg-purple-600'} bg-white/25 font-bold text-[15px] flex justify-center items-center rounded-xl p-3 gap-2  border border-gray-500`}
+         ${isWeeklyClaimableButton === "true" && 'bg-gradient-to-r from-[#743dce] to-[#6620d6]'} bg-white/25 font-bold text-[15px] flex justify-center items-center rounded-xl p-3 gap-2  border border-gray-500`}
                                 >
                                     <Lock size={16} className="mr-1" />
                                     {weeklyButtonValue}

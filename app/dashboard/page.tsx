@@ -209,7 +209,7 @@ export default function DashboardPage() {
           <article className="bg-[#0E0417] p-3 pb-10 rounded-lg border-[1px] border-gray-900 flex flex-col  justify-center lg:h-[25vh]">
             <h2 className="text-xl font-bold text-white mb-2 pt-4">Current Stage: Kilo Cycle</h2>
             <section className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white">
-              <aside className="flex rounded-2xl justify-center p-1 px-2 h-[15vh] border-[1px] border-gray-900 bg-gradient-to-r from-[#392c47] to-[#0E0417]">
+              <aside className="flex rounded-2xl justify-center p-1 px-2 h-[15vh] md:h-[13vh] lg:h-[15vh] border-[1px] border-gray-900 bg-gradient-to-r from-[#392c47] to-[#0E0417]">
                 <article className='w-full h-full rounded-lg flex justify-between gap-4 '>
 
                   <div className='flex gap-2 w-[80%] h-full items-center'>
@@ -228,7 +228,7 @@ export default function DashboardPage() {
                 </article>
 
               </aside>
-              <aside className="flex rounded-2xl justify-center p-1 h-[15vh] border-none px-4 bg-gradient-to-r from-pink-200 to-[#7734E1]">
+              <aside className="flex rounded-2xl justify-center p-1 h-[15vh] md:h-[13vh] lg:h-[15vh] border-none px-4 bg-gradient-to-r from-pink-200 to-[#7734E1]">
                 <article className='w-full h-full rounded-lg flex justify-between gap-4 '>
 
                   <div className='flex gap-2 w-[80%] h-full items-center '>
@@ -249,15 +249,15 @@ export default function DashboardPage() {
             </section>
           </article>
 
-          <article className="bg-[#0E0417] text-white pl-2 pr-2 pt-0  pb-3 flex rounded-lg border-[1px] border-gray-900 h-[50vh] sm:h-[30vh]  lg:pb-0 lg:h-[25vh]">
-            <aside className="grid grid-cols-1 sm:grid-cols-6 w-full h-full lg:overflow-hidden  ">
+          <article className=" bg-[#0E0417] text-white pl-2 pr-2 pt-0  pb-3 flex rounded-lg h-[50vh] sm:h-auto md:h-auto  lg:pb-0 lg:h-[25vh] border border-gray-900">
+            <aside className="grid grid-cols-1 sm:grid-cols-6 w-full h-full lg:overflow-hidden ">
 
               <div className="h-full col-span-3">
                 <h2 className='text-center font-bold pt-2'>Speedtest Quality</h2>
-                <CustomSpeedometer />
+                <CustomSpeedometer  />
               </div>
 
-              <div className="col-span-3 flex  sm:border-l-[1px] lg:border-gray-900 h-full mt-2 sm:mt-0 lg:mt-0 gap-3 ">
+              <div className="col-span-3 flex  sm:border-l-[1px] lg:border-l-gray-900 h-full mt-2 sm:mt-0 lg:mt-0 gap-3 ">
                 <div className="w-1/2 flex flex-col justify-center items-end h-full ">
                   <div className="text-sm font-bold mb-2">Download Speed</div>
                   <h2 className="text-3xl p-4 rounded-xl text-center font-bold border border-gray-900 bg-gray-800">0.00 <span className="text-sm -mt-2 block" >MB/s</span></h2>
