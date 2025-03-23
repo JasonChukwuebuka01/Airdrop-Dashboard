@@ -115,7 +115,7 @@ const QuestsRewards = () => {
 
 
     useEffect(() => {
-      
+
         try {
             const stored = localStorage.getItem(localStorageKey);
             if (stored) {
@@ -133,9 +133,9 @@ const QuestsRewards = () => {
 
         };
 
-     
+
     }, [])
-    
+
     useEffect(() => {
         try {
             const totalEarned = localStorage.getItem("TotalEarned");
@@ -149,7 +149,7 @@ const QuestsRewards = () => {
         }
 
 
-       
+
 
 
         try {
@@ -358,7 +358,7 @@ const QuestsRewards = () => {
                 if (hoursDiff > 24) {
                     setStreak(1);
                     localStorage.setItem("streak", "1");
-                    localStorage.removeItem("dailyPoint");
+                    localStorage.setItem("dailyPoint", "0");
                 }
 
                 setClaimed(true);
