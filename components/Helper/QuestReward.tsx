@@ -113,19 +113,9 @@ const QuestsRewards = () => {
         }
     }, [streak])
 
+
     useEffect(() => {
-        try {
-            const totalEarned = localStorage.getItem("TotalEarned");
-            if (totalEarned) {
-                setTotalEarned(parseInt(totalEarned));
-            } else {
-                setTotalEarned(0);
-            }
-        } catch (error) {
-            console.log(error);
-        }
-
-
+      
         try {
             const stored = localStorage.getItem(localStorageKey);
             if (stored) {
@@ -143,6 +133,23 @@ const QuestsRewards = () => {
 
         };
 
+     
+    }, [countdown])
+    
+    useEffect(() => {
+        try {
+            const totalEarned = localStorage.getItem("TotalEarned");
+            if (totalEarned) {
+                setTotalEarned(parseInt(totalEarned));
+            } else {
+                setTotalEarned(0);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
+
+       
 
 
         try {
@@ -311,7 +318,7 @@ const QuestsRewards = () => {
             console.log(error);
 
         };
-    }, [totalEarned,countdown,streak,dailyEarned,lastClaimTime,isWeeklyClaimableButton,streakSevenClicked,streakFourteenClicked,streakTwentyOneClicked,streakTwentyEightClicked])
+    }, [totalEarned,streak,dailyEarned,lastClaimTime,isWeeklyClaimableButton,streakSevenClicked,streakFourteenClicked,streakTwentyOneClicked,streakTwentyEightClicked])
 
     useEffect(() => {
         let interval: NodeJS.Timeout;

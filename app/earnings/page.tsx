@@ -23,13 +23,33 @@ const EarningsPage = () => {
   const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
 
 
-  const [countdown, setCountdown] = useState<number>(() => {
-    const stored = localStorage.getItem(localStorageKey);
-    return stored ? Number(stored) : 0;
-  });
+  const [countdown, setCountdown] = useState<number>(0);
 
 
 
+   useEffect(() => {
+      
+        try {
+            const stored = localStorage.getItem(localStorageKey);
+            if (stored) {
+
+                setCountdown(parseInt(stored));
+
+            } else {
+
+                setCountdown(0)
+            }
+
+
+        } catch (error) {
+            console.log(error)
+
+        };
+
+     
+    }, [countdown])
+
+    
   useEffect(() => {
 
     let interval: NodeJS.Timeout;
