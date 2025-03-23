@@ -19,7 +19,7 @@ const QuestsRewards = () => {
 
 
     const [totalEarned, setTotalEarned] = useState<number>(0);
-    const [countdown, setCountdown] = useState<number>(0);
+    const [countdown, setCountdown] = useState<number>(initialCountdown);
     const [streak, setStreak] = useState<number>(0);
     const [dailyEarned, setDailyEarned] = useState<number>(0);
     const [isWeeklyClaimableButton, setIsWeeklyClaimableButton] = useState<string>("false");
@@ -134,7 +134,7 @@ const QuestsRewards = () => {
         };
 
      
-    }, [countdown])
+    }, [])
     
     useEffect(() => {
         try {
@@ -318,7 +318,7 @@ const QuestsRewards = () => {
             console.log(error);
 
         };
-    }, [totalEarned,streak,dailyEarned,lastClaimTime,isWeeklyClaimableButton,streakSevenClicked,streakFourteenClicked,streakTwentyOneClicked,streakTwentyEightClicked])
+    }, [])
 
     useEffect(() => {
         let interval: NodeJS.Timeout;

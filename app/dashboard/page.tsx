@@ -16,11 +16,11 @@ import { toast, Toaster } from 'sonner';
 
 
 export default function DashboardPage() {
-
+  const initialCountdown = 10; // 10 seconds
   const [ShowDemo, setShowDemo] = useState<boolean>(true);
 
   const [totalEarned, setTotalEarned] = useState<number>(0);
-  const [countdown, setCountdown] = useState<number>(0);
+  const [countdown, setCountdown] = useState<number>(initialCountdown);
   const [streak,  setStreak] = useState<number>(0);
   const [dailyEarned, setDailyEarned] = useState<number>(0);
   const [lastClaimTime, setLastClaimTime] = useState<number>(0);
@@ -28,7 +28,7 @@ export default function DashboardPage() {
 
   const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
 
-  const initialCountdown = 10; // 10 seconds
+
 
 
   const [isClaimable, setIsClaimable] = useState<boolean>(false);
