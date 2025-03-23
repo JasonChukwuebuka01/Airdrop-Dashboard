@@ -20,34 +20,16 @@ export default function DashboardPage() {
   const [ShowDemo, setShowDemo] = useState<boolean>(true);
 
   const [totalEarned, setTotalEarned] = useState<number>(0);
-
+  const [countdown, setCountdown] = useState<number>(0);
+  const [streak,  setStreak] = useState<number>(0);
+  const [dailyEarned, setDailyEarned] = useState<number>(0);
+  const [lastClaimTime, setLastClaimTime] = useState<number>(0);
+ 
 
   const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
 
   const initialCountdown = 10; // 10 seconds
 
-
-  const [countdown, setCountdown] = useState<number>(() => {
-    const stored = localStorage.getItem(localStorageKey);
-    return stored ? Number(stored) : 0;
-  });
-
-
-  const [streak, setStreak] = useState<number>(() => {
-    const streak = localStorage.getItem("streak");
-    return streak ? parseInt(streak) : 0;
-  });
-
-
-  const [dailyEarned, setDailyEarned] = useState<number>(() => {
-    const dailyPoint = localStorage.getItem("dailyPoint");
-    return dailyPoint ? parseInt(dailyPoint) : 0;
-  });
-
-  const [lastClaimTime, setLastClaimTime] = useState<number>(() => {
-    const storedTime = localStorage.getItem("lastClaimTime");
-    return storedTime ? Number(storedTime) : Date.now();
-  });
 
   const [isClaimable, setIsClaimable] = useState<boolean>(false);
 
@@ -90,7 +72,90 @@ export default function DashboardPage() {
 
     }
 
-  }, [])
+
+    try {
+      const stored = localStorage.getItem(localStorageKey);
+
+      if (stored) {
+
+        setCountdown(parseInt(stored));
+
+      } else {
+
+        setCountdown(0)
+      }
+
+
+    } catch (error) {
+      console.log(error)
+
+    }
+
+
+
+
+
+    try {
+      const streak = localStorage.getItem("streak");
+
+      if (streak) {
+
+        setStreak(parseInt(streak));
+
+      } else {
+
+        setStreak(0);
+      }
+
+    } catch (error) {
+
+      console.log(error);
+
+    };
+
+
+
+    try {
+      const dailyPoint = localStorage.getItem("dailyPoint");
+
+      if (dailyPoint) {
+
+        setStreak(parseInt(dailyPoint));
+
+      } else {
+
+        setDailyEarned(0);
+      }
+
+    } catch (error) {
+
+      console.log(error);
+
+    };
+
+
+
+
+
+    try {
+      const storedTime = localStorage.getItem("lastClaimTime");
+
+      if (storedTime) {
+
+        setStreak(parseInt(storedTime));
+
+      } else {
+
+        setLastClaimTime(Date.now());
+      }
+
+    } catch (error) {
+
+      console.log(error);
+
+    };
+
+  }, []);
 
 
 
