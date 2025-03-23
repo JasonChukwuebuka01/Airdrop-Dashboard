@@ -49,7 +49,7 @@ const EarningsPage = () => {
      
     }, [countdown])
 
-    
+
   useEffect(() => {
 
     let interval: NodeJS.Timeout;
@@ -126,13 +126,7 @@ const EarningsPage = () => {
 
 
 
-  /**
-       * Parent = bg-[#06030f]
-       * Child = bg-[#0E0417] */
-
-
-
-
+ 
 
 
   return (
