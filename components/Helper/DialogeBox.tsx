@@ -92,4 +92,4 @@ const DialogeBox = () => {
     )
 }
 
-export default DialogeBox;
+export default DialogeBox
