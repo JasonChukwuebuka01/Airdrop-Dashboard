@@ -11,7 +11,7 @@ import EarningsTable from '@/components/Tables/EarningsTable';
 
 const EarningsPage = () => {
 
-
+  const initialCountdown = 10; // 10 seconds
 
 
   const [isLoading, setIsLoading] = useState(true);
@@ -23,9 +23,9 @@ const EarningsPage = () => {
   const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
 
 
-  const [countdown, setCountdown] = useState<number>(0);
+  const [countdown, setCountdown] = useState<number>(initialCountdown); // Countdown state
 
-
+ 
 
    useEffect(() => {
       
@@ -47,7 +47,7 @@ const EarningsPage = () => {
         };
 
      
-    }, [countdown])
+    }, [])
 
 
   useEffect(() => {
