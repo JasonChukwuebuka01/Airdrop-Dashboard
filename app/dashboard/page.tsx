@@ -120,7 +120,7 @@ export default function DashboardPage() {
 
       if (dailyPoint) {
 
-        setStreak(parseInt(dailyPoint));
+        setDailyEarned(parseInt(dailyPoint));
 
       } else {
 
@@ -142,7 +142,7 @@ export default function DashboardPage() {
 
       if (storedTime) {
 
-        setStreak(parseInt(storedTime));
+        setLastClaimTime(parseInt(storedTime));
 
       } else {
 

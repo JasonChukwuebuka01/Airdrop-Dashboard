@@ -7,42 +7,39 @@ import ReferralQuest from '../Quests/ReferralQuest';
 import SocialQuest from '../Quests/SocialQuest';
 import { toast, Toaster } from 'sonner';
 
+
+
+
 const QuestsRewards = () => {
+
     const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
 
     const initialCountdown = 10; // 10 seconds
 
-    const [countdown, setCountdown] = useState<number>(() => {
-        const stored = localStorage.getItem(localStorageKey);
-        return stored ? Number(stored) : 0;
-    });
-    const [isClaimable, setIsClaimable] = useState<boolean>(false);
-    const [isWeeklyClaimableButton, setIsWeeklyClaimableButton] = useState<string>(localStorage.getItem("claimableButton") || "false");
-    const [weeklyButtonValue, setWeeklyButtonValue] = useState<number>(1000);
-    const [streak, setStreak] = useState<number>(() => {
-        const storedStreak = localStorage.getItem("streak");
-        return storedStreak ? Number(storedStreak) : 0;
-    });
 
 
-    const [dailyEarned, setDailyEarned] = useState<number>(() => {
-        const dailyPoint = localStorage.getItem("dailyPoint");
-        return dailyPoint ? parseInt(dailyPoint) : 0;
-    });
-
-
-    const [claimed, setClaimed] = useState<boolean>(false);
     const [totalEarned, setTotalEarned] = useState<number>(0);
+    const [countdown, setCountdown] = useState<number>(0);
+    const [streak, setStreak] = useState<number>(0);
+    const [dailyEarned, setDailyEarned] = useState<number>(0);
+    const [isWeeklyClaimableButton, setIsWeeklyClaimableButton] = useState<string>("false");
+    const [lastClaimTime, setLastClaimTime] = useState<number>(0);
 
+    const [isClaimable, setIsClaimable] = useState<boolean>(false);
+    const [weeklyButtonValue, setWeeklyButtonValue] = useState<number>(1000);
+    const [claimed, setClaimed] = useState<boolean>(false);
     const [questsCompleted, setQuestsCompleted] = useState<number>(0);
-    const [streakSevenClicked, setStreakSevenClicked] = useState<string>(localStorage.getItem("seven") || "true");
-    const [streakFourteenClicked, setStreakFourTeenClicked] = useState<string>(localStorage.getItem("fourteen") || "true");
-    const [streakTwentyOneClicked, setStreakTwentyOneClicked] = useState<string>(localStorage.getItem("twentyOne") || "true");
-    const [streakTwentyEightClicked, setStreakTwentyEightClicked] = useState<string>(localStorage.getItem("twentyEight") || "true");
-    const [lastClaimTime, setLastClaimTime] = useState<number>(() => {
-        const storedTime = localStorage.getItem("lastClaimTime");
-        return storedTime ? Number(storedTime) : Date.now();
-    });
+
+    const [streakSevenClicked, setStreakSevenClicked] = useState<string>("true");
+    const [streakFourteenClicked, setStreakFourTeenClicked] = useState<string>("true");
+    const [streakTwentyOneClicked, setStreakTwentyOneClicked] = useState<string>("true");
+    const [streakTwentyEightClicked, setStreakTwentyEightClicked] = useState<string>("true");
+
+
+
+
+
+
 
     //resetting local storage by removing to start all over.
     useEffect(() => {
@@ -127,7 +124,194 @@ const QuestsRewards = () => {
         } catch (error) {
             console.log(error);
         }
-    }, [totalEarned])
+
+
+        try {
+            const stored = localStorage.getItem(localStorageKey);
+            if (stored) {
+
+                setCountdown(parseInt(stored));
+
+            } else {
+
+                setCountdown(0)
+            }
+
+
+        } catch (error) {
+            console.log(error)
+
+        };
+
+
+
+        try {
+            const streak = localStorage.getItem("streak");
+
+            if (streak) {
+
+                setStreak(parseInt(streak));
+
+            } else {
+
+                setStreak(0);
+            }
+
+        } catch (error) {
+
+            console.log(error);
+
+        };
+
+
+
+        try {
+            const dailyPoint = localStorage.getItem("dailyPoint");
+
+            if (dailyPoint) {
+
+                setDailyEarned(parseInt(dailyPoint));
+
+            } else {
+
+                setDailyEarned(0);
+            }
+
+        } catch (error) {
+
+            console.log(error);
+
+        };
+
+
+
+        try {
+            const storedTime = localStorage.getItem("lastClaimTime");
+
+            if (storedTime) {
+
+                setLastClaimTime(parseInt(storedTime));
+
+            } else {
+
+                setLastClaimTime(Date.now());
+            }
+
+        } catch (error) {
+
+            console.log(error);
+
+        };
+
+
+
+
+        //Weekly Claimable
+        try {
+            const claimableButton = localStorage.getItem("claimableButton")
+
+            if (claimableButton) {
+
+                setIsWeeklyClaimableButton(claimableButton);
+
+            } else {
+
+                setIsWeeklyClaimableButton("false");
+            }
+
+        } catch (error) {
+
+            console.log(error);
+
+        };
+
+
+
+
+        //StreakSeven
+        try {
+
+            const StreakSevenClicked = localStorage.getItem("seven")
+
+            if (StreakSevenClicked) {
+
+                setStreakSevenClicked(StreakSevenClicked);
+
+            } else {
+
+                setStreakSevenClicked("true");
+            }
+
+        } catch (error) {
+
+            console.log(error);
+
+        };
+
+
+        //StreakFourteen
+        try {
+
+            const StreakFourteenClicked = localStorage.getItem("fourteen")
+
+            if (StreakFourteenClicked) {
+
+                setStreakFourTeenClicked(StreakFourteenClicked);
+
+            } else {
+
+                setStreakFourTeenClicked("true");
+            }
+
+        } catch (error) {
+
+            console.log(error);
+
+        };
+
+
+        //StreakTwentyOne
+        try {
+
+            const StreakTwentyOneClicked = localStorage.getItem("twentyOne")
+
+            if (StreakTwentyOneClicked) {
+
+                setStreakTwentyOneClicked(StreakTwentyOneClicked);
+
+            } else {
+
+                setStreakTwentyOneClicked("true");
+            }
+
+        } catch (error) {
+
+            console.log(error);
+
+        };
+
+
+
+        //TwentyEight
+        try {
+
+            const StreakTwentyEightClicked = localStorage.getItem("twentyEight")
+
+            if (StreakTwentyEightClicked) {
+
+                setStreakTwentyEightClicked(StreakTwentyEightClicked);
+
+            } else {
+
+                setStreakTwentyEightClicked("true");
+            }
+
+        } catch (error) {
+
+            console.log(error);
+
+        };
+    }, [totalEarned,countdown,streak,dailyEarned,lastClaimTime,isWeeklyClaimableButton,streakSevenClicked,streakFourteenClicked,streakTwentyOneClicked,streakTwentyEightClicked])
 
     useEffect(() => {
         let interval: NodeJS.Timeout;
@@ -251,7 +435,7 @@ const QuestsRewards = () => {
                     });
                     setDailyEarned(prev => {
                         const dailyEarn = prev + 1500;
-                        localStorage.setItem("dailyPoint",dailyEarn.toString());
+                        localStorage.setItem("dailyPoint", dailyEarn.toString());
                         return dailyEarn;
                     });
 
