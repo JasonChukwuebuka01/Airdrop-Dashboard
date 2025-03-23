@@ -232,8 +232,8 @@ interface CycleData {
     ReferralReward: number;
     SpeedtestEarning: number;
     ReferralCommission: number;
-    QuestEarning: number;
-    Total: number;
+    QuestEarning: number | string;
+    Total: string | number;
 }
 
 export const cycleData: CycleData[] = [
@@ -243,22 +243,22 @@ export const cycleData: CycleData[] = [
         EndDate: "28/02/2025",
         StartTime: "12:00",
         EndTime: "11:59",
-        ReferralReward: 2500,
-        SpeedtestEarning: 13600,
-        ReferralCommission: 1800,
-        QuestEarning: 13800,
-        Total: 31700
+        ReferralReward: 0,
+        SpeedtestEarning: 0,
+        ReferralCommission: 0,
+        QuestEarning: 0,
+        Total: "0"
     },
     {
         Cycle: "Mega Cycle",
-        StartDate: "01/01/2025",
-        EndDate: "28/02/2025",
+        StartDate: "01/03/2025",
+        EndDate: "--/--/2025",
         StartTime: "12:00",
         EndTime: "11:59",
-        ReferralReward: 3200,
-        SpeedtestEarning: 15400,
-        ReferralCommission: 2100,
-        QuestEarning: 14500,
-        Total: 35200
+        ReferralReward: 0,
+        SpeedtestEarning: 0,
+        ReferralCommission: 0,
+        QuestEarning:localStorage.getItem("TotalEarned") || 0,
+        Total: localStorage.getItem("TotalEarned") || 0
     }
 ];

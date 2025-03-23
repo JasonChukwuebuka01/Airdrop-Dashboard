@@ -53,7 +53,7 @@ const ReferralQuest = () => {
 
                                     <div className='w-[90%] flex flex-col justify-center items-start'>
                                         <h2 className='text-base mb-1'>{referralData.refTitleName}</h2>
-                                        <p className='border border-gray-700 w-[90%] h-5 flex justify-center items-center rounded-2xl'> <span className='text-xs font-bold'>0/{referralData.totalRefNumber} {referralData.totalRefNumber === 1 ? "Invite" : "Invites"}</span></p>
+                                        <p className='border border-gray-500 w-[90%] h-5 flex justify-center items-center rounded-2xl bg-white/25'> <span className='text-xs font-bold'>0/{referralData.totalRefNumber} {referralData.totalRefNumber === 1 ? "Invite" : "Invites"}</span></p>
                                     </div>
 
                                 </div>
@@ -93,7 +93,7 @@ const ReferralQuest = () => {
 
                                     <div className='w-[90%] flex flex-col justify-center items-start'>
                                         <h2 className='text-base mb-1'>{referralData.refTitleName}</h2>
-                                        <p className='border border-gray-700 w-[90%] h-5 flex justify-center items-center rounded-2xl'> <span className='text-xs font-bold'>0/{referralData.totalRefNumber} {referralData.totalRefNumber === 1 ? "Invite" : "Invites"}</span></p>
+                                        <p className='border border-gray-500 w-[90%] h-5 flex justify-center items-center rounded-2xl bg-white/25'> <span className='text-xs font-bold'>0/{referralData.totalRefNumber} {referralData.totalRefNumber === 1 ? "Invite" : "Invites"}</span></p>
                                     </div>
 
                                 </div>

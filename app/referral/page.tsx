@@ -227,24 +227,27 @@ export default function ReferralPage() {
       {/** End of referral Table Section */}
 
 
+      
       <Toaster
-        className="custom-toast"
-        position="top-center"
-        offset="16px"
-        toastOptions={{
-          style: {
-            width: '150px',
-            padding: '8px',
-            margin: '4px',
-            background: "black",
-            fontSize: '18px',
-            color: 'white',
-            textAlign: 'center',
-            borderRadius: '8px',
-            borderWidth: '0px'
-
-          }
-        }}
+      className="custom-toast"
+      position="top-center"
+      offset="16px"
+      toastOptions={{
+        style: {
+        width: 'auto',
+        padding: '8px',
+        margin: '4px auto', // Added auto margin for horizontal centering
+        background: "black",
+        fontSize: '18px',
+        color: 'white',
+        textAlign: 'center', // Centers the text content
+        borderRadius: '8px',
+        borderWidth: '0px',
+        position: 'relative',
+        left: '50%',
+        transform: 'translateX(-50%)', // Centers the toast horizontally
+        }
+      }}
       />
 
     </section>

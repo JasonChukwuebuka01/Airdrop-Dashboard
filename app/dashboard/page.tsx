@@ -5,17 +5,11 @@ import React, { useEffect, useState } from 'react';
 import EarningsChart from '@/components/Dashboard/EarningsChart';
 import CustomSpeedometer from '@/components/Helper/Meter';
 import { Button } from '@/components/ui/button';
-import { Calendar1Icon, CheckCircle2Icon, CheckIcon, CopyIcon, LockIcon, LucideTwitter, Share2Icon, TicketCheckIcon, TicketPercent, TimerIcon, TrafficConeIcon, UnlockIcon, XIcon } from 'lucide-react';
+import { Calendar1Icon, CheckCircle2Icon, CopyIcon, LockIcon, Share2Icon,TicketPercent, TimerIcon, TrafficConeIcon, UnlockIcon, XIcon } from 'lucide-react';
 import Link from 'next/link';
 import DemoEarningsChart from '@/components/Dashboard/DemoEarningChart';
 import ShowTable from '@/components/Dashboard/ShowTable';
 import { toast, Toaster } from 'sonner';
-
-
-
-
-
-
 
 
 
@@ -30,7 +24,7 @@ export default function DashboardPage() {
 
   const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
 
-  const initialCountdown = 5 * 60; // 5 minutes in seconds
+  const initialCountdown = 10; // 10 seconds
 
 
   const [countdown, setCountdown] = useState<number>(() => {
@@ -54,7 +48,6 @@ export default function DashboardPage() {
     const storedTime = localStorage.getItem("lastClaimTime");
     return storedTime ? Number(storedTime) : Date.now();
   });
-
 
   const [isClaimable, setIsClaimable] = useState<boolean>(false);
 
@@ -152,6 +145,8 @@ export default function DashboardPage() {
         if (hoursDiff > 24) {
           setStreak(1);
           localStorage.setItem("streak", "1");
+          setDailyEarned(0);
+          localStorage.setItem("dailyPoint","0");
         }
 
         setClaimed(true);
@@ -168,12 +163,26 @@ export default function DashboardPage() {
 
           setStreak(prevStreak => {
             const newStreak = hoursDiff > 24 ? 1 : Math.min(prevStreak + 1, 28);
+
+            if (newStreak === 28) {
+              const freshStreak = 1
+              localStorage.setItem("streak", freshStreak.toString())
+              return freshStreak;
+            }
             localStorage.setItem("streak", newStreak.toString());
             return newStreak;
           }),
-          // ...rest of your existing Promise.all code
-        ]);
 
+          setDailyEarned(prevDailyEarned => {
+            const daily = prevDailyEarned + 100;
+            localStorage.setItem("dailyPoint", daily.toString());
+            return daily;
+          })
+
+
+        ]).then(() => {
+          toast.success("Daily Claim successfully")
+        })
         localStorage.removeItem(localStorageKey);
         setCountdown(initialCountdown);
         setTimeout(() => setClaimed(false), 1000);
@@ -193,6 +202,9 @@ export default function DashboardPage() {
       .then(() => toast("Copied!"))
       .catch((err) => console.error("Failed to copy text: ", err));
   }
+
+
+
 
 
 
@@ -223,7 +235,7 @@ export default function DashboardPage() {
                   </div>
 
                   <div className='w-[15%] h-full flex items-end justify-end'>
-                    <div><TrafficConeIcon size={40} className='text-purple-500'/></div>
+                    <div><TrafficConeIcon size={40} className='text-purple-500' /></div>
                   </div>
                 </article>
 
@@ -254,7 +266,7 @@ export default function DashboardPage() {
 
               <div className="h-full col-span-3">
                 <h2 className='text-center font-bold pt-2'>Speedtest Quality</h2>
-                <CustomSpeedometer  />
+                <CustomSpeedometer />
               </div>
 
               <div className="col-span-3 flex  sm:border-l-[1px] lg:border-l-gray-900 h-full mt-2 sm:mt-0 lg:mt-0 gap-3 ">
@@ -347,7 +359,7 @@ export default function DashboardPage() {
               <div className="flex flex-col gap-2 border-[1px] border-gray-900 p-2 rounded-xl pb-4 bg-[#06030f] ">
                 <div className="flex gap-3 rounded-lg p-2 bg-[#06030f]">
                   <section className='h-[90%] p-4 rounded-2xl bg-gray-800  flex justify-center items-center border-[1px] border-gray-900 '>
-                    <TimerIcon  className='text-purple-500'/>
+                    <TimerIcon className='text-purple-500' />
                   </section>
                   <section className='flex flex-col justify-center items-start '>
                     <h2 className='text-base font-bold text-center'>Quests Completed</h2>
@@ -400,7 +412,7 @@ export default function DashboardPage() {
           offset="16px"
           toastOptions={{
             style: {
-              width: '80px',
+              width: 'auto',
               padding: '8px',
               margin: '4px',
               background: "black",

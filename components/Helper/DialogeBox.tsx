@@ -1,19 +1,16 @@
 "use client";
 
 import React from 'react';
-import { Calendar1Icon, ChevronRight, LockIcon, TrafficConeIcon, XIcon } from "lucide-react";
+import { Calendar1Icon, ChevronRight, TrafficConeIcon, XIcon } from "lucide-react";
 import {
     AlertDialog,
-    AlertDialogAction,
     AlertDialogCancel,
     AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { motion, AnimatePresence } from "framer-motion"; // Add this import
+import { motion } from "framer-motion";
 
 type BonusMilestone = {
     numberOfDays: number;
@@ -28,6 +25,7 @@ const bonusMilestones: BonusMilestone[] = [
 ];
 
 const DialogeBox = () => {
+
     return (
         <AlertDialog>
             <AlertDialogTrigger>
@@ -36,14 +34,14 @@ const DialogeBox = () => {
 
             <AlertDialogContent asChild className='border border-gray-600'>
                 <motion.div
-                    className=" bg-[#12051d] w-[95%] text-white md:w-[80%] lg:max-w-[45rem] p-0 pb-3 fixed top-[50%] left-[50%] rounded-2xl"
+                    className=" color w-[95%] text-white md:w-[80%] lg:max-w-[45rem] p-0 pb-3 fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] rounded-2xl z-50"
                     initial={{ y: "-100%", x: "-50%", opacity: 0 }}
-                    animate={{ y: "-50%", x: "-50%", opacity: 1 }}    
-                    transition={{ 
+                    animate={{ y: "-50%", x: "-50%", opacity: 1 }}
+                    transition={{
                         type: "spring",
                         damping: 25,
                         stiffness: 300,
-                        duration: 0.4 
+                        duration: 0.4
                     }}
                 >
                     <AlertDialogHeader className='p-0'>
@@ -64,7 +62,7 @@ const DialogeBox = () => {
                                         <article className=' lg:h-[60%] flex justify-between items-center'>
                                             <section className='flex items-center gap-3 w-full'>
                                                 <div className='h-[30%] p-3 bg-gradient-to-r from-[#3b3941] to-[#0d0624] rounded-2xl flex justify-center items-center'>
-                                                    <Calendar1Icon size={30} className='text-purple-500'/>
+                                                    <Calendar1Icon size={30} className='text-purple-500' />
                                                 </div>
 
                                                 <h2 className='w-full text-base text-left lg:text-xl font-bold'>{mileStone.numberOfDays} days check-in bonus</h2>
@@ -94,4 +92,4 @@ const DialogeBox = () => {
     )
 }
 
-export default DialogeBox
+export default DialogeBox;

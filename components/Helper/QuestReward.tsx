@@ -10,7 +10,7 @@ import { toast, Toaster } from 'sonner';
 const QuestsRewards = () => {
     const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
 
-    const initialCountdown =  10; // 3 minutes in seconds
+    const initialCountdown = 10; // 10 seconds
 
     const [countdown, setCountdown] = useState<number>(() => {
         const stored = localStorage.getItem(localStorageKey);
@@ -23,6 +23,14 @@ const QuestsRewards = () => {
         const storedStreak = localStorage.getItem("streak");
         return storedStreak ? Number(storedStreak) : 0;
     });
+
+
+    const [dailyEarned, setDailyEarned] = useState<number>(() => {
+        const dailyPoint = localStorage.getItem("dailyPoint");
+        return dailyPoint ? parseInt(dailyPoint) : 0;
+    });
+
+
     const [claimed, setClaimed] = useState<boolean>(false);
     const [totalEarned, setTotalEarned] = useState<number>(0);
 
@@ -114,10 +122,10 @@ const QuestsRewards = () => {
             if (totalEarned) {
                 setTotalEarned(parseInt(totalEarned));
             } else {
-                setTotalEarned(0)
+                setTotalEarned(0);
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }, [totalEarned])
 
@@ -137,7 +145,7 @@ const QuestsRewards = () => {
             }, 1000);
         } else {
             setIsClaimable(true);
-           // setCountdown(initialCountdown);
+            // setCountdown(initialCountdown);
         }
         return () => {
             if (interval) clearInterval(interval);
@@ -159,6 +167,7 @@ const QuestsRewards = () => {
                 if (hoursDiff > 24) {
                     setStreak(1);
                     localStorage.setItem("streak", "1");
+                    localStorage.removeItem("dailyPoint");
                 }
 
                 setClaimed(true);
@@ -175,9 +184,22 @@ const QuestsRewards = () => {
 
                     setStreak(prevStreak => {
                         const newStreak = hoursDiff > 24 ? 1 : Math.min(prevStreak + 1, 28);
+
+                        if (newStreak === 28) {
+                            const freshStreak = 1
+                            localStorage.setItem("streak", freshStreak.toString())
+                            return freshStreak;
+                        }
                         localStorage.setItem("streak", newStreak.toString());
                         return newStreak;
                     }),
+
+                    setDailyEarned(prevDailyEarned => {
+                        const daily = prevDailyEarned + 100;
+                        localStorage.setItem("dailyPoint", daily.toString());
+                        return daily;
+                    })
+
 
                 ]).then(() => {
                     toast.success("Daily Claim successfully")
@@ -206,9 +228,15 @@ const QuestsRewards = () => {
                         return totalEarned;
                     });
 
+                    setDailyEarned(prev => {
+                        const dailyEarn = prev + 1000;
+                        localStorage.setItem("dailyPoint", dailyEarn.toString());
+                        return dailyEarn;
+                    });
+
                     setStreakSevenClicked("false");
                     localStorage.setItem("seven", "false");
-                    toast.success("Weekly Claim successful")
+                    toast.success("Weekly Claim successful");
                     setTimeout(() => {
                         setIsWeeklyClaimableButton("false");
                         localStorage.setItem("claimableButton", "false");
@@ -220,6 +248,11 @@ const QuestsRewards = () => {
                         const totalEarned = prev + 1500
                         localStorage.setItem("TotalEarned", totalEarned.toString());
                         return totalEarned;
+                    });
+                    setDailyEarned(prev => {
+                        const dailyEarn = prev + 1500;
+                        localStorage.setItem("dailyPoint",dailyEarn.toString());
+                        return dailyEarn;
                     });
 
                     setStreakFourTeenClicked("false");
@@ -235,7 +268,14 @@ const QuestsRewards = () => {
                     setTotalEarned(prev => {
                         const totalEarned = prev + 3000
                         localStorage.setItem("TotalEarned", totalEarned.toString());
+                        localStorage.setItem("dailyPoint", totalEarned.toString());
                         return totalEarned;
+                    });
+
+                    setDailyEarned(prev => {
+                        const dailyEarn = prev + 1000;
+                        localStorage.setItem("dailyPoint", totalEarned.toString());
+                        return dailyEarn;
                     });
 
                     setStreakTwentyOneClicked("false");
@@ -251,7 +291,14 @@ const QuestsRewards = () => {
                     setTotalEarned(prev => {
                         const totalEarned = prev + 5000
                         localStorage.setItem("TotalEarned", totalEarned.toString());
+                        localStorage.setItem("dailyPoint", totalEarned.toString());
                         return totalEarned;
+                    });
+
+                    setDailyEarned(prev => {
+                        const dailyEarn = prev + 1000;
+                        localStorage.setItem("dailyPoint", totalEarned.toString());
+                        return dailyEarn;
                     });
 
                     setStreakTwentyEightClicked("false");
@@ -275,7 +322,7 @@ const QuestsRewards = () => {
 
     const progressWidth = Math.min((streak / 28) * 100, 100); // Calculate progress width
 
-   
+
 
     return (
         <section className=" text-white p-1 lg:p-3 rounded-3xl w-full  bg-[#0E0417] border border-gray-900">
@@ -375,7 +422,7 @@ const QuestsRewards = () => {
                                     </h3>
                                 </div>
                                 <button
-                                    onClick={handleWeeklyClaim}               
+                                    onClick={handleWeeklyClaim}
                                     aria-label={claimed ? "Already claimed" : "Claim daily reward"}
                                     className={` w-[40%] md:w-[18%] text-white py-2 px-4 rounded-md 
          ${isWeeklyClaimableButton === "true" && 'bg-gradient-to-r from-[#743dce] to-[#6620d6]'} bg-white/25 font-bold text-[15px] flex justify-center items-center rounded-xl p-3 gap-2  border border-gray-500`}
@@ -426,8 +473,8 @@ const QuestsRewards = () => {
                 offset="16px"
                 toastOptions={{
                     style: {
-                        width: '280px',
-                        padding: '8px',
+                        width: 'auto',
+                        padding: 'auto',
                         margin: '4px',
                         background: "black",
                         fontSize: '18px',

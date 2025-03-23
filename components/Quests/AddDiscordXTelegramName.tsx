@@ -15,8 +15,8 @@ const AddDiscordXTelegramName = () => {
 
     }
 
-   
-    
+
+
 
     return (
         <article className='grid grid-cols-1 gap-2 md:grid-cols-6 h-[90%]'>
@@ -27,11 +27,15 @@ const AddDiscordXTelegramName = () => {
 
                 <div className='flex items-center gap-3 mb-2'>
                     <div className=' w-[15%] lg:w-[9%] p-3  bg-gradient-to-r from-[#3b3941] to-[#0d0624]  rounded-2xl flex justify-center items-center text-black'>
-                        <BotIcon className='text-purple-500'/>
+                        <BotIcon className='text-purple-500' />
                     </div>
 
                     <div className='w-[90%] flex flex-col justify-center items-start'>
-                        <h2 className='w-full text-base mb-1 flex items-center font-bold whitespace-pre-wrap'>Add <span className="border-2 border-dotted  rounded-sm text-sm flex items-center gap-1  mx-2"><span className='px-2 whitespace-nowrap'>၊||၊ DeSpeed ၊||၊ </span><span className='border-l border-dashed px-2 '><CopyIcon onClick={handleCopy} size={18} /></span></span> to Discord  Name</h2>
+                        <div className='flex flex-col lg:flex-row mb-2 '>
+                            <article className="w-full text-base mb-1 flex items-center font-bold whitespace-break-spaces">Add <span className="border-2 border-dotted  rounded-sm text-sm flex items-center gap-1  mx-2"><span className='px-2 whitespace-nowrap'>၊||၊ DeSpeed ၊||၊ </span><span className='border-l border-dashed px-2 '><CopyIcon onClick={handleCopy} size={18} /></span></span></article>
+                            <article className="w-full"> to Discord  Name</article>
+
+                        </div>
                         <div>
                             <button className='border border-gray-500 p-2 text-sm text-center px-5 rounded-xl bg-white/15'>Add</button>
                             <button className='border border-gray-500 p-2 text-sm text-center px-5 rounded-xl ml-2 bg-white/15'>Verify</button>
@@ -58,11 +62,16 @@ const AddDiscordXTelegramName = () => {
 
                 <div className='flex items-center gap-3 mb-2'>
                     <div className=' w-[15%] lg:w-[9%] p-3  bg-gradient-to-r from-[#3b3941] to-[#0d0624] rounded-2xl flex justify-center items-center text-black'>
-                        <Twitter  className='text-purple-500' />
+                        <Twitter className='text-purple-500' />
                     </div>
 
                     <div className='w-[90%] flex flex-col justify-center items-start'>
-                        <h2 className='w-full text-base mb-1 flex items-center font-bold '>Add <span className="border-2 border-dotted  rounded-sm text-sm flex items-center gap-1  mx-2"><span className='px-2'>၊||၊ DeSpeed ၊||၊ </span><span className='border-l border-dashed px-2'><CopyIcon onClick={handleCopy} size={18} /></span></span>to Telegram Name</h2>
+                        <div className='flex flex-col lg:flex-row mb-2 '>
+                            <article className="w-full text-base mb-1 flex items-center font-bold ">
+                                Add <span className="border-2 border-dotted  rounded-sm text-sm flex items-center gap-1  mx-2"><span className='px-2 whitespace-nowrap'>၊||၊ DeSpeed ၊||၊ </span><span className='border-l border-dashed px-2'><CopyIcon onClick={handleCopy} size={18} /></span></span>
+                            </article>
+                            <article  className="w-full"> to Telegram Name</article>
+                        </div>
                         <div>
                             <button className='border border-gray-500 p-2 text-sm text-center px-5 rounded-xl bg-white/15'>Add</button>
                             <button className='border border-gray-500 p-2 text-sm text-center px-5 rounded-xl ml-2 bg-white/15'>Verify</button>
