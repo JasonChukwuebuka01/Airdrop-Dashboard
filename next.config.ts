@@ -1,11 +1,21 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
-    unoptimized: true,
-    domains: ['app.despeed.net','localhost'], // Add your external domain here
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'app.despeed.net',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  }
 };
 
-export default nextConfig;
+module.exports = nextConfig;

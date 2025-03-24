@@ -21,8 +21,9 @@ const HeaderNav = () => {
                         width={40}
                         height={40}
                         priority
-                        unoptimized // Add this for static images
-                        className="object-cover" // Add this for better image fitting
+                        quality={100}
+                        loading="eager"
+                        className="object-cover w-full h-full"
                     />
                 </div>
                 <h1 className="text-base font-bold text-white py-3 ">jason001</h1>
