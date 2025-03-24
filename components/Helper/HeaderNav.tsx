@@ -1,7 +1,7 @@
 import React from 'react'
 import ThumbNail from './ThumbNail'
 import Image from 'next/image'
-import profileAvatar from '@/public/Images/profileAvatar.png'
+
 
 
 
@@ -16,11 +16,13 @@ const HeaderNav = () => {
             <article className='flex justify-center gap-3'>
                 <div className="w-18 h-10 rounded-full overflow-hidden bg-transparent">
                     <Image
-                        src={profileAvatar}
+                        src="/images/profileAvatar.png"
                         alt="Profile Avatar"
                         width={40}
                         height={40}
-                        priority          
+                        priority
+                        unoptimized // Add this for static images
+                        className="object-cover" // Add this for better image fitting
                     />
                 </div>
                 <h1 className="text-base font-bold text-white py-3 ">jason001</h1>
