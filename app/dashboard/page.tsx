@@ -1,6 +1,5 @@
 'use client';
 
-
 import React, { useEffect, useState } from 'react';
 import EarningsChart from '@/components/Dashboard/EarningsChart';
 import CustomSpeedometer from '@/components/Helper/Meter';
@@ -12,12 +11,7 @@ import ShowTable from '@/components/Dashboard/ShowTable';
 import { toast, Toaster } from 'sonner';
 
 
-
-
-
 export default function DashboardPage() {
-
-
   const initialCountdown = 10; // 10 seconds
   const [ShowDemo, setShowDemo] = useState<boolean>(true);
 
@@ -27,173 +21,73 @@ export default function DashboardPage() {
   const [dailyEarned, setDailyEarned] = useState<number>(0);
   const [lastClaimTime, setLastClaimTime] = useState<number>(0);
 
-
   const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
 
-
-
-
   const [isClaimable, setIsClaimable] = useState<boolean>(false);
-
   const [claimed, setClaimed] = useState<boolean>(false);
-
-
-
-
-
-
 
   const handleShowDemo = () => {
     setTimeout(() => {
-
       setShowDemo(!ShowDemo);
-
     }, 1000);
-
   };
 
-
-
   useEffect(() => {
     if (typeof window !== 'undefined') {
-
+      // Load values from localStorage *only* after the component mounts
       try {
-        const totalEarned = localStorage.getItem("TotalEarned");
-
-        if (totalEarned) {
-
-          setTotalEarned(parseInt(totalEarned));
-
-        } else {
-
-          setTotalEarned(0)
+        const storedTotalEarned = localStorage.getItem("TotalEarned");
+        if (storedTotalEarned) {
+          setTotalEarned(parseInt(storedTotalEarned));
         }
 
+        const storedCountdown = localStorage.getItem(localStorageKey);
+        if (storedCountdown) {
+          setCountdown(parseInt(storedCountdown));
+        }
 
+        const storedStreak = localStorage.getItem("streak");
+        if (storedStreak) {
+          setStreak(parseInt(storedStreak));
+        }
+
+        const storedDailyPoint = localStorage.getItem("dailyPoint");
+        if (storedDailyPoint) {
+          setDailyEarned(parseInt(storedDailyPoint));
+        }
+
+        const storedLastClaimTime = localStorage.getItem("lastClaimTime");
+        if (storedLastClaimTime) {
+          setLastClaimTime(parseInt(storedLastClaimTime));
+        } else {
+          setLastClaimTime(Date.now()); // Initialize if not found
+        }
       } catch (error) {
-        console.log(error)
-
+        console.error("Error accessing localStorage:", error);
       }
-
-
-      try {
-        const stored = localStorage.getItem(localStorageKey);
-
-        if (stored) {
-
-          setCountdown(parseInt(stored));
-
-        } else {
-
-          setCountdown(0)
-        }
-
-
-      } catch (error) {
-        console.log(error)
-
-      }
-
-
-
-
-
-      try {
-        const streak = localStorage.getItem("streak");
-
-        if (streak) {
-
-          setStreak(parseInt(streak));
-
-        } else {
-
-          setStreak(0);
-        }
-
-      } catch (error) {
-
-        console.log(error);
-
-      };
-
-
-
-      try {
-        const dailyPoint = localStorage.getItem("dailyPoint");
-
-        if (dailyPoint) {
-
-          setDailyEarned(parseInt(dailyPoint));
-
-        } else {
-
-          setDailyEarned(0);
-        }
-
-      } catch (error) {
-
-        console.log(error);
-
-      };
-
-
-
-
-
-      try {
-        const storedTime = localStorage.getItem("lastClaimTime");
-
-        if (storedTime) {
-
-          setLastClaimTime(parseInt(storedTime));
-
-        } else {
-
-          setLastClaimTime(Date.now());
-        }
-
-      } catch (error) {
-
-        console.log(error);
-
-      };
     }
-
-  }, []);
-
-
+  }, []); // Empty dependency array: run only on mount
 
 
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-
       let interval: NodeJS.Timeout;
 
       if (countdown > 0) {
         interval = setInterval(() => {
-
           setCountdown((prevCountdown) => {
-
             const newCountdown = prevCountdown - 1;
-
             try {
-
               localStorage.setItem(localStorageKey, newCountdown.toString());
-
             } catch (error) {
-
               console.error('Failed to update localStorage:', error);
             }
             return newCountdown;
           });
         }, 1000);
-
       } else {
-
         setIsClaimable(true);
-
-
       }
 
       return () => {
@@ -201,9 +95,6 @@ export default function DashboardPage() {
       };
     }
   }, [countdown]);
-
-
-
 
   const handleClaim = async () => {
     if (typeof window !== 'undefined') {
@@ -250,11 +141,9 @@ export default function DashboardPage() {
               localStorage.setItem("dailyPoint", daily.toString());
               return daily;
             })
-
-
           ]).then(() => {
-            toast.success("Daily Claim successfully")
-          })
+            toast.success("Daily Claim successfully");
+          });
           localStorage.removeItem(localStorageKey);
           setCountdown(initialCountdown);
           setTimeout(() => setClaimed(false), 1000);
@@ -267,30 +156,20 @@ export default function DashboardPage() {
     }
   };
 
-
-
   function copyText() {
-
-    navigator.clipboard.writeText("https://app.despeed.net/register?ref=mm6FQ0AmwxiX")
-      .then(() => toast("Copied!"))
-      .catch((err) => console.error("Failed to copy text: ", err));
+    if (typeof window !== 'undefined') {
+      navigator.clipboard.writeText("https://app.despeed.net/register?ref=mm6FQ0AmwxiX")
+        .then(() => toast("Copied!"))
+        .catch((err) => console.error("Failed to copy text: ", err));
+    }
   }
 
-
-
-
-
-
-
   return (
-
     <>
       <article className='h-[86%] p-4 overflow-auto bg-[#06030f]'>
-
         {/**Kilo Cycle section */}
 
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
-
           <article className="bg-[#0E0417] p-3 pb-10 rounded-lg border-[1px] border-gray-900 flex flex-col  justify-center lg:h-[25vh]">
             <h2 className="text-xl font-bold text-white mb-2 pt-4">Current Stage: Kilo Cycle</h2>
             <section className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white">
@@ -359,10 +238,6 @@ export default function DashboardPage() {
         </section>
         {/** End Kilo Cycle section */}
 
-
-
-
-
         {/**referral section */}
         <section className="flex flex-col sm:flex-row  justify-center items-center sm:justify-between gap-6 p-4 mt-6 border-[1px] border-gray-900 rounded-2xl bg-[#0E0417] text-white">
 
@@ -394,9 +269,6 @@ export default function DashboardPage() {
 
         </section>
         {/**End referral section */}
-
-
-
 
         {/** Quest and Earning Statistics section */}
         <section className="grid grid-cols-1 lg:grid-cols-6 gap-4 mt-6 pb-8 ">
@@ -451,7 +323,6 @@ export default function DashboardPage() {
 
           </article>
 
-
           <article className="lg:col-span-4 bg-[#0E0417]  p-4 rounded-xl border-[1px] border-gray-900 w-full  text-white ">
             <h2 className="text-2xl font-bold ">Earnings Statistics</h2>
             {
@@ -470,14 +341,9 @@ export default function DashboardPage() {
         </section>
         {/**End Quest and Earning Statistics section section */}
 
-
-
-
         {/**Table Data section */}
         <ShowTable />
         {/** End of Table Data section */}
-
-
 
         <Toaster
           className="custom-toast"
@@ -494,7 +360,6 @@ export default function DashboardPage() {
               textAlign: 'center',
               borderRadius: '8px',
               borderWidth: '0px'
-
             }
           }}
         />
@@ -502,5 +367,3 @@ export default function DashboardPage() {
     </>
   );
 }
-{/*  */ }
-
