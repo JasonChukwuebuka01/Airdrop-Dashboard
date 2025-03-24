@@ -18,6 +18,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Despeed",
   description: "Cloned By MayIcodes",
+  icons: {
+    icon: [
+      {
+        url: 'https://app.despeed.net/media/icons/location.svg',
+        type: 'image/svg',
+        sizes: '32x32',
+      }
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -39,7 +48,7 @@ export default function RootLayout({
             <HeaderNav />
             {children}
           </main>
-          
+
         </div>
       </body>
     </html>
