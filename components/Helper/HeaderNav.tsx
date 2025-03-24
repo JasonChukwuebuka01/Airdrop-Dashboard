@@ -1,7 +1,7 @@
 import React from 'react'
 import ThumbNail from './ThumbNail'
 import Image from 'next/image'
-import profileAvatar from '@/public/images/profileAvatar.png'
+import profileAvatar from '@/public/Images/profileAvatar.png'
 
 
 
