@@ -16,6 +16,8 @@ import { toast, Toaster } from 'sonner';
 
 
 export default function DashboardPage() {
+
+
   const initialCountdown = 10; // 10 seconds
   const [ShowDemo, setShowDemo] = useState<boolean>(true);
 
@@ -204,61 +206,63 @@ export default function DashboardPage() {
 
 
   const handleClaim = async () => {
-    if (isClaimable) {
-      try {
-        const now = Date.now();
-        const timeDiff = now - lastClaimTime;
-        const hoursDiff = timeDiff / (1000 * 60 * 60);
+    if (typeof window !== 'undefined') {
+      if (isClaimable) {
+        try {
+          const now = Date.now();
+          const timeDiff = now - lastClaimTime;
+          const hoursDiff = timeDiff / (1000 * 60 * 60);
 
-        // Reset streak if more than 24 hours have passed
-        if (hoursDiff > 24) {
-          setStreak(1);
-          localStorage.setItem("streak", "1");
-          setDailyEarned(0);
-          localStorage.setItem("dailyPoint", "0");
-        }
+          // Reset streak if more than 24 hours have passed
+          if (hoursDiff > 24) {
+            setStreak(1);
+            localStorage.setItem("streak", "1");
+            setDailyEarned(0);
+            localStorage.setItem("dailyPoint", "0");
+          }
 
-        setClaimed(true);
-        setIsClaimable(false);
-        setLastClaimTime(now);
-        localStorage.setItem("lastClaimTime", now.toString());
+          setClaimed(true);
+          setIsClaimable(false);
+          setLastClaimTime(now);
+          localStorage.setItem("lastClaimTime", now.toString());
 
-        await Promise.all([
-          setTotalEarned((prevTotal) => {
-            const totalEarned = prevTotal + 100;
-            localStorage.setItem("TotalEarned", totalEarned.toString());
-            return totalEarned;
-          }),
+          await Promise.all([
+            setTotalEarned((prevTotal) => {
+              const totalEarned = prevTotal + 100;
+              localStorage.setItem("TotalEarned", totalEarned.toString());
+              return totalEarned;
+            }),
 
-          setStreak(prevStreak => {
-            const newStreak = hoursDiff > 24 ? 1 : Math.min(prevStreak + 1, 28);
+            setStreak(prevStreak => {
+              const newStreak = hoursDiff > 24 ? 1 : Math.min(prevStreak + 1, 28);
 
-            if (newStreak === 28) {
-              const freshStreak = 1
-              localStorage.setItem("streak", freshStreak.toString())
-              return freshStreak;
-            }
-            localStorage.setItem("streak", newStreak.toString());
-            return newStreak;
-          }),
+              if (newStreak === 28) {
+                const freshStreak = 1
+                localStorage.setItem("streak", freshStreak.toString())
+                return freshStreak;
+              }
+              localStorage.setItem("streak", newStreak.toString());
+              return newStreak;
+            }),
 
-          setDailyEarned(prevDailyEarned => {
-            const daily = prevDailyEarned + 100;
-            localStorage.setItem("dailyPoint", daily.toString());
-            return daily;
+            setDailyEarned(prevDailyEarned => {
+              const daily = prevDailyEarned + 100;
+              localStorage.setItem("dailyPoint", daily.toString());
+              return daily;
+            })
+
+
+          ]).then(() => {
+            toast.success("Daily Claim successfully")
           })
-
-
-        ]).then(() => {
-          toast.success("Daily Claim successfully")
-        })
-        localStorage.removeItem(localStorageKey);
-        setCountdown(initialCountdown);
-        setTimeout(() => setClaimed(false), 1000);
-      } catch (error) {
-        console.error('Failed to process claim:', error);
-        setClaimed(false);
-        setIsClaimable(true);
+          localStorage.removeItem(localStorageKey);
+          setCountdown(initialCountdown);
+          setTimeout(() => setClaimed(false), 1000);
+        } catch (error) {
+          console.error('Failed to process claim:', error);
+          setClaimed(false);
+          setIsClaimable(true);
+        }
       }
     }
   };
