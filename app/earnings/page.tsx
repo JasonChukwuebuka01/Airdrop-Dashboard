@@ -65,13 +65,17 @@ const EarningsPage = () => {
 
     // Fetch data
     useEffect(() => {
+    
         const fetchData = async () => {
             setIsLoading(true);
 
             try {
                 await new Promise(resolve => {
                     setTimeout(() => {
-                        setTableData(cycleData);
+                      const editedCycleData = cycleData.map((data,index) => {
+                          return index === 1 ? {...data, QuestEarning: localStorage.getItem("TotalEarned"), Total :localStorage.getItem("TotalEarned")} : data;
+                      });
+                        setTableData(editedCycleData);
                         resolve(true);
                     }, 2000);
                 });

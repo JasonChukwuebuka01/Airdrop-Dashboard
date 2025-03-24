@@ -23,15 +23,21 @@ export default function DashboardPage() {
   const [claimed, setClaimed] = useState<boolean>(false);
   const [mounted, setMounted] = useState(false);
 
+
+
+
   const handleShowDemo = () => {
     setTimeout(() => {
       setShowDemo(!showDemo);
     }, 1000);
   };
 
+
+
   useEffect(() => {
     setMounted(true);
   }, []);
+
 
   useEffect(() => {
     if (!mounted) return;
@@ -50,6 +56,9 @@ export default function DashboardPage() {
     };
   }, [countdown, mounted, setCountdown]);
 
+
+
+  
   const handleClaim = async () => {
     if (!mounted) return;
     if (isClaimable) {
