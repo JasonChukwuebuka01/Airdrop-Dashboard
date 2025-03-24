@@ -16,7 +16,7 @@ const HeaderNav = () => {
             <article className='flex justify-center gap-3'>
                 <div className="w-18 h-10 rounded-full overflow-hidden bg-transparent">
                     <Image
-                        src="/images/profileAvatar.png"
+                        src="https://robohash.org/jason001"
                         alt="Profile Avatar"
                         width={40}
                         height={40}
