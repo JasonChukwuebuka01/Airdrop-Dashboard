@@ -58,35 +58,37 @@ const EarningsPage = () => {
 
   useEffect(() => {
 
-    let interval: NodeJS.Timeout;
+    if (typeof window !== 'undefined') {
+      let interval: NodeJS.Timeout;
 
-    if (countdown > 0) {
-      interval = setInterval(() => {
+      if (countdown > 0) {
+        interval = setInterval(() => {
 
-        setCountdown((prevCountdown) => {
+          setCountdown((prevCountdown) => {
 
-          const newCountdown = prevCountdown - 1;
+            const newCountdown = prevCountdown - 1;
 
-          try {
+            try {
 
-            localStorage.setItem(localStorageKey, newCountdown.toString());
+              localStorage.setItem(localStorageKey, newCountdown.toString());
 
-          } catch (error) {
+            } catch (error) {
 
-            console.error('Failed to update localStorage:', error);
-          }
-          return newCountdown;
-        });
-      }, 1000);
+              console.error('Failed to update localStorage:', error);
+            }
+            return newCountdown;
+          });
+        }, 1000);
 
-    } else {
+      } else {
 
-      //setIsClaimable(true);
+        //setIsClaimable(true);
+      }
+
+      return () => {
+        if (interval) clearInterval(interval);
+      };
     }
-
-    return () => {
-      if (interval) clearInterval(interval);
-    };
   }, [countdown]);
 
 
