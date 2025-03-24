@@ -165,7 +165,7 @@ export default function DashboardPage() {
             </section>
           </article>
 
-          <article className=" bg-[#0E0417] text-white pl-2 pr-2 pt-0  pb-3 flex rounded-lg h-[50vh] sm:h-auto md:h-auto  lg:pb-0 lg:h-[25vh] border border-gray-900">
+          <article className=" bg-[#0E0417] text-white pl-2 pr-2 pt-0  pb-3 flex rounded-lg h-auto sm:h-auto md:h-auto  lg:pb-0 lg:h-[25vh] border border-gray-900">
             <aside className="grid grid-cols-1 sm:grid-cols-6 w-full h-full lg:overflow-hidden ">
 
               <div className="h-full col-span-3">
