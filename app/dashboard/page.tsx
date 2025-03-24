@@ -21,61 +21,47 @@ export default function DashboardPage() {
     const localStorageKey = 'questsRewardsCountdown';
     const [isClaimable, setIsClaimable] = useState<boolean>(false);
     const [claimed, setClaimed] = useState<boolean>(false);
-    const [isHydrated, setIsHydrated] = useState(false); // New: Hydration state
-
+    const [isHydrated, setIsHydrated] = useState(false);
 
     const handleShowDemo = () => {
       setTimeout(() => {
         setShowDemo(!ShowDemo);
       }, 1000);
     };
+
     useEffect(() => {
-        // Set hydrated to true after the first client-side render
         setIsHydrated(true);
     }, []);
 
     useEffect(() => {
-        if (!isHydrated) {
-            return; // Do nothing until hydrated
-        }
+        if (!isHydrated) return;
 
-        // Load values from localStorage *only* after hydration
         try {
             const storedTotalEarned = localStorage.getItem("TotalEarned");
-            if (storedTotalEarned) {
-                setTotalEarned(parseInt(storedTotalEarned));
-            }
+            if (storedTotalEarned) setTotalEarned(parseInt(storedTotalEarned));
 
             const storedCountdown = localStorage.getItem(localStorageKey);
-            if (storedCountdown) {
-                setCountdown(parseInt(storedCountdown));
-            }
+            if (storedCountdown) setCountdown(parseInt(storedCountdown));
 
             const storedStreak = localStorage.getItem("streak");
-            if (storedStreak) {
-                setStreak(parseInt(storedStreak));
-            }
+            if (storedStreak) setStreak(parseInt(storedStreak));
 
             const storedDailyPoint = localStorage.getItem("dailyPoint");
-            if (storedDailyPoint) {
-                setDailyEarned(parseInt(storedDailyPoint));
-            }
+            if (storedDailyPoint) setDailyEarned(parseInt(storedDailyPoint));
 
             const storedLastClaimTime = localStorage.getItem("lastClaimTime");
             if (storedLastClaimTime) {
                 setLastClaimTime(parseInt(storedLastClaimTime));
             } else {
-                setLastClaimTime(Date.now()); // Initialize if not found
+                setLastClaimTime(Date.now());
             }
         } catch (error) {
             console.error("Error accessing localStorage:", error);
         }
-    }, [isHydrated]); // Dependency on isHydrated
+    }, [isHydrated]);
 
     useEffect(() => {
-        if (!isHydrated) {
-            return; // Do nothing until hydrated
-        }
+        if (!isHydrated) return;
         let interval: NodeJS.Timeout;
 
         if (countdown > 0) {
@@ -97,12 +83,10 @@ export default function DashboardPage() {
         return () => {
             if (interval) clearInterval(interval);
         };
-    }, [countdown, isHydrated]); // Dependency on isHydrated
+    }, [countdown, isHydrated]);
 
     const handleClaim = async () => {
-        if (!isHydrated) {
-            return; // Do nothing until hydrated
-        }
+        if (!isHydrated) return;
         if (isClaimable) {
             try {
                 const now = Date.now();
@@ -160,19 +144,24 @@ export default function DashboardPage() {
     };
 
     function copyText() {
-        if (!isHydrated) {
-            return; // Do nothing until hydrated
-        }
+        if (typeof window === 'undefined') return;
         navigator.clipboard.writeText("https://app.despeed.net/register?ref=mm6FQ0AmwxiX")
             .then(() => toast("Copied!"))
             .catch((err) => console.error("Failed to copy text: ", err));
+    }
+
+    if (!isHydrated) {
+        return (
+            <div className="h-[86%] p-4 overflow-auto bg-[#06030f] flex items-center justify-center">
+                <div className="text-white">Loading dashboard...</div>
+            </div>
+        );
     }
 
     return (
         <>
             <article className='h-[86%] p-4 overflow-auto bg-[#06030f]'>
                 {/**Kilo Cycle section */}
-
                 <section className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
                     <article className="bg-[#0E0417] p-3 pb-10 rounded-lg border-[1px] border-gray-900 flex flex-col  justify-center lg:h-[25vh]">
                         <h2 className="text-xl font-bold text-white mb-2 pt-4">Current Stage: Kilo Cycle</h2>
@@ -185,7 +174,7 @@ export default function DashboardPage() {
                                             <Calendar1Icon className='text-purple-500' />
                                         </div>
                                         <div className=' w-[70%] flex flex-col '>
-                                            <div className='text-sm w-full  font-bold'>Today’s Earnings</div>
+                                            <div className='text-sm w-full  font-bold'>Today's Earnings</div>
                                             <div className='text-3xl font-bold'>{dailyEarned}</div>
                                         </div>
                                     </div>
