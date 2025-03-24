@@ -25,29 +25,35 @@ const EarningsPage = () => {
 
   const [countdown, setCountdown] = useState<number>(initialCountdown); // Countdown state
 
- 
-
-   useEffect(() => {
-      
-        try {
-            const stored = localStorage.getItem(localStorageKey);
-            if (stored) {
-
-                setCountdown(parseInt(stored));
-
-            } else {
-
-                setCountdown(0)
-            }
 
 
-        } catch (error) {
-            console.log(error)
+  useEffect(() => {
 
-        };
+    if (typeof window !== 'undefined') {
 
-     
-    }, [])
+
+
+      try {
+        const stored = localStorage.getItem(localStorageKey);
+        if (stored) {
+
+          setCountdown(parseInt(stored));
+
+        } else {
+
+          setCountdown(0)
+        }
+
+
+      } catch (error) {
+        console.log(error)
+
+      };
+
+    }
+
+
+  }, [])
 
 
   useEffect(() => {
@@ -126,7 +132,7 @@ const EarningsPage = () => {
 
 
 
- 
+
 
 
   return (

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import EarningsChart from '@/components/Dashboard/EarningsChart';
 import CustomSpeedometer from '@/components/Helper/Meter';
 import { Button } from '@/components/ui/button';
-import { Calendar1Icon, CheckCircle2Icon, CopyIcon, LockIcon, Share2Icon,TicketPercent, TimerIcon, TrafficConeIcon, UnlockIcon, XIcon } from 'lucide-react';
+import { Calendar1Icon, CheckCircle2Icon, CopyIcon, LockIcon, Share2Icon, TicketPercent, TimerIcon, TrafficConeIcon, UnlockIcon, XIcon } from 'lucide-react';
 import Link from 'next/link';
 import DemoEarningsChart from '@/components/Dashboard/DemoEarningChart';
 import ShowTable from '@/components/Dashboard/ShowTable';
@@ -21,10 +21,10 @@ export default function DashboardPage() {
 
   const [totalEarned, setTotalEarned] = useState<number>(0);
   const [countdown, setCountdown] = useState<number>(initialCountdown);
-  const [streak,  setStreak] = useState<number>(0);
+  const [streak, setStreak] = useState<number>(0);
   const [dailyEarned, setDailyEarned] = useState<number>(0);
   const [lastClaimTime, setLastClaimTime] = useState<number>(0);
- 
+
 
   const localStorageKey = 'questsRewardsCountdown'; // Key for storing countdown in localStorage
 
@@ -53,107 +53,109 @@ export default function DashboardPage() {
 
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
 
-    try {
-      const totalEarned = localStorage.getItem("TotalEarned");
+      try {
+        const totalEarned = localStorage.getItem("TotalEarned");
 
-      if (totalEarned) {
+        if (totalEarned) {
 
-        setTotalEarned(parseInt(totalEarned));
+          setTotalEarned(parseInt(totalEarned));
 
-      } else {
+        } else {
 
-        setTotalEarned(0)
+          setTotalEarned(0)
+        }
+
+
+      } catch (error) {
+        console.log(error)
+
       }
 
 
-    } catch (error) {
-      console.log(error)
+      try {
+        const stored = localStorage.getItem(localStorageKey);
 
+        if (stored) {
+
+          setCountdown(parseInt(stored));
+
+        } else {
+
+          setCountdown(0)
+        }
+
+
+      } catch (error) {
+        console.log(error)
+
+      }
+
+
+
+
+
+      try {
+        const streak = localStorage.getItem("streak");
+
+        if (streak) {
+
+          setStreak(parseInt(streak));
+
+        } else {
+
+          setStreak(0);
+        }
+
+      } catch (error) {
+
+        console.log(error);
+
+      };
+
+
+
+      try {
+        const dailyPoint = localStorage.getItem("dailyPoint");
+
+        if (dailyPoint) {
+
+          setDailyEarned(parseInt(dailyPoint));
+
+        } else {
+
+          setDailyEarned(0);
+        }
+
+      } catch (error) {
+
+        console.log(error);
+
+      };
+
+
+
+
+
+      try {
+        const storedTime = localStorage.getItem("lastClaimTime");
+
+        if (storedTime) {
+
+          setLastClaimTime(parseInt(storedTime));
+
+        } else {
+
+          setLastClaimTime(Date.now());
+        }
+
+      } catch (error) {
+
+        console.log(error);
+
+      };
     }
-
-
-    try {
-      const stored = localStorage.getItem(localStorageKey);
-
-      if (stored) {
-
-        setCountdown(parseInt(stored));
-
-      } else {
-
-        setCountdown(0)
-      }
-
-
-    } catch (error) {
-      console.log(error)
-
-    }
-
-
-
-
-
-    try {
-      const streak = localStorage.getItem("streak");
-
-      if (streak) {
-
-        setStreak(parseInt(streak));
-
-      } else {
-
-        setStreak(0);
-      }
-
-    } catch (error) {
-
-      console.log(error);
-
-    };
-
-
-
-    try {
-      const dailyPoint = localStorage.getItem("dailyPoint");
-
-      if (dailyPoint) {
-
-        setDailyEarned(parseInt(dailyPoint));
-
-      } else {
-
-        setDailyEarned(0);
-      }
-
-    } catch (error) {
-
-      console.log(error);
-
-    };
-
-
-
-
-
-    try {
-      const storedTime = localStorage.getItem("lastClaimTime");
-
-      if (storedTime) {
-
-        setLastClaimTime(parseInt(storedTime));
-
-      } else {
-
-        setLastClaimTime(Date.now());
-      }
-
-    } catch (error) {
-
-      console.log(error);
-
-    };
 
   }, []);
 
@@ -162,38 +164,40 @@ export default function DashboardPage() {
 
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
 
-    let interval: NodeJS.Timeout;
+      let interval: NodeJS.Timeout;
 
-    if (countdown > 0) {
-      interval = setInterval(() => {
+      if (countdown > 0) {
+        interval = setInterval(() => {
 
-        setCountdown((prevCountdown) => {
+          setCountdown((prevCountdown) => {
 
-          const newCountdown = prevCountdown - 1;
+            const newCountdown = prevCountdown - 1;
 
-          try {
+            try {
 
-            localStorage.setItem(localStorageKey, newCountdown.toString());
+              localStorage.setItem(localStorageKey, newCountdown.toString());
 
-          } catch (error) {
+            } catch (error) {
 
-            console.error('Failed to update localStorage:', error);
-          }
-          return newCountdown;
-        });
-      }, 1000);
+              console.error('Failed to update localStorage:', error);
+            }
+            return newCountdown;
+          });
+        }, 1000);
 
-    } else {
+      } else {
 
-      setIsClaimable(true);
+        setIsClaimable(true);
 
 
+      }
+
+      return () => {
+        if (interval) clearInterval(interval);
+      };
     }
-
-    return () => {
-      if (interval) clearInterval(interval);
-    };
   }, [countdown]);
 
 
@@ -211,7 +215,7 @@ export default function DashboardPage() {
           setStreak(1);
           localStorage.setItem("streak", "1");
           setDailyEarned(0);
-          localStorage.setItem("dailyPoint","0");
+          localStorage.setItem("dailyPoint", "0");
         }
 
         setClaimed(true);
