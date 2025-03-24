@@ -78,6 +78,17 @@ export default function DashboardPage() {
 
         setTotalEarned(prevTotal => prevTotal + 100);
         setStreak(prevStreak => hoursDiff > 24 ? 1 : Math.min(prevStreak + 1, 28));
+        setStreak(prevStreak => {
+          const newStreak = hoursDiff > 24 ? 1 : Math.min(prevStreak + 1, 29);
+
+          if (newStreak > 28) {
+              const freshStreak = 1
+              localStorage.setItem("streak", freshStreak.toString())
+              return freshStreak;
+          }
+          localStorage.setItem("streak", newStreak.toString());
+          return newStreak;
+      }),
         setDailyEarned(prevDaily => prevDaily + 100);
 
         toast.success("Daily Claim successfully");

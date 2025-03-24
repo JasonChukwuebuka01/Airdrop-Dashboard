@@ -374,9 +374,9 @@ const QuestsRewards = () => {
                     }),
 
                     setStreak(prevStreak => {
-                        const newStreak = hoursDiff > 24 ? 1 : Math.min(prevStreak + 1, 28);
+                        const newStreak = hoursDiff > 24 ? 1 : Math.min(prevStreak + 1, 29);
 
-                        if (newStreak >= 28) {
+                        if (newStreak > 28) {
                             const freshStreak = 1
                             localStorage.setItem("streak", freshStreak.toString())
                             return freshStreak;
@@ -595,7 +595,7 @@ const QuestsRewards = () => {
                                 </div>
 
                                 <div className="absolute top-[200%] left-0 transform -translate-y-1/2 w-full flex justify-between">
-                                    <span className="text-white text-xs relative -top-6 lg:left-[23%] left-[20%] bg-gray-800 rounded-md p-1 flex  justify-center items-center">7<Calendar size={20} className="inline-block ml-1 text-purple-500" /></span>
+                                    <span className="text-white text-xs relative -top-6 lg:left-[23%] left-[20%] sm:left-[22%] bg-gray-800 rounded-md p-1 flex  justify-center items-center">7<Calendar size={20} className="inline-block ml-1 text-purple-500" /></span>
                                     <span className="text-white text-xs relative -top-6 left-[15%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">14<Calendar size={18} className="inline-block ml-1 text-purple-500" /></span>
                                     <span className="text-white text-xs relative -top-6 left-[10%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">21<Calendar size={18} className="inline-block ml-1 text-purple-500" /></span>
                                     <span className="text-white text-xs relative -top-6 left-[0%] bg-gray-800 rounded-md p-1  flex  justify-center items-center">28<Calendar size={18} className="inline-block ml-1 text-purple-500" /></span>
