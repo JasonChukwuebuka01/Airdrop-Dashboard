@@ -572,7 +572,7 @@ const QuestsRewards = () => {
 
                     <article className="bg-[#06030f] rounded-2xl mb-5 pb-2 border border-gray-900 w-[100%]">
                         <section className="bg-[#06030f] rounded-2xl p-5  flex items-center border border-gray-900">
-                            <div className="bg-gradient-to-r from-pink-200 to-[#6620d6] rounded-2xl w-12 h-12  flex items-center justify-center mr-3">
+                            <div className="bg-gradient-to-r from-pink-200 to-[#6620d6] rounded-2xl w-16 sm:w-12 h-12  flex items-center justify-center mr-3">
                                 <Calendar size={20} aria-hidden="true" />
                             </div>
 
