@@ -258,7 +258,7 @@ export const cycleData: CycleData[] = [
         ReferralReward: 0,
         SpeedtestEarning: 0,
         ReferralCommission: 0,
-        QuestEarning:localStorage.getItem("TotalEarned") || 0,
-        Total: localStorage.getItem("TotalEarned") || 0
+        QuestEarning: 0,
+        Total: 0
     }
 ];
