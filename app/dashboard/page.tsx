@@ -179,7 +179,7 @@ export default function DashboardPage() {
                   <h2 className="text-3xl p-4 rounded-xl text-center font-bold border border-gray-900 bg-gray-800">0.00 <span className="text-sm -mt-2 block" >MB/s</span></h2>
                 </div>
                 <div className="w-1/2 flex flex-col justify-center items-start lg:items-center h-full">
-                  <div className="text-sm font-bold mb-2">Upload Speed</div>
+                  <div className="text-sm font-bold mb-2">Upload Speeed</div>
                   <h2 className="text-3xl  p-4 rounded-xl text-center font-bold border border-gray-900 bg-gray-800 ">0.00<span className="text-sm -mt-2 block" >MB/s</span></h2>
                 </div>
               </div>
