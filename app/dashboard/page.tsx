@@ -197,7 +197,7 @@ export default function DashboardPage() {
             <div className="text-sm font-bold  bg-gray-800 p-2 rounded-xl">
               <Share2Icon size={30} className='text-purple-500' />
             </div>
-            <div className="text-lg font-bold">Refer Your Friends</div>
+            <div className="text-lg font-bold">Refer Your Friendss</div>
           </article>
 
           <article className="grid grid-cols-1 sm:grid-cols-2 w-full sm:w-[50%] lg:w-[30%] rounded-lg gap-2">
